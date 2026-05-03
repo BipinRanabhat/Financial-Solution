@@ -168,11 +168,27 @@ export default function HeroSection() {
 
       <div style={{ position: 'relative', zIndex: 10, maxWidth: 800, margin: '0 auto', padding: '120px 24px 80px', textAlign: 'center', width: '100%' }}>
 
+        {/* Logo mark */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          style={{ display: 'flex', justifyContent: 'center', marginBottom: 28 }}
+        >
+          <motion.img
+            src="/logo.png"
+            alt="Vanguard"
+            animate={{ filter: ['drop-shadow(0 0 18px rgba(59,130,246,0.4))', 'drop-shadow(0 0 36px rgba(59,130,246,0.7))', 'drop-shadow(0 0 18px rgba(59,130,246,0.4))'] }}
+            transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+            style={{ height: 120, width: 'auto', objectFit: 'contain' }}
+          />
+        </motion.div>
+
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease }}
+          transition={{ duration: 0.5, delay: 0.15, ease }}
           style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 28, padding: '8px 18px', borderRadius: 9999, fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#C8DFF9', background: 'rgba(59,130,246,0.08)', border: '1px solid rgba(59,130,246,0.22)' }}
         >
           <motion.span

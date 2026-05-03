@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, TrendingUp } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { navLinks } from '../../constants/navigation'
 
 export default function Navbar() {
@@ -28,14 +28,12 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-18">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
-                 style={{ background: 'linear-gradient(135deg, #3B82F6, #1E4D8C)' }}>
-              <TrendingUp size={16} className="text-white" strokeWidth={2.5} />
-            </div>
-            <span className="text-lg font-bold tracking-tight text-frost group-hover:text-sky transition-colors">
-              Vanguard
-            </span>
+          <Link to="/" className="flex items-center group">
+            <img
+              src="/logo.png"
+              alt="Vanguard"
+              style={{ height: 44, width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 0 8px rgba(59,130,246,0.35))' }}
+            />
           </Link>
 
           {/* Desktop nav */}

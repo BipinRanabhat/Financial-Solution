@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { TrendingUp, Mail, Phone, MapPin, AtSign, Share2, Globe } from 'lucide-react'
+import { Mail, Phone, MapPin, AtSign, Share2, Globe } from 'lucide-react'
 import { navLinks } from '../../constants/navigation'
 import { services } from '../../constants/services'
 
@@ -27,14 +27,12 @@ export default function Footer() {
 
           {/* Brand */}
           <div className="flex flex-col gap-5 lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2.5 group">
-              <div
-                className="w-8 h-8 rounded-lg flex items-center justify-center"
-                style={{ background: 'linear-gradient(135deg, #3B82F6, #1E4D8C)', boxShadow: '0 4px 12px rgba(59,130,246,0.3)' }}
-              >
-                <TrendingUp size={16} className="text-white" strokeWidth={2.5} />
-              </div>
-              <span className="text-lg font-bold text-frost group-hover:text-sky transition-colors">Vanguard</span>
+            <Link to="/" className="flex items-center group">
+              <img
+                src="/logo.png"
+                alt="Vanguard"
+                style={{ height: 52, width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 0 6px rgba(59,130,246,0.3))' }}
+              />
             </Link>
             <p className="text-sm text-sky/55 leading-relaxed max-w-xs">
               Nepal-based accounting professionals delivering financial clarity and digital presence management for businesses worldwide.
