@@ -1,0 +1,252 @@
+import { useState, useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { CheckCircle2, ArrowRight, Zap, TrendingUp, Building2 } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import PageWrapper from '../components/layout/PageWrapper'
+import CTABanner from '../components/sections/home/CTABanner'
+import SectionHeading from '../components/ui/SectionHeading'
+
+const plans = [
+  {
+    icon: Zap,
+    name: 'Starter',
+    tagline: 'Perfect for freelancers & solo businesses',
+    monthlyPrice: 299,
+    annualPrice: 249,
+    color: '#10B981',
+    features: [
+      'Up to 200 transactions/month',
+      'Monthly bookkeeping & reconciliation',
+      'Profit & Loss + Balance Sheet reports',
+      'QuickBooks or Xero management',
+      'Email & WhatsApp support (8hr response)',
+      'Year-end tax-ready file preparation',
+      'Dedicated account manager',
+    ],
+    notIncluded: ['Payroll processing', 'Tax filing', 'CFO advisory calls'],
+    cta: 'Start with Starter',
+    popular: false,
+  },
+  {
+    icon: TrendingUp,
+    name: 'Growth',
+    tagline: 'For growing businesses ready to scale',
+    monthlyPrice: 599,
+    annualPrice: 499,
+    color: '#3B82F6',
+    features: [
+      'Up to 500 transactions/month',
+      'Everything in Starter',
+      'Payroll processing (up to 10 employees)',
+      'Quarterly tax planning & estimates',
+      'Cash flow forecasting & KPI dashboard',
+      'Priority support (4hr response)',
+      'Monthly strategy review call (30 min)',
+      'US / UK / AU tax return preparation',
+    ],
+    notIncluded: ['Unlimited transactions', 'Fractional CFO'],
+    cta: 'Start with Growth',
+    popular: true,
+  },
+  {
+    icon: Building2,
+    name: 'Scale',
+    tagline: 'Full financial team for established businesses',
+    monthlyPrice: 999,
+    annualPrice: 849,
+    color: '#8B5CF6',
+    features: [
+      'Unlimited transactions',
+      'Everything in Growth',
+      'Payroll for unlimited employees',
+      'Full tax filing (business + personal)',
+      'Fractional CFO advisory (2 calls/month)',
+      'Scenario modeling & growth planning',
+      'Entity structure optimization',
+      'Investor-ready financial packages',
+      'Dedicated senior CPA on account',
+      '2hr priority response guarantee',
+    ],
+    notIncluded: [],
+    cta: 'Start with Scale',
+    popular: false,
+  },
+]
+
+function PlanCard({ plan, annual, index, inView }) {
+  const { icon: Icon, name, tagline, monthlyPrice, annualPrice, color, features, notIncluded, cta, popular } = plan
+  const price = annual ? annualPrice : monthlyPrice
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 36 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.55, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      whileHover={{ y: -6, boxShadow: popular ? `0 24px 60px ${color}22` : '0 16px 40px rgba(0,0,0,0.3)' }}
+      style={{
+        position: 'relative', borderRadius: 24, padding: '32px 28px',
+        background: popular ? `linear-gradient(160deg, rgba(59,130,246,0.12) 0%, rgba(11,17,32,0.95) 100%)` : 'rgba(15,22,40,0.85)',
+        border: `1px solid ${popular ? 'rgba(59,130,246,0.45)' : 'rgba(59,130,246,0.14)'}`,
+        display: 'flex', flexDirection: 'column', gap: 0,
+        boxShadow: popular ? '0 0 0 1px rgba(59,130,246,0.2), 0 20px 50px rgba(59,130,246,0.12)' : 'none',
+        transition: 'box-shadow 0.25s',
+      }}
+    >
+      {popular && (
+        <div style={{
+          position: 'absolute', top: -14, left: '50%', transform: 'translateX(-50%)',
+          background: 'linear-gradient(90deg, #3B82F6, #60B4FF)',
+          borderRadius: 20, padding: '5px 20px',
+          fontSize: 11, fontWeight: 800, color: '#fff', letterSpacing: '0.1em', textTransform: 'uppercase',
+          whiteSpace: 'nowrap',
+        }}>
+          Most Popular
+        </div>
+      )}
+
+      <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14, marginBottom: 20 }}>
+        <div style={{ width: 46, height: 46, borderRadius: 13, display: 'flex', alignItems: 'center', justifyContent: 'center', background: `${color}18`, border: `1px solid ${color}35`, flexShrink: 0 }}>
+          <Icon size={22} style={{ color }} strokeWidth={1.8} />
+        </div>
+        <div>
+          <h3 style={{ fontSize: 20, fontWeight: 800, color: '#F0F6FF', lineHeight: 1 }}>{name}</h3>
+          <p style={{ fontSize: 12.5, color: 'rgba(96,180,255,0.6)', marginTop: 5 }}>{tagline}</p>
+        </div>
+      </div>
+
+      <div style={{ marginBottom: 24 }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
+          <span style={{ fontSize: 13, color: 'rgba(96,180,255,0.55)', fontWeight: 500 }}>USD</span>
+          <span style={{ fontSize: 46, fontWeight: 900, color: '#F0F6FF', lineHeight: 1 }}>${price}</span>
+          <span style={{ fontSize: 13, color: 'rgba(96,180,255,0.55)' }}>/month</span>
+        </div>
+        {annual && (
+          <p style={{ fontSize: 12, color: '#10B981', fontWeight: 600, marginTop: 6 }}>
+            Save ${(monthlyPrice - annualPrice) * 12}/year with annual billing
+          </p>
+        )}
+      </div>
+
+      <div style={{ height: 1, background: 'rgba(59,130,246,0.1)', marginBottom: 24 }} />
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 28, flex: 1 }}>
+        {features.map((f, i) => (
+          <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+            <CheckCircle2 size={15} style={{ color: '#10B981', flexShrink: 0, marginTop: 1 }} />
+            <span style={{ fontSize: 13.5, color: '#C8DFF9', lineHeight: 1.4 }}>{f}</span>
+          </div>
+        ))}
+        {notIncluded.map((f, i) => (
+          <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, opacity: 0.35 }}>
+            <span style={{ width: 15, height: 15, flexShrink: 0, marginTop: 1, textAlign: 'center', fontSize: 14, color: 'rgba(96,180,255,0.4)' }}>–</span>
+            <span style={{ fontSize: 13.5, color: 'rgba(96,180,255,0.5)', lineHeight: 1.4, textDecoration: 'line-through' }}>{f}</span>
+          </div>
+        ))}
+      </div>
+
+      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}>
+        <Link
+          to="/contact"
+          style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+            padding: '13px 24px', borderRadius: 13,
+            background: popular ? `linear-gradient(135deg, #3B82F6, #1E4D8C)` : `${color}18`,
+            border: popular ? 'none' : `1px solid ${color}30`,
+            color: popular ? '#fff' : color,
+            fontSize: 14, fontWeight: 700, textDecoration: 'none',
+          }}
+        >
+          {cta} <ArrowRight size={15} />
+        </Link>
+      </motion.div>
+    </motion.div>
+  )
+}
+
+export default function Pricing() {
+  const [annual, setAnnual] = useState(false)
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, amount: 0.1 })
+
+  return (
+    <PageWrapper>
+      {/* Hero */}
+      <section className="relative pt-28 pb-16 overflow-hidden" style={{ background: 'linear-gradient(180deg, #060A14 0%, #0B1120 100%)' }}>
+        <div className="absolute inset-0 bg-grid-pattern opacity-50 pointer-events-none" />
+        <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
+          <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
+            className="inline-block mb-4 text-xs font-bold tracking-widest uppercase text-electric">
+            Simple, Transparent Pricing
+          </motion.span>
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-4xl sm:text-5xl font-extrabold text-frost tracking-tight mb-5">
+            One Flat Fee. <span className="text-gradient-blue">No Surprises.</span>
+          </motion.h1>
+          <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-base text-sky/65 leading-relaxed mb-8">
+            All plans include a dedicated account manager, monthly financial reports, and our 30-day satisfaction guarantee.
+          </motion.p>
+
+          {/* Toggle */}
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35 }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 12, background: 'rgba(15,22,40,0.8)', border: '1px solid rgba(59,130,246,0.2)', borderRadius: 50, padding: '6px 8px' }}>
+            <button onClick={() => setAnnual(false)}
+              style={{ padding: '8px 20px', borderRadius: 50, border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 700, background: !annual ? '#3B82F6' : 'transparent', color: !annual ? '#fff' : 'rgba(96,180,255,0.6)', transition: 'all 0.2s' }}>
+              Monthly
+            </button>
+            <button onClick={() => setAnnual(true)}
+              style={{ padding: '8px 20px', borderRadius: 50, border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 700, background: annual ? '#3B82F6' : 'transparent', color: annual ? '#fff' : 'rgba(96,180,255,0.6)', transition: 'all 0.2s', display: 'flex', alignItems: 'center', gap: 8 }}>
+              Annual
+              <span style={{ background: '#10B981', color: '#fff', fontSize: 10, fontWeight: 800, padding: '2px 8px', borderRadius: 20 }}>Save 17%</span>
+            </button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Plans */}
+      <section className="section-padding" style={{ background: '#0B1120' }}>
+        <div className="container-wide" ref={ref}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+            {plans.map((plan, i) => (
+              <PlanCard key={plan.name} plan={plan} annual={annual} index={i} inView={inView} />
+            ))}
+          </div>
+
+          {/* Guarantee strip */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            style={{ marginTop: 48, textAlign: 'center' }}
+          >
+            <div style={{ display: 'inline-flex', flexWrap: 'wrap', justifyContent: 'center', gap: 24, padding: '20px 32px', borderRadius: 16, background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.2)' }}>
+              {['30-Day Money-Back Guarantee', 'No Setup Fees', 'Cancel Anytime', 'NDA Signed on Day 1'].map((item, i) => (
+                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <CheckCircle2 size={15} style={{ color: '#10B981' }} />
+                  <span style={{ fontSize: 13, color: '#C8DFF9', fontWeight: 600 }}>{item}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ teaser */}
+      <section className="section-padding" style={{ background: '#0D1628' }}>
+        <div className="container-wide">
+          <SectionHeading eyebrow="Questions?" title="Not sure which plan fits?" subtitle="Book a free 15-minute call and we'll recommend the right plan for your business — no pressure, no sales pitch." />
+          <div style={{ textAlign: 'center', marginTop: 32 }}>
+            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+              <Link to="/contact"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '14px 32px', borderRadius: 14, background: 'linear-gradient(135deg, #3B82F6, #1E4D8C)', color: '#fff', fontSize: 15, fontWeight: 700, textDecoration: 'none' }}>
+                Book a Free Call <ArrowRight size={16} />
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <CTABanner />
+    </PageWrapper>
+  )
+}
