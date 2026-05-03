@@ -31,7 +31,7 @@ export default function Footer() {
               <img
                 src="/logo.png"
                 alt="Vanguard"
-                style={{ height: 52, width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 0 6px rgba(59,130,246,0.3))' }}
+                style={{ height: 72, width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 0 6px rgba(59,130,246,0.3))' }}
               />
             </Link>
             <p className="text-sm text-sky/55 leading-relaxed max-w-xs">

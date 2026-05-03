@@ -32,7 +32,7 @@ export default function Navbar() {
             <img
               src="/logo.png"
               alt="Vanguard"
-              style={{ height: 44, width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 0 8px rgba(59,130,246,0.35))' }}
+              style={{ height: 60, width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 0 8px rgba(59,130,246,0.35))' }}
             />
           </Link>
 
