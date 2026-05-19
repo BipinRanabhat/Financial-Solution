@@ -13,7 +13,7 @@ const plans = [
     tagline: 'Perfect for freelancers & solo businesses',
     monthlyPrice: 299,
     annualPrice: 249,
-    color: '#10B981',
+    color: '#059669',
     features: [
       'Up to 200 transactions/month',
       'Monthly bookkeeping & reconciliation',
@@ -33,7 +33,7 @@ const plans = [
     tagline: 'For growing businesses ready to scale',
     monthlyPrice: 599,
     annualPrice: 499,
-    color: '#3B82F6',
+    color: '#1D4ED8',
     features: [
       'Up to 500 transactions/month',
       'Everything in Starter',
@@ -54,7 +54,7 @@ const plans = [
     tagline: 'Full financial team for established businesses',
     monthlyPrice: 999,
     annualPrice: 849,
-    color: '#8B5CF6',
+    color: '#7C3AED',
     features: [
       'Unlimited transactions',
       'Everything in Growth',
@@ -82,20 +82,22 @@ function PlanCard({ plan, annual, index, inView }) {
       initial={{ opacity: 0, y: 36 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.55, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      whileHover={{ y: -6, boxShadow: popular ? `0 24px 60px ${color}22` : '0 16px 40px rgba(0,0,0,0.3)' }}
+      whileHover={{ y: -6, boxShadow: popular ? `0 24px 60px ${color}22` : '0 16px 40px rgba(0,0,0,0.35)' }}
       style={{
-        position: 'relative', borderRadius: 24, padding: '32px 28px',
-        background: popular ? `linear-gradient(160deg, rgba(59,130,246,0.12) 0%, rgba(11,17,32,0.95) 100%)` : 'rgba(15,22,40,0.85)',
-        border: `1px solid ${popular ? 'rgba(59,130,246,0.45)' : 'rgba(59,130,246,0.14)'}`,
+        position: 'relative', borderRadius: 20, padding: '32px 28px',
+        background: popular
+          ? `linear-gradient(160deg, rgba(29,78,216,0.12) 0%, rgba(17,17,19,0.96) 100%)`
+          : 'linear-gradient(145deg, rgba(28,28,32,0.85) 0%, rgba(17,17,19,0.95) 100%)',
+        border: `1px solid ${popular ? 'rgba(29,78,216,0.42)' : 'rgba(255,255,255,0.07)'}`,
         display: 'flex', flexDirection: 'column', gap: 0,
-        boxShadow: popular ? '0 0 0 1px rgba(59,130,246,0.2), 0 20px 50px rgba(59,130,246,0.12)' : 'none',
+        boxShadow: popular ? '0 0 0 1px rgba(29,78,216,0.18), 0 20px 50px rgba(29,78,216,0.10)' : 'none',
         transition: 'box-shadow 0.25s',
       }}
     >
       {popular && (
         <div style={{
           position: 'absolute', top: -14, left: '50%', transform: 'translateX(-50%)',
-          background: 'linear-gradient(90deg, #3B82F6, #60B4FF)',
+          background: 'linear-gradient(90deg, #1D4ED8, #93C5FD)',
           borderRadius: 20, padding: '5px 20px',
           fontSize: 11, fontWeight: 800, color: '#fff', letterSpacing: '0.1em', textTransform: 'uppercase',
           whiteSpace: 'nowrap',
@@ -105,20 +107,20 @@ function PlanCard({ plan, annual, index, inView }) {
       )}
 
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14, marginBottom: 20 }}>
-        <div style={{ width: 46, height: 46, borderRadius: 13, display: 'flex', alignItems: 'center', justifyContent: 'center', background: `${color}18`, border: `1px solid ${color}35`, flexShrink: 0 }}>
+        <div style={{ width: 46, height: 46, borderRadius: 13, display: 'flex', alignItems: 'center', justifyContent: 'center', background: `${color}14`, border: `1px solid ${color}30`, flexShrink: 0 }}>
           <Icon size={22} style={{ color }} strokeWidth={1.8} />
         </div>
         <div>
-          <h3 style={{ fontSize: 20, fontWeight: 800, color: '#F0F6FF', lineHeight: 1 }}>{name}</h3>
-          <p style={{ fontSize: 12.5, color: 'rgba(96,180,255,0.6)', marginTop: 5 }}>{tagline}</p>
+          <h3 style={{ fontSize: 20, fontWeight: 800, color: '#F8FAFC', lineHeight: 1 }}>{name}</h3>
+          <p style={{ fontSize: 12.5, color: 'rgba(147,197,253,0.58)', marginTop: 5 }}>{tagline}</p>
         </div>
       </div>
 
       <div style={{ marginBottom: 24 }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
-          <span style={{ fontSize: 13, color: 'rgba(96,180,255,0.55)', fontWeight: 500 }}>USD</span>
-          <span style={{ fontSize: 46, fontWeight: 900, color: '#F0F6FF', lineHeight: 1 }}>${price}</span>
-          <span style={{ fontSize: 13, color: 'rgba(96,180,255,0.55)' }}>/month</span>
+          <span style={{ fontSize: 13, color: 'rgba(147,197,253,0.52)', fontWeight: 500 }}>USD</span>
+          <span style={{ fontSize: 46, fontWeight: 900, color: '#F8FAFC', lineHeight: 1 }}>${price}</span>
+          <span style={{ fontSize: 13, color: 'rgba(147,197,253,0.52)' }}>/month</span>
         </div>
         {annual && (
           <p style={{ fontSize: 12, color: '#10B981', fontWeight: 600, marginTop: 6 }}>
@@ -127,19 +129,19 @@ function PlanCard({ plan, annual, index, inView }) {
         )}
       </div>
 
-      <div style={{ height: 1, background: 'rgba(59,130,246,0.1)', marginBottom: 24 }} />
+      <div style={{ height: 1, background: 'rgba(255,255,255,0.07)', marginBottom: 24 }} />
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 28, flex: 1 }}>
         {features.map((f, i) => (
           <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-            <CheckCircle2 size={15} style={{ color: '#10B981', flexShrink: 0, marginTop: 1 }} />
-            <span style={{ fontSize: 13.5, color: '#C8DFF9', lineHeight: 1.4 }}>{f}</span>
+            <CheckCircle2 size={15} style={{ color: '#059669', flexShrink: 0, marginTop: 1 }} />
+            <span style={{ fontSize: 13.5, color: '#BFDBFE', lineHeight: 1.4 }}>{f}</span>
           </div>
         ))}
         {notIncluded.map((f, i) => (
-          <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, opacity: 0.35 }}>
-            <span style={{ width: 15, height: 15, flexShrink: 0, marginTop: 1, textAlign: 'center', fontSize: 14, color: 'rgba(96,180,255,0.4)' }}>–</span>
-            <span style={{ fontSize: 13.5, color: 'rgba(96,180,255,0.5)', lineHeight: 1.4, textDecoration: 'line-through' }}>{f}</span>
+          <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, opacity: 0.32 }}>
+            <span style={{ width: 15, height: 15, flexShrink: 0, marginTop: 1, textAlign: 'center', fontSize: 14, color: 'rgba(147,197,253,0.4)' }}>–</span>
+            <span style={{ fontSize: 13.5, color: 'rgba(147,197,253,0.5)', lineHeight: 1.4, textDecoration: 'line-through' }}>{f}</span>
           </div>
         ))}
       </div>
@@ -149,11 +151,12 @@ function PlanCard({ plan, annual, index, inView }) {
           to="/contact"
           style={{
             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-            padding: '13px 24px', borderRadius: 13,
-            background: popular ? `linear-gradient(135deg, #3B82F6, #1E4D8C)` : `${color}18`,
-            border: popular ? 'none' : `1px solid ${color}30`,
+            padding: '13px 24px', borderRadius: 10,
+            background: popular ? `linear-gradient(135deg, #1D4ED8, #1E3A8A)` : `${color}14`,
+            border: popular ? 'none' : `1px solid ${color}28`,
             color: popular ? '#fff' : color,
             fontSize: 14, fontWeight: 700, textDecoration: 'none',
+            boxShadow: popular ? '0 6px 20px rgba(29,78,216,0.30)' : 'none',
           }}
         >
           {cta} <ArrowRight size={15} />
@@ -171,7 +174,7 @@ export default function Pricing() {
   return (
     <PageWrapper>
       {/* Hero */}
-      <section className="relative pt-28 pb-16 overflow-hidden" style={{ background: 'linear-gradient(180deg, #060A14 0%, #0B1120 100%)' }}>
+      <section className="relative pt-28 pb-16 overflow-hidden" style={{ background: 'linear-gradient(180deg, #080809 0%, #111113 100%)' }}>
         <div className="absolute inset-0 bg-grid-pattern opacity-50 pointer-events-none" />
         <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
           <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
@@ -187,24 +190,24 @@ export default function Pricing() {
             All plans include a dedicated account manager, monthly financial reports, and our 30-day satisfaction guarantee.
           </motion.p>
 
-          {/* Toggle */}
+          {/* Monthly / Annual toggle */}
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35 }}
-            style={{ display: 'inline-flex', alignItems: 'center', gap: 12, background: 'rgba(15,22,40,0.8)', border: '1px solid rgba(59,130,246,0.2)', borderRadius: 50, padding: '6px 8px' }}>
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 12, background: 'rgba(28,28,32,0.90)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 50, padding: '6px 8px' }}>
             <button onClick={() => setAnnual(false)}
-              style={{ padding: '8px 20px', borderRadius: 50, border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 700, background: !annual ? '#3B82F6' : 'transparent', color: !annual ? '#fff' : 'rgba(96,180,255,0.6)', transition: 'all 0.2s' }}>
+              style={{ padding: '8px 20px', borderRadius: 50, border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 700, background: !annual ? '#1D4ED8' : 'transparent', color: !annual ? '#fff' : 'rgba(147,197,253,0.58)', transition: 'all 0.2s' }}>
               Monthly
             </button>
             <button onClick={() => setAnnual(true)}
-              style={{ padding: '8px 20px', borderRadius: 50, border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 700, background: annual ? '#3B82F6' : 'transparent', color: annual ? '#fff' : 'rgba(96,180,255,0.6)', transition: 'all 0.2s', display: 'flex', alignItems: 'center', gap: 8 }}>
+              style={{ padding: '8px 20px', borderRadius: 50, border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 700, background: annual ? '#1D4ED8' : 'transparent', color: annual ? '#fff' : 'rgba(147,197,253,0.58)', transition: 'all 0.2s', display: 'flex', alignItems: 'center', gap: 8 }}>
               Annual
-              <span style={{ background: '#10B981', color: '#fff', fontSize: 10, fontWeight: 800, padding: '2px 8px', borderRadius: 20 }}>Save 17%</span>
+              <span style={{ background: '#059669', color: '#fff', fontSize: 10, fontWeight: 800, padding: '2px 8px', borderRadius: 20 }}>Save 17%</span>
             </button>
           </motion.div>
         </div>
       </section>
 
       {/* Plans */}
-      <section className="section-padding" style={{ background: '#0B1120' }}>
+      <section className="section-padding" style={{ background: '#111113' }}>
         <div className="container-wide" ref={ref}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
             {plans.map((plan, i) => (
@@ -219,11 +222,11 @@ export default function Pricing() {
             transition={{ duration: 0.6, delay: 0.4 }}
             style={{ marginTop: 48, textAlign: 'center' }}
           >
-            <div style={{ display: 'inline-flex', flexWrap: 'wrap', justifyContent: 'center', gap: 24, padding: '20px 32px', borderRadius: 16, background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.2)' }}>
+            <div style={{ display: 'inline-flex', flexWrap: 'wrap', justifyContent: 'center', gap: 24, padding: '20px 32px', borderRadius: 14, background: 'rgba(5,150,105,0.06)', border: '1px solid rgba(5,150,105,0.20)' }}>
               {['30-Day Money-Back Guarantee', 'No Setup Fees', 'Cancel Anytime', 'NDA Signed on Day 1'].map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <CheckCircle2 size={15} style={{ color: '#10B981' }} />
-                  <span style={{ fontSize: 13, color: '#C8DFF9', fontWeight: 600 }}>{item}</span>
+                  <CheckCircle2 size={15} style={{ color: '#059669' }} />
+                  <span style={{ fontSize: 13, color: '#BFDBFE', fontWeight: 600 }}>{item}</span>
                 </div>
               ))}
             </div>
@@ -232,13 +235,13 @@ export default function Pricing() {
       </section>
 
       {/* FAQ teaser */}
-      <section className="section-padding" style={{ background: '#0D1628' }}>
+      <section className="section-padding" style={{ background: '#161618' }}>
         <div className="container-wide">
           <SectionHeading eyebrow="Questions?" title="Not sure which plan fits?" subtitle="Book a free 15-minute call and we'll recommend the right plan for your business — no pressure, no sales pitch." />
           <div style={{ textAlign: 'center', marginTop: 32 }}>
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
               <Link to="/contact"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '14px 32px', borderRadius: 14, background: 'linear-gradient(135deg, #3B82F6, #1E4D8C)', color: '#fff', fontSize: 15, fontWeight: 700, textDecoration: 'none' }}>
+                style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '14px 32px', borderRadius: 10, background: 'linear-gradient(135deg, #1D4ED8, #1E3A8A)', color: '#fff', fontSize: 15, fontWeight: 700, textDecoration: 'none', boxShadow: '0 8px 24px rgba(29,78,216,0.32)' }}>
                 Book a Free Call <ArrowRight size={16} />
               </Link>
             </motion.div>

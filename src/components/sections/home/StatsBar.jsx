@@ -14,17 +14,17 @@ export default function StatsBar() {
       style={{
         position: 'relative',
         padding: '40px 16px',
-        background: 'rgba(11,17,32,0.8)',
+        background: 'rgba(17,17,19,0.85)',
         backdropFilter: 'blur(20px)',
-        borderTop: '1px solid rgba(59,130,246,0.1)',
-        borderBottom: '1px solid rgba(59,130,246,0.1)',
+        borderTop: '1px solid rgba(255,255,255,0.06)',
+        borderBottom: '1px solid rgba(255,255,255,0.06)',
         overflow: 'hidden',
       }}
     >
-      {/* Background glow */}
+      {/* Subtle background glow */}
       <div style={{
         position: 'absolute', inset: 0, pointerEvents: 'none',
-        background: 'radial-gradient(ellipse 70% 100% at 50% 50%, rgba(59,130,246,0.04) 0%, transparent 70%)',
+        background: 'radial-gradient(ellipse 70% 100% at 50% 50%, rgba(29,78,216,0.04) 0%, transparent 70%)',
       }} />
 
       <div className="max-w-5xl mx-auto relative">
@@ -37,18 +37,24 @@ export default function StatsBar() {
         >
           {stats.map(({ value, suffix, label, prefix, icon }, i) => {
             const Icon = Icons[icon]
+            /* Use emerald for the retention stat (positive growth metric) */
+            const isRetention = label.toLowerCase().includes('retention')
+            const accentColor = isRetention ? '#10B981' : '#1D4ED8'
+            const accentBg    = isRetention ? 'rgba(16,185,129,0.10)' : 'rgba(29,78,216,0.10)'
+            const accentBdr   = isRetention ? 'rgba(16,185,129,0.22)' : 'rgba(29,78,216,0.22)'
+
             return (
               <motion.div
                 key={i}
                 variants={cardReveal}
-                whileHover={{ y: -5, borderColor: 'rgba(59,130,246,0.38)', boxShadow: '0 12px 36px rgba(59,130,246,0.14)' }}
+                whileHover={{ y: -5, borderColor: isRetention ? 'rgba(16,185,129,0.38)' : 'rgba(29,78,216,0.38)', boxShadow: `0 12px 36px ${isRetention ? 'rgba(16,185,129,0.12)' : 'rgba(29,78,216,0.12)'}` }}
                 transition={{ duration: 0.22 }}
                 style={{
                   textAlign: 'center',
                   padding: '24px 16px',
-                  borderRadius: 16,
-                  background: 'linear-gradient(145deg, rgba(26,39,68,0.6) 0%, rgba(11,17,32,0.7) 100%)',
-                  border: '1px solid rgba(59,130,246,0.12)',
+                  borderRadius: 14,
+                  background: 'linear-gradient(145deg, rgba(28,28,32,0.7) 0%, rgba(17,17,19,0.85) 100%)',
+                  border: '1px solid rgba(255,255,255,0.07)',
                   backdropFilter: 'blur(10px)',
                   display: 'flex',
                   flexDirection: 'column',
@@ -59,10 +65,10 @@ export default function StatsBar() {
                   overflow: 'hidden',
                 }}
               >
-                {/* card inner glow */}
+                {/* card top edge light */}
                 <div style={{
                   position: 'absolute', top: 0, left: 0, right: 0, height: 1,
-                  background: 'linear-gradient(90deg, transparent, rgba(59,130,246,0.2), transparent)',
+                  background: `linear-gradient(90deg, transparent, ${accentBdr}, transparent)`,
                   pointerEvents: 'none',
                 }} />
 
@@ -70,19 +76,19 @@ export default function StatsBar() {
                   <div style={{
                     width: 40, height: 40, borderRadius: 10,
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    background: 'rgba(59,130,246,0.12)',
-                    border: '1px solid rgba(59,130,246,0.2)',
+                    background: accentBg,
+                    border: `1px solid ${accentBdr}`,
                     flexShrink: 0,
                   }}>
-                    <Icon size={18} color="#3B82F6" strokeWidth={1.8} />
+                    <Icon size={18} color={accentColor} strokeWidth={1.8} />
                   </div>
                 )}
 
-                <div style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', fontWeight: 800, color: '#F0F6FF', lineHeight: 1 }}>
+                <div style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', fontWeight: 800, color: '#F8FAFC', lineHeight: 1 }}>
                   <AnimatedCounter end={value} suffix={suffix} prefix={prefix} />
                 </div>
 
-                <div style={{ fontSize: 11, color: 'rgba(96,180,255,0.52)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em' }}>
+                <div style={{ fontSize: 11, color: 'rgba(147,197,253,0.50)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em' }}>
                   {label}
                 </div>
               </motion.div>

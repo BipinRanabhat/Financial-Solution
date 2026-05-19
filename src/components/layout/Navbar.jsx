@@ -20,8 +20,8 @@ export default function Navbar() {
   return (
     <motion.header
       animate={isScrolled
-        ? { backgroundColor: 'rgba(11,17,32,0.95)', backdropFilter: 'blur(14px)', borderBottomColor: 'rgba(30,77,140,0.4)' }
-        : { backgroundColor: 'rgba(11,17,32,0)',    backdropFilter: 'blur(0px)',   borderBottomColor: 'rgba(30,77,140,0)' }}
+        ? { backgroundColor: 'rgba(17,17,19,0.96)', backdropFilter: 'blur(16px)', borderBottomColor: 'rgba(255,255,255,0.08)' }
+        : { backgroundColor: 'rgba(17,17,19,0)',    backdropFilter: 'blur(0px)',   borderBottomColor: 'rgba(255,255,255,0)' }}
       transition={{ duration: 0.3 }}
       className="fixed top-0 left-0 right-0 z-50 border-b"
     >
@@ -32,7 +32,7 @@ export default function Navbar() {
             <img
               src="/logo.png"
               alt="Vanguard"
-              style={{ height: 60, width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 0 8px rgba(59,130,246,0.35))' }}
+              style={{ height: 60, width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 0 6px rgba(29,78,216,0.30))' }}
             />
           </Link>
 
@@ -45,7 +45,7 @@ export default function Navbar() {
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200
                   ${pathname === path
                     ? 'text-electric bg-electric/10'
-                    : 'text-ice/70 hover:text-frost hover:bg-white/5'}`}
+                    : 'text-sky/65 hover:text-frost hover:bg-white/5'}`}
               >
                 {label}
               </Link>
@@ -56,13 +56,20 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               to="/contact"
-              className="hidden sm:inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold bg-electric text-white hover:bg-sky transition-all duration-200"
+              className="hidden sm:inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-200"
+              style={{
+                background: 'linear-gradient(135deg, #1D4ED8, #1E3A8A)',
+                color: 'white',
+                boxShadow: '0 4px 14px rgba(29,78,216,0.35)',
+              }}
+              onMouseEnter={e => e.currentTarget.style.boxShadow = '0 4px 20px rgba(29,78,216,0.55)'}
+              onMouseLeave={e => e.currentTarget.style.boxShadow = '0 4px 14px rgba(29,78,216,0.35)'}
             >
               Get Started
             </Link>
             <button
               onClick={() => setMobileOpen(v => !v)}
-              className="md:hidden p-2 rounded-lg text-ice/70 hover:text-frost hover:bg-white/5 transition-colors"
+              className="md:hidden p-2 rounded-lg text-sky/65 hover:text-frost hover:bg-white/5 transition-colors"
               aria-label="Toggle menu"
             >
               {mobileOpen ? <X size={20} /> : <Menu size={20} />}
@@ -80,7 +87,7 @@ export default function Navbar() {
             exit={{  opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: 'easeInOut' }}
             className="md:hidden overflow-hidden border-t"
-            style={{ borderTopColor: 'rgba(30,77,140,0.3)', background: 'rgba(11,17,32,0.98)' }}
+            style={{ borderTopColor: 'rgba(255,255,255,0.07)', background: 'rgba(17,17,19,0.98)' }}
           >
             <div className="px-4 py-4 flex flex-col gap-1">
               {navLinks.map(({ label, path }) => (
@@ -88,14 +95,15 @@ export default function Navbar() {
                   key={path}
                   to={path}
                   className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors
-                    ${pathname === path ? 'text-electric bg-electric/10' : 'text-ice/70 hover:text-frost hover:bg-white/5'}`}
+                    ${pathname === path ? 'text-electric bg-electric/10' : 'text-sky/65 hover:text-frost hover:bg-white/5'}`}
                 >
                   {label}
                 </Link>
               ))}
               <Link
                 to="/contact"
-                className="mt-2 px-4 py-3 rounded-lg text-sm font-semibold text-center bg-electric text-white"
+                className="mt-2 px-4 py-3 rounded-lg text-sm font-semibold text-center text-white"
+                style={{ background: 'linear-gradient(135deg, #1D4ED8, #1E3A8A)' }}
               >
                 Get Started
               </Link>

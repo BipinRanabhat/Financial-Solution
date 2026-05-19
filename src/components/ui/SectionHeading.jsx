@@ -21,16 +21,21 @@ export default function SectionHeading({ eyebrow, title, subtitle, align = 'cent
           initial={{ opacity: 0, y: 8 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
           transition={{ duration: 0.4 }}
-          style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#3B82F6' }}
+          style={{
+            display: 'inline-flex', alignItems: 'center', gap: 8,
+            fontSize: 11, fontWeight: 700, letterSpacing: '0.20em', textTransform: 'uppercase', color: '#1D4ED8',
+          }}
         >
+          <span style={{ display: 'inline-block', width: 20, height: 1.5, background: '#1D4ED8', borderRadius: 2, flexShrink: 0 }} />
           {eyebrow}
+          <span style={{ display: 'inline-block', width: 20, height: 1.5, background: '#1D4ED8', borderRadius: 2, flexShrink: 0 }} />
         </motion.span>
       )}
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.6, delay: 0.08 }}
-        style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 800, lineHeight: 1.15, letterSpacing: '-0.02em', color: '#F0F6FF', margin: 0 }}
+        style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 800, lineHeight: 1.15, letterSpacing: '-0.025em', color: '#F8FAFC', margin: 0 }}
       >
         {title}
       </motion.h2>
@@ -39,7 +44,7 @@ export default function SectionHeading({ eyebrow, title, subtitle, align = 'cent
           initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
           transition={{ duration: 0.5, delay: 0.18 }}
-          style={{ fontSize: '1.0625rem', color: 'rgba(96,180,255,0.75)', maxWidth: 600, lineHeight: 1.7, margin: 0 }}
+          style={{ fontSize: '1.0625rem', color: 'rgba(147,197,253,0.72)', maxWidth: 600, lineHeight: 1.72, margin: 0 }}
         >
           {subtitle}
         </motion.p>
@@ -49,8 +54,8 @@ export default function SectionHeading({ eyebrow, title, subtitle, align = 'cent
         animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
         style={{
-          height: 2, width: 64,
-          background: 'linear-gradient(90deg, #3B82F6, #60B4FF)',
+          height: 2, width: 56,
+          background: 'linear-gradient(90deg, #1D4ED8, #059669)',
           borderRadius: 2,
           transformOrigin: isCenter ? 'center' : 'left',
         }}

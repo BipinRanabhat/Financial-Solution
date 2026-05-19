@@ -6,37 +6,37 @@ import SectionHeading from '../../ui/SectionHeading'
 const advantages = [
   {
     icon: TrendingDown,
-    color: '#10B981',
+    color: '#059669',
     title: '40–60% Cost Savings',
     desc: 'Get CPA-level expertise at a fraction of what a US or UK firm charges. Same certifications, same software, dramatically better value.',
   },
   {
     icon: Award,
-    color: '#3B82F6',
+    color: '#1D4ED8',
     title: 'Fully Certified Team',
     desc: 'Our accountants hold CPA, CPP, QuickBooks ProAdvisor, and Xero Certified credentials — the same qualifications your local firm advertises.',
   },
   {
     icon: Clock,
-    color: '#8B5CF6',
+    color: '#7C3AED',
     title: 'Overnight Turnaround',
     desc: 'Nepal\'s timezone (UTC+5:45) means we work while you sleep. Send requests end-of-day, receive completed work by morning.',
   },
   {
     icon: Globe,
-    color: '#F59E0B',
+    color: '#D97706',
     title: 'Fluent in Your Markets',
     desc: 'We\'ve specialized in US, UK, and Australian tax and compliance for 9+ years. We speak your jurisdiction\'s language — not just English.',
   },
   {
     icon: ShieldCheck,
-    color: '#EC4899',
+    color: '#1D4ED8',
     title: 'Transparent by Default',
     desc: 'We tell you exactly who we are, where we are, and how we work. No shell addresses, no hidden teams — just honest professionals you can verify.',
   },
   {
     icon: Users,
-    color: '#60B4FF',
+    color: '#059669',
     title: 'Dedicated Account Team',
     desc: 'You get a named account manager, bookkeeper, and payroll specialist — not a rotating support queue. Same faces, every month.',
   },
@@ -54,9 +54,9 @@ const comparisons = [
 ]
 
 function Cell({ val, highlight }) {
-  if (val === true)  return <span style={{ color: '#10B981', fontWeight: 700, fontSize: 16 }}>✓</span>
-  if (val === false) return <span style={{ color: 'rgba(96,180,255,0.3)', fontWeight: 700, fontSize: 16 }}>✗</span>
-  return <span style={{ fontSize: 13, fontWeight: highlight ? 700 : 500, color: highlight ? '#F0F6FF' : 'rgba(96,180,255,0.55)' }}>{val}</span>
+  if (val === true)  return <span style={{ color: '#059669', fontWeight: 700, fontSize: 16 }}>✓</span>
+  if (val === false) return <span style={{ color: 'rgba(147,197,253,0.28)', fontWeight: 700, fontSize: 16 }}>✗</span>
+  return <span style={{ fontSize: 13, fontWeight: highlight ? 700 : 500, color: highlight ? '#F8FAFC' : 'rgba(147,197,253,0.52)' }}>{val}</span>
 }
 
 export default function WhyNepalSection() {
@@ -68,7 +68,7 @@ export default function WhyNepalSection() {
   return (
     <>
       {/* Why Nepal advantages */}
-      <section className="section-padding" style={{ background: '#0B1120' }}>
+      <section className="section-padding" style={{ background: '#111113' }}>
         <div className="container-wide" ref={ref}>
           <div className="mb-14 flex flex-col items-center">
             <SectionHeading
@@ -88,20 +88,20 @@ export default function WhyNepalSection() {
               <motion.div
                 key={i}
                 variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } } }}
-                whileHover={{ y: -4, borderColor: `${color}40`, boxShadow: `0 12px 32px ${color}12` }}
+                whileHover={{ y: -4, borderColor: `${color}35`, boxShadow: `0 12px 32px ${color}10` }}
                 transition={{ duration: 0.2 }}
                 style={{
-                  padding: '28px 24px', borderRadius: 18,
-                  background: 'rgba(15,22,40,0.8)',
-                  border: '1px solid rgba(59,130,246,0.13)',
+                  padding: '28px 24px', borderRadius: 16,
+                  background: 'linear-gradient(145deg, rgba(28,28,32,0.75) 0%, rgba(17,17,19,0.90) 100%)',
+                  border: '1px solid rgba(255,255,255,0.07)',
                   display: 'flex', flexDirection: 'column', gap: 14,
                 }}
               >
-                <div style={{ width: 44, height: 44, borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', background: `${color}15`, border: `1px solid ${color}30` }}>
+                <div style={{ width: 44, height: 44, borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', background: `${color}12`, border: `1px solid ${color}28` }}>
                   <Icon size={20} style={{ color }} strokeWidth={1.8} />
                 </div>
-                <h3 style={{ fontSize: 16, fontWeight: 700, color: '#F0F6FF' }}>{title}</h3>
-                <p style={{ fontSize: 13.5, color: 'rgba(96,180,255,0.65)', lineHeight: 1.7 }}>{desc}</p>
+                <h3 style={{ fontSize: 16, fontWeight: 700, color: '#F8FAFC' }}>{title}</h3>
+                <p style={{ fontSize: 13.5, color: 'rgba(147,197,253,0.62)', lineHeight: 1.72 }}>{desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -115,14 +115,14 @@ export default function WhyNepalSection() {
           >
             <div style={{
               display: 'inline-flex', alignItems: 'center', gap: 12,
-              padding: '14px 28px', borderRadius: 16,
-              background: 'rgba(59,130,246,0.07)',
-              border: '1px solid rgba(59,130,246,0.2)',
+              padding: '14px 28px', borderRadius: 14,
+              background: 'rgba(29,78,216,0.07)',
+              border: '1px solid rgba(29,78,216,0.20)',
             }}>
               <span style={{ fontSize: 22 }}>🇳🇵</span>
               <div style={{ textAlign: 'left' }}>
-                <div style={{ fontSize: 14, fontWeight: 700, color: '#F0F6FF' }}>Headquartered in Kathmandu, Nepal</div>
-                <div style={{ fontSize: 12, color: 'rgba(96,180,255,0.55)', marginTop: 2 }}>Proudly Nepali. Serving US, UK &amp; Australia since 2016.</div>
+                <div style={{ fontSize: 14, fontWeight: 700, color: '#F8FAFC' }}>Headquartered in Kathmandu, Nepal</div>
+                <div style={{ fontSize: 12, color: 'rgba(147,197,253,0.52)', marginTop: 2 }}>Proudly Nepali. Serving US, UK &amp; Australia since 2016.</div>
               </div>
             </div>
           </motion.div>
@@ -130,7 +130,7 @@ export default function WhyNepalSection() {
       </section>
 
       {/* Comparison Table */}
-      <section className="section-padding" style={{ background: '#0D1628' }}>
+      <section className="section-padding" style={{ background: '#161618' }}>
         <div className="container-wide" ref={tableRef}>
           <div className="mb-14 flex flex-col items-center">
             <SectionHeading
@@ -144,26 +144,26 @@ export default function WhyNepalSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={tableInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            style={{ overflowX: 'auto', borderRadius: 20, border: '1px solid rgba(59,130,246,0.18)' }}
+            style={{ overflowX: 'auto', borderRadius: 16, border: '1px solid rgba(255,255,255,0.08)' }}
           >
             <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 560 }}>
               <thead>
-                <tr style={{ background: 'rgba(59,130,246,0.1)' }}>
-                  <th style={{ padding: '16px 24px', textAlign: 'left', fontSize: 12, fontWeight: 700, color: 'rgba(96,180,255,0.55)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Feature</th>
-                  <th style={{ padding: '16px 20px', textAlign: 'center', fontSize: 13, fontWeight: 800, color: '#3B82F6' }}>
+                <tr style={{ background: 'rgba(29,78,216,0.08)' }}>
+                  <th style={{ padding: '16px 24px', textAlign: 'left', fontSize: 12, fontWeight: 700, color: 'rgba(147,197,253,0.52)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Feature</th>
+                  <th style={{ padding: '16px 20px', textAlign: 'center', fontSize: 13, fontWeight: 800, color: '#1D4ED8' }}>
                     <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
                       <span style={{ fontSize: 16 }}>🇳🇵</span> Vanguard
                     </div>
                   </th>
-                  <th style={{ padding: '16px 20px', textAlign: 'center', fontSize: 12, fontWeight: 700, color: 'rgba(96,180,255,0.5)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>In-House Staff</th>
-                  <th style={{ padding: '16px 20px', textAlign: 'center', fontSize: 12, fontWeight: 700, color: 'rgba(96,180,255,0.5)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Big US / UK Firm</th>
+                  <th style={{ padding: '16px 20px', textAlign: 'center', fontSize: 12, fontWeight: 700, color: 'rgba(147,197,253,0.48)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>In-House Staff</th>
+                  <th style={{ padding: '16px 20px', textAlign: 'center', fontSize: 12, fontWeight: 700, color: 'rgba(147,197,253,0.48)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Big US / UK Firm</th>
                 </tr>
               </thead>
               <tbody>
                 {comparisons.map(({ label, vanguard, inhouse, bigfirm }, i) => (
-                  <tr key={i} style={{ borderTop: '1px solid rgba(59,130,246,0.08)', background: i % 2 === 0 ? 'rgba(11,17,32,0.6)' : 'rgba(15,22,40,0.4)' }}>
-                    <td style={{ padding: '15px 24px', fontSize: 13.5, color: '#C8DFF9', fontWeight: 500 }}>{label}</td>
-                    <td style={{ padding: '15px 20px', textAlign: 'center', background: 'rgba(59,130,246,0.05)' }}><Cell val={vanguard} highlight /></td>
+                  <tr key={i} style={{ borderTop: '1px solid rgba(255,255,255,0.05)', background: i % 2 === 0 ? 'rgba(17,17,19,0.70)' : 'rgba(28,28,32,0.50)' }}>
+                    <td style={{ padding: '15px 24px', fontSize: 13.5, color: '#BFDBFE', fontWeight: 500 }}>{label}</td>
+                    <td style={{ padding: '15px 20px', textAlign: 'center', background: 'rgba(29,78,216,0.05)' }}><Cell val={vanguard} highlight /></td>
                     <td style={{ padding: '15px 20px', textAlign: 'center' }}><Cell val={inhouse} /></td>
                     <td style={{ padding: '15px 20px', textAlign: 'center' }}><Cell val={bigfirm} /></td>
                   </tr>

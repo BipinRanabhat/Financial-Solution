@@ -12,7 +12,7 @@ export default function ScrollProgressBar() {
         left: 0,
         right: 0,
         height: 2,
-        background: 'linear-gradient(90deg, #3B82F6 0%, #60B4FF 60%, #C8DFF9 100%)',
+        background: 'linear-gradient(90deg, #1D4ED8 0%, #1D4ED8 45%, #059669 100%)',
         transformOrigin: '0%',
         scaleX,
         zIndex: 9999,

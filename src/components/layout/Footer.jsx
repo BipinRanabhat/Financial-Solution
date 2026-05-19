@@ -14,11 +14,11 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer style={{ background: '#060A14', borderTop: '1px solid rgba(30,77,140,0.28)', position: 'relative', overflow: 'hidden' }}>
+    <footer style={{ background: '#0A0A0C', borderTop: '1px solid rgba(255,255,255,0.07)', position: 'relative', overflow: 'hidden' }}>
       {/* Top edge glow */}
       <div style={{
         position: 'absolute', top: 0, left: '15%', right: '15%', height: 1,
-        background: 'linear-gradient(90deg, transparent, rgba(59,130,246,0.25), transparent)',
+        background: 'linear-gradient(90deg, transparent, rgba(29,78,216,0.30), transparent)',
         pointerEvents: 'none',
       }} />
 
@@ -31,10 +31,10 @@ export default function Footer() {
               <img
                 src="/logo.png"
                 alt="Vanguard"
-                style={{ height: 72, width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 0 6px rgba(59,130,246,0.3))' }}
+                style={{ height: 72, width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 0 6px rgba(29,78,216,0.28))' }}
               />
             </Link>
-            <p className="text-sm text-sky/55 leading-relaxed max-w-xs">
+            <p style={{ fontSize: 13.5, color: 'rgba(147,197,253,0.52)', lineHeight: 1.72, maxWidth: 260, margin: 0 }}>
               Nepal-based accounting professionals delivering financial clarity and digital presence management for businesses worldwide.
             </p>
             <div className="flex gap-3">
@@ -43,9 +43,9 @@ export default function Footer() {
                   key={i}
                   href={href}
                   aria-label={label}
-                  whileHover={{ scale: 1.1, borderColor: 'rgba(59,130,246,0.5)', color: '#3B82F6' }}
-                  className="w-8 h-8 rounded-lg flex items-center justify-center text-sky/45 transition-colors"
-                  style={{ border: '1px solid rgba(30,77,140,0.35)' }}
+                  whileHover={{ scale: 1.1, borderColor: 'rgba(29,78,216,0.45)', color: '#1D4ED8' }}
+                  className="w-8 h-8 rounded-lg flex items-center justify-center transition-colors"
+                  style={{ border: '1px solid rgba(255,255,255,0.10)', color: 'rgba(147,197,253,0.42)' }}
                 >
                   <Icon size={14} />
                 </motion.a>
@@ -55,13 +55,15 @@ export default function Footer() {
 
           {/* Services */}
           <div className="flex flex-col gap-4">
-            <h4 className="text-xs font-bold tracking-widest uppercase text-electric">Services</h4>
-            <ul className="flex flex-col gap-2.5">
+            <h4 style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#1D4ED8', margin: 0 }}>Services</h4>
+            <ul className="flex flex-col gap-2.5" style={{ listStyle: 'none', padding: 0, margin: 0 }}>
               {services.map(s => (
                 <li key={s.id}>
                   <Link
                     to={`/services#${s.id}`}
-                    className="text-sm text-sky/55 hover:text-frost hover:translate-x-0.5 transition-all inline-block"
+                    style={{ fontSize: 13.5, color: 'rgba(147,197,253,0.52)', textDecoration: 'none', display: 'inline-block', transition: 'color 0.2s' }}
+                    onMouseEnter={e => e.currentTarget.style.color = '#F8FAFC'}
+                    onMouseLeave={e => e.currentTarget.style.color = 'rgba(147,197,253,0.52)'}
                   >
                     {s.title}
                   </Link>
@@ -72,39 +74,54 @@ export default function Footer() {
 
           {/* Company */}
           <div className="flex flex-col gap-4">
-            <h4 className="text-xs font-bold tracking-widest uppercase text-electric">Company</h4>
-            <ul className="flex flex-col gap-2.5">
+            <h4 style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#1D4ED8', margin: 0 }}>Company</h4>
+            <ul className="flex flex-col gap-2.5" style={{ listStyle: 'none', padding: 0, margin: 0 }}>
               {navLinks.map(({ label, path }) => (
                 <li key={path}>
-                  <Link to={path} className="text-sm text-sky/55 hover:text-frost transition-colors">{label}</Link>
+                  <Link
+                    to={path}
+                    style={{ fontSize: 13.5, color: 'rgba(147,197,253,0.52)', textDecoration: 'none', transition: 'color 0.2s' }}
+                    onMouseEnter={e => e.currentTarget.style.color = '#F8FAFC'}
+                    onMouseLeave={e => e.currentTarget.style.color = 'rgba(147,197,253,0.52)'}
+                  >
+                    {label}
+                  </Link>
                 </li>
               ))}
-              <li><a href="#" className="text-sm text-sky/55 hover:text-frost transition-colors">Privacy Policy</a></li>
+              <li>
+                <a
+                  href="#"
+                  style={{ fontSize: 13.5, color: 'rgba(147,197,253,0.52)', textDecoration: 'none', transition: 'color 0.2s' }}
+                  onMouseEnter={e => e.currentTarget.style.color = '#F8FAFC'}
+                  onMouseLeave={e => e.currentTarget.style.color = 'rgba(147,197,253,0.52)'}
+                >
+                  Privacy Policy
+                </a>
+              </li>
             </ul>
           </div>
 
           {/* Contact */}
           <div className="flex flex-col gap-4">
-            <h4 className="text-xs font-bold tracking-widest uppercase text-electric">Contact</h4>
-            <ul className="flex flex-col gap-3">
+            <h4 style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#1D4ED8', margin: 0 }}>Contact</h4>
+            <ul className="flex flex-col gap-3" style={{ listStyle: 'none', padding: 0, margin: 0 }}>
               {[
                 { Icon: Mail,   text: 'hello@vanguardaccounting.com' },
                 { Icon: Phone,  text: '+977 98-XXXXXXXX' },
                 { Icon: MapPin, text: 'Kathmandu, Nepal' },
               ].map(({ Icon, text }, i) => (
-                <li key={i} className="flex items-start gap-2.5 text-sm text-sky/55">
-                  <Icon size={14} className="text-electric mt-0.5 flex-shrink-0" />
+                <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 13.5, color: 'rgba(147,197,253,0.52)' }}>
+                  <Icon size={14} style={{ color: '#1D4ED8', marginTop: 2, flexShrink: 0 }} />
                   {text}
                 </li>
               ))}
             </ul>
 
-            {/* Remote badge */}
+            {/* Remote badge — Emerald dot */}
             <div
-              className="mt-2 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium"
-              style={{ background: 'rgba(59,130,246,0.08)', border: '1px solid rgba(59,130,246,0.18)', color: 'rgba(96,180,255,0.7)' }}
+              style={{ marginTop: 4, display: 'inline-flex', alignItems: 'center', gap: 8, padding: '8px 14px', borderRadius: 8, fontSize: 12, fontWeight: 500, background: 'rgba(5,150,105,0.07)', border: '1px solid rgba(5,150,105,0.18)', color: 'rgba(52,211,153,0.75)' }}
             >
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10B981', flexShrink: 0, display: 'inline-block' }} />
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#059669', flexShrink: 0, display: 'inline-block', boxShadow: '0 0 6px rgba(5,150,105,0.6)' }} />
               Serving clients globally · Remote
             </div>
           </div>
@@ -112,11 +129,10 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div
-          className="mt-14 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3"
-          style={{ borderTop: '1px solid rgba(30,77,140,0.18)' }}
+          style={{ marginTop: 56, paddingTop: 24, borderTop: '1px solid rgba(255,255,255,0.07)', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}
         >
-          <p className="text-xs text-sky/35">© {year} Vanguard Accounting. All rights reserved.</p>
-          <p className="text-xs text-sky/28">Precision-driven. Nepal-based. Globally trusted.</p>
+          <p style={{ fontSize: 12, color: 'rgba(147,197,253,0.32)', margin: 0 }}>© {year} Vanguard Accounting. All rights reserved.</p>
+          <p style={{ fontSize: 12, color: 'rgba(147,197,253,0.25)', margin: 0 }}>Precision-driven. Nepal-based. Globally trusted.</p>
         </div>
       </div>
     </footer>

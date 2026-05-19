@@ -21,7 +21,7 @@ export default function TestimonialCard({ quote, author, role, company, rating =
 
       <div className="flex items-center gap-3 mt-auto pt-3 border-t border-royal/20">
         <div className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold text-electric flex-shrink-0"
-             style={{ background: 'rgba(59,130,246,0.15)', border: '1px solid rgba(59,130,246,0.3)' }}>
+             style={{ background: 'rgba(29,78,216,0.12)', border: '1px solid rgba(29,78,216,0.28)' }}>
           {author.split(' ').map(n => n[0]).join('')}
         </div>
         <div>

@@ -10,8 +10,8 @@ const steps = [
     title: 'Free Discovery Call',
     desc: 'A relaxed 30-minute conversation to understand your business, identify gaps, and see if we\'re the right fit — no pressure, no commitment.',
     tag: '30 minutes',
-    color: '#3B82F6',
-    glow: 'rgba(59,130,246,0.22)',
+    color: '#1D4ED8',
+    glow: 'rgba(29,78,216,0.22)',
   },
   {
     number: '02',
@@ -19,8 +19,8 @@ const steps = [
     title: 'Onboarding & Setup',
     desc: 'We migrate your data, configure your accounting systems, and build a custom workflow tailored precisely to how your business operates.',
     tag: '1–3 business days',
-    color: '#8B5CF6',
-    glow: 'rgba(139,92,246,0.22)',
+    color: '#7C3AED',
+    glow: 'rgba(124,58,237,0.22)',
   },
   {
     number: '03',
@@ -28,8 +28,8 @@ const steps = [
     title: 'Ongoing Management',
     desc: 'Sit back while we handle books, payroll, reports, and digital presence — delivering clean financials and insights every single month.',
     tag: 'Ongoing',
-    color: '#10B981',
-    glow: 'rgba(16,185,129,0.22)',
+    color: '#059669',
+    glow: 'rgba(5,150,105,0.22)',
   },
 ]
 
@@ -40,7 +40,7 @@ export default function ProcessSection() {
   return (
     <section
       className="section-padding"
-      style={{ background: 'linear-gradient(180deg, #0B1120 0%, #0D1628 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #111113 0%, #161618 100%)' }}
     >
       <div className="container-wide">
         <div className="mb-14 flex flex-col items-center">
@@ -61,7 +61,7 @@ export default function ProcessSection() {
               left: 'calc(16.67% + 24px)',
               right: 'calc(16.67% + 24px)',
               height: 1,
-              background: 'linear-gradient(90deg, rgba(59,130,246,0.1), rgba(139,92,246,0.2), rgba(16,185,129,0.1))',
+              background: 'linear-gradient(90deg, rgba(29,78,216,0.12), rgba(124,58,237,0.18), rgba(5,150,105,0.12))',
               zIndex: 0,
             }}
           />
@@ -77,7 +77,7 @@ export default function ProcessSection() {
               left: 'calc(16.67% + 24px)',
               right: 'calc(16.67% + 24px)',
               height: 1,
-              background: 'linear-gradient(90deg, #3B82F6, #8B5CF6, #10B981)',
+              background: 'linear-gradient(90deg, #1D4ED8, #7C3AED, #059669)',
               transformOrigin: 'left',
               zIndex: 1,
             }}
@@ -95,23 +95,23 @@ export default function ProcessSection() {
                   flexDirection: 'column',
                   gap: 16,
                   padding: 28,
-                  borderRadius: 20,
-                  background: 'linear-gradient(145deg, rgba(26,39,68,0.55) 0%, rgba(11,17,32,0.8) 100%)',
-                  border: `1px solid ${glow.replace('0.22', '0.18')}`,
+                  borderRadius: 16,
+                  background: 'linear-gradient(145deg, rgba(28,28,32,0.70) 0%, rgba(17,17,19,0.88) 100%)',
+                  border: '1px solid rgba(255,255,255,0.07)',
                   backdropFilter: 'blur(12px)',
                   position: 'relative',
                   overflow: 'hidden',
                 }}
                 whileHover={{
-                  borderColor: glow.replace('0.22', '0.45'),
+                  borderColor: `${color}38`,
                   boxShadow: `0 16px 40px ${glow}`,
                   y: -4,
                 }}
                 transition2={{ duration: 0.25 }}
               >
-                {/* Background glow */}
+                {/* Background glow on hover */}
                 <div style={{
-                  position: 'absolute', inset: 0, pointerEvents: 'none', borderRadius: 20,
+                  position: 'absolute', inset: 0, pointerEvents: 'none', borderRadius: 16,
                   background: `radial-gradient(circle at 50% -10%, ${glow} 0%, transparent 60%)`,
                 }} />
 
@@ -120,20 +120,20 @@ export default function ProcessSection() {
                   <div style={{
                     width: 52, height: 52, borderRadius: 14, flexShrink: 0,
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    background: `rgba(${color === '#3B82F6' ? '59,130,246' : color === '#8B5CF6' ? '139,92,246' : '16,185,129'}, 0.14)`,
-                    border: `1px solid ${glow.replace('0.22', '0.3')}`,
+                    background: `${color}14`,
+                    border: `1px solid ${color}30`,
                     boxShadow: `0 4px 16px ${glow}`,
                   }}>
                     <Icon size={22} color={color} strokeWidth={1.8} />
                   </div>
-                  <span style={{ fontSize: 11, fontWeight: 700, color: glow.replace('rgba(', '').split(',').slice(0, 3).join('').includes('59') ? 'rgba(96,180,255,0.45)' : color === '#8B5CF6' ? 'rgba(139,92,246,0.55)' : 'rgba(16,185,129,0.55)', letterSpacing: '0.18em', textTransform: 'uppercase' }}>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: `${color}88`, letterSpacing: '0.18em', textTransform: 'uppercase' }}>
                     Step {number}
                   </span>
                 </div>
 
                 <div style={{ position: 'relative' }}>
-                  <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#F0F6FF', marginBottom: 8 }}>{title}</h3>
-                  <p style={{ fontSize: '0.8125rem', color: 'rgba(96,180,255,0.65)', lineHeight: 1.7, margin: 0 }}>{desc}</p>
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#F8FAFC', marginBottom: 8 }}>{title}</h3>
+                  <p style={{ fontSize: '0.8125rem', color: 'rgba(147,197,253,0.62)', lineHeight: 1.72, margin: 0 }}>{desc}</p>
                 </div>
 
                 {/* Tag */}
@@ -142,8 +142,8 @@ export default function ProcessSection() {
                   padding: '5px 12px', borderRadius: 6, width: 'fit-content',
                   fontSize: 11, fontWeight: 600,
                   color: color,
-                  background: `rgba(${color === '#3B82F6' ? '59,130,246' : color === '#8B5CF6' ? '139,92,246' : '16,185,129'}, 0.1)`,
-                  border: `1px solid ${glow.replace('0.22', '0.22')}`,
+                  background: `${color}10`,
+                  border: `1px solid ${color}28`,
                 }}>
                   {tag}
                 </div>

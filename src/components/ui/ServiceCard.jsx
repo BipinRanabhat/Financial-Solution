@@ -46,17 +46,17 @@ export default function ServiceCard({ iconName, number, title, description, bull
           flexDirection: 'column',
           gap: 16,
           padding: 24,
-          borderRadius: 20,
-          background: 'linear-gradient(145deg, rgba(30,77,140,0.22) 0%, rgba(11,17,32,0.85) 100%)',
-          border: '1px solid rgba(30,77,140,0.28)',
+          borderRadius: 16,
+          background: 'linear-gradient(145deg, rgba(28,28,32,0.80) 0%, rgba(17,17,19,0.92) 100%)',
+          border: '1px solid rgba(255,255,255,0.07)',
           backdropFilter: 'blur(10px)',
           overflow: 'hidden',
           cursor: 'default',
           height: '100%',
         }}
         whileHover={{
-          borderColor: 'rgba(59,130,246,0.45)',
-          boxShadow: '0 16px 50px rgba(59,130,246,0.18), 0 0 0 1px rgba(59,130,246,0.1)',
+          borderColor: 'rgba(29,78,216,0.38)',
+          boxShadow: '0 16px 50px rgba(29,78,216,0.14), 0 0 0 1px rgba(29,78,216,0.08)',
         }}
         transition={{ duration: 0.25 }}
       >
@@ -67,7 +67,7 @@ export default function ServiceCard({ iconName, number, title, description, bull
           right: 18,
           fontSize: 72,
           fontWeight: 900,
-          color: 'rgba(59,130,246,0.06)',
+          color: 'rgba(29,78,216,0.05)',
           lineHeight: 1,
           letterSpacing: '-0.04em',
           userSelect: 'none',
@@ -76,34 +76,28 @@ export default function ServiceCard({ iconName, number, title, description, bull
           {number}
         </div>
 
-        {/* Hover glow */}
-        <div
-          className="group-hover:opacity-100"
-          style={{
-            position: 'absolute', inset: 0,
-            background: 'radial-gradient(circle at 50% 0%, rgba(59,130,246,0.07) 0%, transparent 65%)',
-            pointerEvents: 'none',
-            borderRadius: 20,
-            opacity: 0,
-            transition: 'opacity 0.3s',
-          }}
-        />
+        {/* Top edge accent */}
+        <div style={{
+          position: 'absolute', top: 0, left: 0, right: 0, height: 1,
+          background: 'linear-gradient(90deg, transparent, rgba(29,78,216,0.25), transparent)',
+          pointerEvents: 'none',
+        }} />
 
         {/* Icon */}
         <div style={{
-          width: 48, height: 48, borderRadius: 14,
+          width: 48, height: 48, borderRadius: 12,
           display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-          background: 'rgba(59,130,246,0.13)',
-          border: '1px solid rgba(59,130,246,0.28)',
+          background: 'rgba(29,78,216,0.10)',
+          border: '1px solid rgba(29,78,216,0.22)',
           position: 'relative', zIndex: 1,
         }}>
-          <Icon size={22} color="#3B82F6" strokeWidth={1.8} />
+          <Icon size={22} color="#1D4ED8" strokeWidth={1.8} />
         </div>
 
         {/* Content */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8, position: 'relative', zIndex: 1 }}>
-          <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#F0F6FF', margin: 0 }}>{title}</h3>
-          <p style={{ fontSize: '0.8125rem', color: 'rgba(96,180,255,0.68)', lineHeight: 1.65, margin: 0, display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+          <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#F8FAFC', margin: 0 }}>{title}</h3>
+          <p style={{ fontSize: '0.8125rem', color: 'rgba(147,197,253,0.65)', lineHeight: 1.68, margin: 0, display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
             {description}
           </p>
         </div>
@@ -111,13 +105,13 @@ export default function ServiceCard({ iconName, number, title, description, bull
         {/* Bullets */}
         <ul style={{ display: 'flex', flexDirection: 'column', gap: 6, marginTop: 'auto', position: 'relative', zIndex: 1 }}>
           {bullets.slice(0, 3).map((b, i) => (
-            <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 12, color: 'rgba(200,223,249,0.65)' }}>
+            <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 12, color: 'rgba(191,219,254,0.62)' }}>
               <span style={{
                 marginTop: 2, width: 14, height: 14, borderRadius: '50%',
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-                background: 'rgba(59,130,246,0.18)',
+                background: 'rgba(5,150,105,0.15)',
               }}>
-                <Icons.Check size={8} color="#3B82F6" strokeWidth={3} />
+                <Icons.Check size={8} color="#059669" strokeWidth={3} />
               </span>
               {b}
             </li>
@@ -130,7 +124,7 @@ export default function ServiceCard({ iconName, number, title, description, bull
             to={href}
             style={{
               marginTop: 4, display: 'inline-flex', alignItems: 'center', gap: 6,
-              fontSize: 12, fontWeight: 600, color: '#3B82F6', textDecoration: 'none',
+              fontSize: 12, fontWeight: 600, color: '#93C5FD', textDecoration: 'none',
               position: 'relative', zIndex: 1,
             }}
           >

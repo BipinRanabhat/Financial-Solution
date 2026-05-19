@@ -30,7 +30,7 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <BrowserRouter>
-      <div style={{ minHeight: '100vh', background: '#0B1120', color: '#F0F6FF' }}>
+      <div style={{ minHeight: '100vh', background: '#111113', color: '#F8FAFC' }}>
         <ScrollProgressBar />
         <Navbar />
         <AnimatedRoutes />

@@ -12,7 +12,7 @@ import { fadeUp, slideLeft, slideRight, staggerContainer, cardReveal } from '../
 function PageHero() {
   return (
     <section className="relative pt-28 pb-16 overflow-hidden"
-             style={{ background: 'linear-gradient(180deg, #060A14 0%, #0B1120 100%)' }}>
+             style={{ background: 'linear-gradient(180deg, #080809 0%, #111113 100%)' }}>
       <div className="absolute inset-0 bg-grid-pattern opacity-50 pointer-events-none" />
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
@@ -44,7 +44,7 @@ function ServiceDetailBlock({ service, idx }) {
       id={service.id}
       ref={ref}
       className="section-padding"
-      style={{ background: idx % 2 === 0 ? '#0B1120' : '#0D1628' }}
+      style={{ background: idx % 2 === 0 ? '#111113' : '#161618' }}
     >
       <div className="container-wide">
         <div className={`grid grid-cols-1 lg:grid-cols-2 gap-14 items-center ${isReversed ? 'lg:flex-row-reverse' : ''}`}>
@@ -56,27 +56,27 @@ function ServiceDetailBlock({ service, idx }) {
             animate={inView ? 'visible' : 'hidden'}
             className={`flex flex-col gap-6 ${isReversed ? 'lg:order-2' : ''}`}
           >
-            {/* Number + title */}
+            {/* Number + icon */}
             <div className="flex items-center gap-4">
-              <span className="text-5xl font-black text-electric/20 leading-none">{service.number}</span>
+              <span style={{ fontSize: 52, fontWeight: 900, color: 'rgba(29,78,216,0.18)', lineHeight: 1 }}>{service.number}</span>
               <div className="w-10 h-10 rounded-xl flex items-center justify-center"
-                   style={{ background: 'rgba(59,130,246,0.12)', border: '1px solid rgba(59,130,246,0.25)' }}>
-                <Icon size={20} className="text-electric" strokeWidth={1.8} />
+                   style={{ background: 'rgba(29,78,216,0.10)', border: '1px solid rgba(29,78,216,0.22)' }}>
+                <Icon size={20} color="#1D4ED8" strokeWidth={1.8} />
               </div>
             </div>
 
             <div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-frost mb-2 tracking-tight">{service.title}</h2>
-              <p className="text-electric text-sm font-semibold">{service.tagline}</p>
+              <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.25rem)', fontWeight: 800, color: '#F8FAFC', marginBottom: 8, letterSpacing: '-0.02em' }}>{service.title}</h2>
+              <p style={{ fontSize: 13, fontWeight: 600, color: '#1D4ED8' }}>{service.tagline}</p>
             </div>
 
-            <p className="text-sm text-sky/65 leading-relaxed">{service.description}</p>
+            <p style={{ fontSize: 13.5, color: 'rgba(147,197,253,0.65)', lineHeight: 1.75 }}>{service.description}</p>
 
             {/* Bullets */}
-            <ul className="flex flex-col gap-3">
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: 10, listStyle: 'none', padding: 0 }}>
               {service.bullets.map((b, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm text-ice/70">
-                  <Icons.CheckCircle2 size={16} className="text-electric mt-0.5 flex-shrink-0" />
+                <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 13.5, color: 'rgba(191,219,254,0.68)' }}>
+                  <Icons.CheckCircle2 size={16} style={{ color: '#059669', marginTop: 2, flexShrink: 0 }} />
                   {b}
                 </li>
               ))}
@@ -86,8 +86,7 @@ function ServiceDetailBlock({ service, idx }) {
             {service.tools && (
               <div className="flex flex-wrap gap-2 mt-1">
                 {service.tools.map((tool, i) => (
-                  <span key={i} className="px-3 py-1 rounded-full text-xs font-semibold text-ice/70"
-                        style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.25)' }}>
+                  <span key={i} style={{ padding: '4px 12px', borderRadius: 20, fontSize: 12, fontWeight: 600, color: 'rgba(191,219,254,0.68)', background: 'rgba(29,78,216,0.08)', border: '1px solid rgba(29,78,216,0.22)' }}>
                     {tool}
                   </span>
                 ))}
@@ -103,22 +102,22 @@ function ServiceDetailBlock({ service, idx }) {
             className={isReversed ? 'lg:order-1' : ''}
           >
             <div className="relative rounded-2xl p-10 aspect-square flex flex-col items-center justify-center overflow-hidden"
-                 style={{ background: 'linear-gradient(145deg, rgba(30,77,140,0.3) 0%, rgba(11,17,32,0.95) 100%)', border: '1px solid rgba(59,130,246,0.2)' }}>
+                 style={{ background: 'linear-gradient(145deg, rgba(28,28,32,0.80) 0%, rgba(17,17,19,0.95) 100%)', border: '1px solid rgba(255,255,255,0.08)' }}>
               <div className="absolute inset-0 pointer-events-none"
-                   style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(59,130,246,0.1) 0%, transparent 70%)' }} />
+                   style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(29,78,216,0.08) 0%, transparent 70%)' }} />
               <motion.div
-                animate={{ scale: [1, 1.05, 1], opacity: [0.15, 0.25, 0.15] }}
+                animate={{ scale: [1, 1.05, 1], opacity: [0.10, 0.20, 0.10] }}
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                 className="absolute inset-0 rounded-2xl pointer-events-none"
-                style={{ background: 'radial-gradient(circle at 50% 50%, rgba(59,130,246,0.15) 0%, transparent 60%)' }}
+                style={{ background: 'radial-gradient(circle at 50% 50%, rgba(29,78,216,0.12) 0%, transparent 60%)' }}
               />
               <div className="relative z-10 flex flex-col items-center gap-5">
                 <div className="w-20 h-20 rounded-2xl flex items-center justify-center"
-                     style={{ background: 'rgba(59,130,246,0.15)', border: '2px solid rgba(59,130,246,0.3)' }}>
-                  <Icon size={40} className="text-electric" strokeWidth={1.5} />
+                     style={{ background: 'rgba(29,78,216,0.12)', border: '2px solid rgba(29,78,216,0.28)' }}>
+                  <Icon size={40} color="#1D4ED8" strokeWidth={1.5} />
                 </div>
-                <span className="text-7xl font-black text-electric/10">{service.number}</span>
-                <p className="text-sm text-sky/50 text-center max-w-xs">{service.tagline}</p>
+                <span style={{ fontSize: 72, fontWeight: 900, color: 'rgba(29,78,216,0.08)', lineHeight: 1 }}>{service.number}</span>
+                <p style={{ fontSize: 13, color: 'rgba(147,197,253,0.48)', textAlign: 'center', maxWidth: 240 }}>{service.tagline}</p>
               </div>
             </div>
           </motion.div>
@@ -139,27 +138,26 @@ function ProcessSection() {
   ]
 
   return (
-    <section className="section-padding" style={{ background: '#0B1120' }}>
+    <section className="section-padding" style={{ background: '#111113' }}>
       <div className="container-wide">
         <div className="mb-14 flex flex-col items-center">
           <SectionHeading eyebrow="How It Works" title="Simple Process, Powerful Results" />
         </div>
         <motion.div ref={ref} variants={staggerContainer} initial="hidden" animate={inView ? 'visible' : 'hidden'}
                     className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
-          {/* Connector line (desktop) */}
           <div className="hidden md:block absolute top-10 left-1/6 right-1/6 h-px"
-               style={{ background: 'linear-gradient(90deg, transparent, rgba(59,130,246,0.3), transparent)' }} />
+               style={{ background: 'linear-gradient(90deg, transparent, rgba(29,78,216,0.28), transparent)' }} />
 
           {steps.map(({ step, title, desc }, i) => (
             <motion.div key={i} variants={cardReveal}
-              className="relative flex flex-col items-center text-center gap-4 p-7 rounded-2xl"
-              style={{ background: 'rgba(30,77,140,0.12)', border: '1px solid rgba(59,130,246,0.18)' }}>
-              <div className="w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold text-electric z-10"
-                   style={{ background: 'rgba(59,130,246,0.15)', border: '2px solid rgba(59,130,246,0.4)' }}>
+              className="relative flex flex-col items-center text-center gap-4 p-7 rounded-xl"
+              style={{ background: 'linear-gradient(145deg, rgba(28,28,32,0.80) 0%, rgba(17,17,19,0.92) 100%)', border: '1px solid rgba(255,255,255,0.07)' }}>
+              <div className="w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold z-10"
+                   style={{ background: 'rgba(29,78,216,0.12)', border: '2px solid rgba(29,78,216,0.35)', color: '#1D4ED8' }}>
                 {step}
               </div>
-              <h3 className="text-base font-bold text-frost">{title}</h3>
-              <p className="text-sm text-sky/60 leading-relaxed">{desc}</p>
+              <h3 style={{ fontSize: 15, fontWeight: 700, color: '#F8FAFC' }}>{title}</h3>
+              <p style={{ fontSize: 13.5, color: 'rgba(147,197,253,0.60)', lineHeight: 1.70 }}>{desc}</p>
             </motion.div>
           ))}
         </motion.div>

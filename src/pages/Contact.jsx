@@ -17,7 +17,7 @@ const initialForm = { name: '', email: '', phone: '', service: '', message: '' }
 function ContactForm() {
   const [form, setForm]     = useState(initialForm)
   const [errors, setErrors] = useState({})
-  const [status, setStatus] = useState('idle') // idle | sending | sent
+  const [status, setStatus] = useState('idle')
 
   const validate = () => {
     const e = {}
@@ -44,10 +44,11 @@ function ContactForm() {
 
   const inputBase = `w-full px-4 py-3 rounded-xl text-sm text-frost placeholder-sky/30 outline-none transition-all duration-200 bg-transparent`
   const inputStyle = (name) => `${inputBase} ${errors[name] ? 'border-red-500/60' : 'border-royal/30 focus:border-electric/60'}`
-  const labelBase = `block text-xs font-semibold text-sky/60 uppercase tracking-wider mb-1.5`
+  const labelBase  = `block text-xs font-semibold text-sky/60 uppercase tracking-wider mb-1.5`
 
   return (
-    <div className="relative p-8 rounded-2xl" style={{ background: 'rgba(26,39,68,0.4)', border: '1px solid rgba(59,130,246,0.2)' }}>
+    <div className="relative p-8 rounded-2xl"
+         style={{ background: 'linear-gradient(145deg, rgba(28,28,32,0.85) 0%, rgba(17,17,19,0.95) 100%)', border: '1px solid rgba(255,255,255,0.08)' }}>
       <AnimatePresence mode="wait">
         {status === 'sent' ? (
           <motion.div
@@ -57,15 +58,15 @@ function ContactForm() {
             className="flex flex-col items-center text-center gap-5 py-12"
           >
             <div className="w-16 h-16 rounded-full flex items-center justify-center"
-                 style={{ background: 'rgba(59,130,246,0.15)', border: '2px solid rgba(59,130,246,0.4)' }}>
-              <CheckCircle2 size={32} className="text-electric" />
+                 style={{ background: 'rgba(5,150,105,0.12)', border: '2px solid rgba(5,150,105,0.35)' }}>
+              <CheckCircle2 size={32} style={{ color: '#059669' }} />
             </div>
             <div>
-              <h3 className="text-xl font-bold text-frost mb-2">Message Sent!</h3>
-              <p className="text-sm text-sky/60">We'll get back to you within 24 hours.</p>
+              <h3 style={{ fontSize: 20, fontWeight: 700, color: '#F8FAFC', marginBottom: 8 }}>Message Sent!</h3>
+              <p style={{ fontSize: 13.5, color: 'rgba(147,197,253,0.60)' }}>We'll get back to you within 24 hours.</p>
             </div>
             <button onClick={() => { setForm(initialForm); setStatus('idle') }}
-                    className="text-sm text-electric hover:text-sky transition-colors">
+                    style={{ fontSize: 13.5, color: '#1D4ED8', background: 'none', border: 'none', cursor: 'pointer' }}>
               Send another message
             </button>
           </motion.div>
@@ -96,7 +97,7 @@ function ContactForm() {
                 <label className={labelBase}>Service Interested In</label>
                 <select name="service" value={form.service} onChange={handleChange}
                         className={`${inputBase} border border-royal/30 focus:border-electric/60 cursor-pointer`}
-                        style={{ background: 'rgba(11,17,32,0.8)' }}>
+                        style={{ background: 'rgba(17,17,19,0.85)' }}>
                   <option value="">Select a service...</option>
                   {services.map(s => <option key={s.id} value={s.id}>{s.title}</option>)}
                   <option value="general">General Inquiry</option>
@@ -118,7 +119,7 @@ function ContactForm() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold text-white transition-all"
-              style={{ background: 'linear-gradient(135deg, #3B82F6, #1E4D8C)', boxShadow: '0 8px 24px rgba(59,130,246,0.3)' }}
+              style={{ background: 'linear-gradient(135deg, #1D4ED8, #1E3A8A)', boxShadow: '0 8px 24px rgba(29,78,216,0.30)' }}
             >
               {status === 'sending' ? (
                 <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -136,7 +137,7 @@ function ContactForm() {
 function PageHero() {
   return (
     <section className="relative pt-28 pb-16 overflow-hidden"
-             style={{ background: 'linear-gradient(180deg, #060A14 0%, #0B1120 100%)' }}>
+             style={{ background: 'linear-gradient(180deg, #080809 0%, #111113 100%)' }}>
       <div className="absolute inset-0 bg-grid-pattern opacity-50 pointer-events-none" />
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
@@ -165,15 +166,15 @@ export default function Contact() {
     <PageWrapper>
       <PageHero />
 
-      <section className="section-padding" style={{ background: '#0B1120' }}>
+      <section className="section-padding" style={{ background: '#111113' }}>
         <div className="container-wide" ref={ref}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14">
 
             {/* Left: info */}
             <motion.div variants={slideLeft} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="flex flex-col gap-8">
               <div>
-                <h2 className="text-2xl font-bold text-frost mb-2">We'd love to hear from you</h2>
-                <p className="text-sm text-sky/60 leading-relaxed">
+                <h2 style={{ fontSize: 22, fontWeight: 700, color: '#F8FAFC', marginBottom: 8 }}>We'd love to hear from you</h2>
+                <p style={{ fontSize: 13.5, color: 'rgba(147,197,253,0.60)', lineHeight: 1.70 }}>
                   Reach out through any channel below or fill out the form and we'll respond within one business day.
                 </p>
               </div>
@@ -181,27 +182,28 @@ export default function Contact() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {contactInfo.map(({ Icon, label, value, sub }, i) => (
                   <div key={i} className="flex items-start gap-3.5 p-4 rounded-xl"
-                       style={{ background: 'rgba(30,77,140,0.15)', border: '1px solid rgba(59,130,246,0.18)' }}>
+                       style={{ background: 'linear-gradient(145deg, rgba(28,28,32,0.80) 0%, rgba(17,17,19,0.92) 100%)', border: '1px solid rgba(255,255,255,0.07)' }}>
                     <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
-                         style={{ background: 'rgba(59,130,246,0.12)', border: '1px solid rgba(59,130,246,0.25)' }}>
-                      <Icon size={16} className="text-electric" />
+                         style={{ background: 'rgba(29,78,216,0.10)', border: '1px solid rgba(29,78,216,0.22)' }}>
+                      <Icon size={16} color="#1D4ED8" />
                     </div>
                     <div>
-                      <p className="text-xs text-sky/50 font-medium mb-0.5">{label}</p>
-                      <p className="text-sm text-frost font-semibold">{value}</p>
-                      <p className="text-xs text-sky/40 mt-0.5">{sub}</p>
+                      <p style={{ fontSize: 11, color: 'rgba(147,197,253,0.48)', fontWeight: 500, marginBottom: 2 }}>{label}</p>
+                      <p style={{ fontSize: 13.5, color: '#F8FAFC', fontWeight: 600 }}>{value}</p>
+                      <p style={{ fontSize: 11, color: 'rgba(147,197,253,0.38)', marginTop: 2 }}>{sub}</p>
                     </div>
                   </div>
                 ))}
               </div>
 
               {/* Free call highlight */}
-              <div className="p-5 rounded-2xl" style={{ background: 'rgba(59,130,246,0.08)', border: '1px solid rgba(59,130,246,0.2)' }}>
+              <div className="p-5 rounded-xl"
+                   style={{ background: 'rgba(5,150,105,0.07)', border: '1px solid rgba(5,150,105,0.20)' }}>
                 <div className="flex items-center gap-3 mb-3">
-                  <CheckCircle2 size={18} className="text-electric" />
-                  <h3 className="text-base font-bold text-frost">Free 30-Min Discovery Call</h3>
+                  <CheckCircle2 size={18} style={{ color: '#059669' }} />
+                  <h3 style={{ fontSize: 15, fontWeight: 700, color: '#F8FAFC' }}>Free 30-Min Discovery Call</h3>
                 </div>
-                <p className="text-sm text-sky/60 leading-relaxed">
+                <p style={{ fontSize: 13.5, color: 'rgba(147,197,253,0.60)', lineHeight: 1.70 }}>
                   Not sure if we're the right fit? Let's find out together. No hard sell, no obligation — just a conversation about your business.
                 </p>
               </div>

@@ -52,20 +52,20 @@ function FAQItem({ q, a, isOpen, onClick, index, inView }) {
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.45, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
-      style={{ borderRadius: 14, overflow: 'hidden', border: `1px solid ${isOpen ? 'rgba(59,130,246,0.35)' : 'rgba(59,130,246,0.12)'}`, transition: 'border-color 0.25s' }}
+      style={{ borderRadius: 12, overflow: 'hidden', border: `1px solid ${isOpen ? 'rgba(29,78,216,0.32)' : 'rgba(255,255,255,0.07)'}`, transition: 'border-color 0.25s' }}
     >
       <button
         onClick={onClick}
         style={{
           width: '100%', textAlign: 'left', padding: '20px 24px',
           display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16,
-          background: isOpen ? 'rgba(59,130,246,0.07)' : 'rgba(15,22,40,0.7)',
+          background: isOpen ? 'rgba(29,78,216,0.06)' : 'rgba(28,28,32,0.75)',
           cursor: 'pointer', border: 'none', transition: 'background 0.25s',
         }}
       >
-        <span style={{ fontSize: 15, fontWeight: 600, color: isOpen ? '#F0F6FF' : '#C8DFF9', lineHeight: 1.4 }}>{q}</span>
-        <div style={{ flexShrink: 0, width: 28, height: 28, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', background: isOpen ? 'rgba(59,130,246,0.2)' : 'rgba(59,130,246,0.08)', transition: 'background 0.25s' }}>
-          {isOpen ? <Minus size={14} color="#3B82F6" /> : <Plus size={14} color="#60B4FF" />}
+        <span style={{ fontSize: 15, fontWeight: 600, color: isOpen ? '#F8FAFC' : '#BFDBFE', lineHeight: 1.4 }}>{q}</span>
+        <div style={{ flexShrink: 0, width: 28, height: 28, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', background: isOpen ? 'rgba(29,78,216,0.18)' : 'rgba(255,255,255,0.06)', transition: 'background 0.25s' }}>
+          {isOpen ? <Minus size={14} color="#1D4ED8" /> : <Plus size={14} color="#93C5FD" />}
         </div>
       </button>
 
@@ -78,7 +78,7 @@ function FAQItem({ q, a, isOpen, onClick, index, inView }) {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             style={{ overflow: 'hidden' }}
           >
-            <div style={{ padding: '0 24px 20px', fontSize: 14, color: 'rgba(96,180,255,0.7)', lineHeight: 1.75, background: 'rgba(59,130,246,0.04)' }}>
+            <div style={{ padding: '0 24px 20px', fontSize: 14, color: 'rgba(147,197,253,0.68)', lineHeight: 1.78, background: 'rgba(29,78,216,0.04)' }}>
               {a}
             </div>
           </motion.div>
@@ -94,7 +94,7 @@ export default function FAQSection() {
   const inView = useInView(ref, { once: true, amount: 0.1 })
 
   return (
-    <section className="section-padding" style={{ background: '#0D1628' }}>
+    <section className="section-padding" style={{ background: '#161618' }}>
       <div className="container-wide" ref={ref}>
         <div className="mb-14 flex flex-col items-center">
           <SectionHeading

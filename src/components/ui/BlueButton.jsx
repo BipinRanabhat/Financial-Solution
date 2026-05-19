@@ -8,9 +8,14 @@ export default function BlueButton({ children, variant = 'solid', size = 'md', h
     lg: 'px-8 py-4 text-base',
   }
   const base = `inline-flex items-center justify-center gap-2 font-semibold rounded-lg transition-all duration-200 cursor-pointer select-none ${sizes[size]} ${className}`
-  const solid   = 'bg-electric text-white hover:bg-sky border border-transparent'
-  const outline = 'bg-transparent text-electric border border-electric hover:bg-electric/10 hover:text-sky'
-  const styles  = variant === 'solid' ? solid : outline
+
+  /* Royal blue solid — primary CTA */
+  const solid   = 'text-white border border-transparent'
+  /* Emerald outline — secondary / positive action */
+  const outline = 'bg-transparent border text-emerald hover:bg-emerald/10'
+
+  const solidStyle   = { background: 'linear-gradient(135deg, #1D4ED8, #1E3A8A)', boxShadow: '0 4px 14px rgba(29,78,216,0.35)' }
+  const outlineStyle = { borderColor: 'rgba(5,150,105,0.40)', color: '#34D399' }
 
   const motionProps = {
     whileHover: { scale: 1.03 },
@@ -21,7 +26,13 @@ export default function BlueButton({ children, variant = 'solid', size = 'md', h
   if (href) {
     return (
       <motion.div {...motionProps} style={{ display: 'inline-block' }}>
-        <Link to={href} className={`${base} ${styles}`}>{children}</Link>
+        <Link
+          to={href}
+          className={`${base} ${variant === 'solid' ? solid : outline}`}
+          style={variant === 'solid' ? solidStyle : outlineStyle}
+        >
+          {children}
+        </Link>
       </motion.div>
     )
   }
@@ -31,7 +42,8 @@ export default function BlueButton({ children, variant = 'solid', size = 'md', h
       {...motionProps}
       onClick={onClick}
       disabled={loading}
-      className={`${base} ${styles} ${loading ? 'opacity-60 cursor-not-allowed' : ''}`}
+      className={`${base} ${variant === 'solid' ? solid : outline} ${loading ? 'opacity-60 cursor-not-allowed' : ''}`}
+      style={variant === 'solid' ? solidStyle : outlineStyle}
     >
       {loading ? (
         <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
