@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { navLinks } from '../../constants/navigation'
+import ThemeToggle from '../ui/ThemeToggle'
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled]   = useState(false)
@@ -20,19 +21,19 @@ export default function Navbar() {
   return (
     <motion.header
       animate={isScrolled
-        ? { backgroundColor: 'rgba(17,17,19,0.96)', backdropFilter: 'blur(16px)', borderBottomColor: 'rgba(255,255,255,0.08)' }
-        : { backgroundColor: 'rgba(17,17,19,0)',    backdropFilter: 'blur(0px)',   borderBottomColor: 'rgba(255,255,255,0)' }}
+        ? { backgroundColor: 'var(--bg-nav)', backdropFilter: 'blur(16px)', borderBottomColor: 'var(--border-medium)' }
+        : { backgroundColor: 'rgba(0,0,0,0)', backdropFilter: 'blur(0px)', borderBottomColor: 'rgba(0,0,0,0)' }}
       transition={{ duration: 0.3 }}
       className="fixed top-0 left-0 right-0 z-50 border-b"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-18">
+        <div className="flex items-center justify-between h-20 lg:h-22">
           {/* Logo */}
           <Link to="/" className="flex items-center group">
             <img
               src="/logo.png"
               alt="Vanguard"
-              style={{ height: 60, width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 0 6px rgba(29,78,216,0.30))' }}
+              style={{ height: 80, width: 'auto', objectFit: 'contain', filter: 'var(--logo-filter)' }}
             />
           </Link>
 
@@ -52,8 +53,9 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* CTA + hamburger */}
+          {/* Theme toggle + CTA + hamburger */}
           <div className="flex items-center gap-3">
+            <ThemeToggle />
             <Link
               to="/contact"
               className="hidden sm:inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-200"
@@ -69,7 +71,8 @@ export default function Navbar() {
             </Link>
             <button
               onClick={() => setMobileOpen(v => !v)}
-              className="md:hidden p-2 rounded-lg text-sky/65 hover:text-frost hover:bg-white/5 transition-colors"
+              className="md:hidden p-2 rounded-lg transition-colors"
+              style={{ color: 'var(--text-dim)', background: 'none', border: 'none', cursor: 'pointer' }}
               aria-label="Toggle menu"
             >
               {mobileOpen ? <X size={20} /> : <Menu size={20} />}
@@ -87,7 +90,7 @@ export default function Navbar() {
             exit={{  opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: 'easeInOut' }}
             className="md:hidden overflow-hidden border-t"
-            style={{ borderTopColor: 'rgba(255,255,255,0.07)', background: 'rgba(17,17,19,0.98)' }}
+            style={{ borderTopColor: 'var(--border-subtle)', background: 'var(--bg-nav)' }}
           >
             <div className="px-4 py-4 flex flex-col gap-1">
               {navLinks.map(({ label, path }) => (

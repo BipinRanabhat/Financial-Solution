@@ -11,10 +11,10 @@ function TestimonialCard({ quote, author, role, company, rating = 5, isFeatured,
       variants={cardReveal}
       onClick={onClick}
       animate={{
-        borderColor: isFeatured ? 'rgba(29,78,216,0.40)' : 'rgba(255,255,255,0.07)',
+        borderColor: isFeatured ? 'rgba(29,78,216,0.40)' : 'var(--border-subtle)',
         boxShadow: isFeatured
-          ? '0 0 40px rgba(29,78,216,0.12), 0 8px 32px rgba(0,0,0,0.35)'
-          : '0 4px 20px rgba(0,0,0,0.25)',
+          ? '0 0 40px rgba(29,78,216,0.12), 0 8px 32px rgba(0,0,0,0.20)'
+          : 'var(--card-shadow)',
         y: isFeatured ? -8 : 0,
       }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
@@ -25,8 +25,8 @@ function TestimonialCard({ quote, author, role, company, rating = 5, isFeatured,
         gap: 16,
         padding: '28px 24px',
         borderRadius: 16,
-        background: 'linear-gradient(145deg, rgba(28,28,32,0.75) 0%, rgba(17,17,19,0.90) 100%)',
-        border: '1px solid rgba(255,255,255,0.07)',
+        background: 'linear-gradient(145deg, var(--bg-card-from) 0%, var(--bg-card-to) 100%)',
+        border: '1px solid var(--border-subtle)',
         backdropFilter: 'blur(12px)',
         cursor: 'pointer',
         position: 'relative',
@@ -34,7 +34,6 @@ function TestimonialCard({ quote, author, role, company, rating = 5, isFeatured,
         height: '100%',
       }}
     >
-      {/* Featured glow overlay */}
       <motion.div
         animate={{ opacity: isFeatured ? 1 : 0 }}
         transition={{ duration: 0.4 }}
@@ -44,8 +43,6 @@ function TestimonialCard({ quote, author, role, company, rating = 5, isFeatured,
           pointerEvents: 'none', borderRadius: 16,
         }}
       />
-
-      {/* Top edge light when featured */}
       <motion.div
         animate={{ opacity: isFeatured ? 1 : 0, scaleX: isFeatured ? 1 : 0.3 }}
         transition={{ duration: 0.4 }}
@@ -68,13 +65,13 @@ function TestimonialCard({ quote, author, role, company, rating = 5, isFeatured,
         ))}
       </div>
 
-      <p style={{ fontSize: '0.875rem', color: 'rgba(191,219,254,0.78)', lineHeight: 1.78, fontStyle: 'italic', margin: 0, flex: 1 }}>
+      <p style={{ fontSize: '0.875rem', color: 'var(--text-ice)', lineHeight: 1.78, fontStyle: 'italic', margin: 0, flex: 1 }}>
         "{quote}"
       </p>
 
       <div style={{
         display: 'flex', alignItems: 'center', gap: 12,
-        paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.07)',
+        paddingTop: 16, borderTop: '1px solid var(--border-subtle)',
       }}>
         <div style={{
           width: 38, height: 38, borderRadius: '50%',
@@ -86,8 +83,8 @@ function TestimonialCard({ quote, author, role, company, rating = 5, isFeatured,
           {author.split(' ').map(n => n[0]).join('')}
         </div>
         <div>
-          <p style={{ fontSize: '0.875rem', fontWeight: 600, color: '#F8FAFC', margin: 0 }}>{author}</p>
-          <p style={{ fontSize: '0.75rem', color: 'rgba(147,197,253,0.52)', margin: 0 }}>{role}, {company}</p>
+          <p style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-heading)', margin: 0 }}>{author}</p>
+          <p style={{ fontSize: '0.75rem', color: 'var(--text-dim)', margin: 0 }}>{role}, {company}</p>
         </div>
       </div>
     </motion.div>
@@ -108,7 +105,7 @@ export default function TestimonialsSection() {
   const next = () => setFeatured(f => (f + 1) % testimonials.length)
 
   return (
-    <section className="section-padding" style={{ background: '#161618' }}>
+    <section className="section-padding" style={{ background: 'var(--bg-alt)' }}>
       <div className="container-wide">
         <div className="mb-14 flex flex-col items-center">
           <SectionHeading
@@ -148,7 +145,6 @@ export default function TestimonialsSection() {
             <ChevronLeft size={16} />
           </button>
 
-          {/* Dots */}
           <div style={{ display: 'flex', gap: 6 }}>
             {testimonials.map((_, i) => (
               <motion.button

@@ -36,47 +36,26 @@ function CircularProgress({ value, inView }) {
 
   return (
     <div style={{ position: 'relative', width: size, height: size }}>
-      <svg
-        width={size}
-        height={size}
-        style={{ transform: 'rotate(-90deg)', display: 'block' }}
-      >
+      <svg width={size} height={size} style={{ transform: 'rotate(-90deg)', display: 'block' }}>
         <defs>
           <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#059669" />
             <stop offset="100%" stopColor="#1D4ED8" />
           </linearGradient>
         </defs>
-        {/* Track */}
-        <circle
-          cx={size / 2}
-          cy={size / 2}
-          r={radius}
-          fill="none"
-          stroke="rgba(255,255,255,0.06)"
-          strokeWidth={stroke}
-        />
-        {/* Progress */}
+        <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="var(--bg-ring-track)" strokeWidth={stroke} />
         <motion.circle
-          cx={size / 2}
-          cy={size / 2}
-          r={radius}
-          fill="none"
-          stroke="url(#ringGrad)"
-          strokeWidth={stroke}
-          strokeLinecap="round"
+          cx={size / 2} cy={size / 2} r={radius} fill="none"
+          stroke="url(#ringGrad)" strokeWidth={stroke} strokeLinecap="round"
           strokeDasharray={circumference}
           initial={{ strokeDashoffset: circumference }}
           animate={inView ? { strokeDashoffset: offset } : { strokeDashoffset: circumference }}
           transition={{ duration: 1.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
         />
       </svg>
-      <div style={{
-        position: 'absolute', inset: 0,
-        display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-      }}>
-        <span style={{ fontSize: 26, fontWeight: 800, color: '#F8FAFC', lineHeight: 1 }}>{value}%</span>
-        <span style={{ fontSize: 9, color: 'rgba(147,197,253,0.52)', textTransform: 'uppercase', letterSpacing: '0.12em', marginTop: 2 }}>Retention</span>
+      <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+        <span style={{ fontSize: 26, fontWeight: 800, color: 'var(--text-heading)', lineHeight: 1 }}>{value}%</span>
+        <span style={{ fontSize: 9, color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.12em', marginTop: 2 }}>Retention</span>
       </div>
     </div>
   )
@@ -99,8 +78,8 @@ function FeatureRow({ Icon, title, desc, i, inView }) {
         <Icon size={18} color="#1D4ED8" strokeWidth={1.8} />
       </div>
       <div>
-        <h4 style={{ fontSize: '0.9375rem', fontWeight: 600, color: '#F8FAFC', marginBottom: 4 }}>{title}</h4>
-        <p style={{ fontSize: '0.8125rem', color: 'rgba(147,197,253,0.60)', lineHeight: 1.65, margin: 0 }}>{desc}</p>
+        <h4 style={{ fontSize: '0.9375rem', fontWeight: 600, color: 'var(--text-heading)', marginBottom: 4 }}>{title}</h4>
+        <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', lineHeight: 1.65, margin: 0 }}>{desc}</p>
       </div>
     </motion.div>
   )
@@ -111,7 +90,7 @@ export default function WhyChooseUs() {
   const inView = useInView(ref, { once: true, amount: 0.15 })
 
   return (
-    <section className="section-padding" style={{ background: 'linear-gradient(180deg, #111113 0%, #161618 100%)' }}>
+    <section className="section-padding" style={{ background: 'linear-gradient(180deg, var(--bg-base) 0%, var(--bg-alt) 100%)' }}>
       <div className="container-wide" ref={ref}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
@@ -136,24 +115,19 @@ export default function WhyChooseUs() {
             </div>
           </motion.div>
 
-          {/* Right: stat card with circular progress */}
-          <motion.div
-            variants={slideRight}
-            initial="hidden"
-            animate={inView ? 'visible' : 'hidden'}
-          >
+          {/* Right: stat card */}
+          <motion.div variants={slideRight} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
             <div
               style={{
                 borderRadius: 20,
                 padding: 32,
                 overflow: 'hidden',
                 position: 'relative',
-                background: 'linear-gradient(145deg, rgba(28,28,32,0.85) 0%, rgba(17,17,19,0.95) 100%)',
-                border: '1px solid rgba(255,255,255,0.08)',
-                boxShadow: '0 24px 60px rgba(0,0,0,0.40)',
+                background: 'linear-gradient(145deg, var(--bg-card-from) 0%, var(--bg-card-to) 100%)',
+                border: '1px solid var(--border-medium)',
+                boxShadow: 'var(--shadow-card-lg)',
               }}
             >
-              {/* Decorative top glow */}
               <div style={{
                 position: 'absolute', top: 0, left: '15%', right: '15%', height: 1,
                 background: 'linear-gradient(90deg, transparent, rgba(29,78,216,0.40), transparent)',
@@ -165,11 +139,10 @@ export default function WhyChooseUs() {
                 pointerEvents: 'none',
               }} />
 
-              {/* Circular progress + headline */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 28 }}>
                 <CircularProgress value={99} inView={inView} />
                 <div>
-                  <p style={{ fontSize: '0.8125rem', color: 'rgba(147,197,253,0.55)', marginBottom: 4, lineHeight: 1.5 }}>
+                  <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', marginBottom: 4, lineHeight: 1.5 }}>
                     Our clients don't leave — because results speak for themselves.
                   </p>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
@@ -179,7 +152,6 @@ export default function WhyChooseUs() {
                 </div>
               </div>
 
-              {/* Stat grid */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
                 {[
                   { val: '200+', label: 'Active Clients',    accent: '#1D4ED8' },
@@ -194,17 +166,16 @@ export default function WhyChooseUs() {
                     transition={{ duration: 0.4, delay: 0.5 + i * 0.08 }}
                     style={{
                       padding: '14px 16px', borderRadius: 10,
-                      background: 'rgba(255,255,255,0.04)',
-                      border: '1px solid rgba(255,255,255,0.07)',
+                      background: 'var(--bg-mini-stat)',
+                      border: '1px solid var(--border-subtle)',
                     }}
                   >
                     <span style={{ display: 'block', fontSize: 20, fontWeight: 800, color: accent, marginBottom: 2 }}>{val}</span>
-                    <span style={{ fontSize: 11, color: 'rgba(147,197,253,0.50)', fontWeight: 500 }}>{label}</span>
+                    <span style={{ fontSize: 11, color: 'var(--text-dim)', fontWeight: 500 }}>{label}</span>
                   </motion.div>
                 ))}
               </div>
 
-              {/* Bottom trust line */}
               <div style={{
                 marginTop: 16, display: 'flex', alignItems: 'center', gap: 10,
                 padding: '12px 16px', borderRadius: 10,
@@ -212,7 +183,7 @@ export default function WhyChooseUs() {
                 border: '1px solid rgba(5,150,105,0.18)',
               }}>
                 <CheckCircle2 size={16} color="#059669" style={{ flexShrink: 0 }} />
-                <p style={{ fontSize: '0.8125rem', color: 'rgba(191,219,254,0.72)', margin: 0 }}>
+                <p style={{ fontSize: '0.8125rem', color: 'var(--text-ice)', margin: 0 }}>
                   Join 200+ businesses who trust Vanguard with their finances.
                 </p>
               </div>

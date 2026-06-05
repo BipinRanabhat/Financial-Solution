@@ -40,7 +40,7 @@ export default function ProcessSection() {
   return (
     <section
       className="section-padding"
-      style={{ background: 'linear-gradient(180deg, #111113 0%, #161618 100%)' }}
+      style={{ background: 'linear-gradient(180deg, var(--bg-base) 0%, var(--bg-alt) 100%)' }}
     >
       <div className="container-wide">
         <div className="mb-14 flex flex-col items-center">
@@ -65,7 +65,6 @@ export default function ProcessSection() {
               zIndex: 0,
             }}
           />
-          {/* Animated line overlay */}
           <motion.div
             className="hidden lg:block"
             initial={{ scaleX: 0 }}
@@ -96,9 +95,10 @@ export default function ProcessSection() {
                   gap: 16,
                   padding: 28,
                   borderRadius: 16,
-                  background: 'linear-gradient(145deg, rgba(28,28,32,0.70) 0%, rgba(17,17,19,0.88) 100%)',
-                  border: '1px solid rgba(255,255,255,0.07)',
+                  background: 'linear-gradient(145deg, var(--bg-card-from) 0%, var(--bg-card-to) 100%)',
+                  border: '1px solid var(--border-subtle)',
                   backdropFilter: 'blur(12px)',
+                  boxShadow: 'var(--card-shadow)',
                   position: 'relative',
                   overflow: 'hidden',
                 }}
@@ -107,15 +107,12 @@ export default function ProcessSection() {
                   boxShadow: `0 16px 40px ${glow}`,
                   y: -4,
                 }}
-                transition2={{ duration: 0.25 }}
               >
-                {/* Background glow on hover */}
                 <div style={{
                   position: 'absolute', inset: 0, pointerEvents: 'none', borderRadius: 16,
                   background: `radial-gradient(circle at 50% -10%, ${glow} 0%, transparent 60%)`,
                 }} />
 
-                {/* Step indicator */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, position: 'relative' }}>
                   <div style={{
                     width: 52, height: 52, borderRadius: 14, flexShrink: 0,
@@ -132,11 +129,10 @@ export default function ProcessSection() {
                 </div>
 
                 <div style={{ position: 'relative' }}>
-                  <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#F8FAFC', marginBottom: 8 }}>{title}</h3>
-                  <p style={{ fontSize: '0.8125rem', color: 'rgba(147,197,253,0.62)', lineHeight: 1.72, margin: 0 }}>{desc}</p>
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-heading)', marginBottom: 8 }}>{title}</h3>
+                  <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', lineHeight: 1.72, margin: 0 }}>{desc}</p>
                 </div>
 
-                {/* Tag */}
                 <div style={{
                   display: 'inline-flex', alignItems: 'center', gap: 6,
                   padding: '5px 12px', borderRadius: 6, width: 'fit-content',

@@ -14,10 +14,10 @@ export default function StatsBar() {
       style={{
         position: 'relative',
         padding: '40px 16px',
-        background: 'rgba(17,17,19,0.85)',
+        background: 'var(--bg-stats)',
         backdropFilter: 'blur(20px)',
-        borderTop: '1px solid rgba(255,255,255,0.06)',
-        borderBottom: '1px solid rgba(255,255,255,0.06)',
+        borderTop: '1px solid var(--border-section)',
+        borderBottom: '1px solid var(--border-section)',
         overflow: 'hidden',
       }}
     >
@@ -37,7 +37,6 @@ export default function StatsBar() {
         >
           {stats.map(({ value, suffix, label, prefix, icon }, i) => {
             const Icon = Icons[icon]
-            /* Use emerald for the retention stat (positive growth metric) */
             const isRetention = label.toLowerCase().includes('retention')
             const accentColor = isRetention ? '#10B981' : '#1D4ED8'
             const accentBg    = isRetention ? 'rgba(16,185,129,0.10)' : 'rgba(29,78,216,0.10)'
@@ -53,9 +52,10 @@ export default function StatsBar() {
                   textAlign: 'center',
                   padding: '24px 16px',
                   borderRadius: 14,
-                  background: 'linear-gradient(145deg, rgba(28,28,32,0.7) 0%, rgba(17,17,19,0.85) 100%)',
-                  border: '1px solid rgba(255,255,255,0.07)',
+                  background: 'linear-gradient(145deg, var(--bg-card-from) 0%, var(--bg-card-to) 100%)',
+                  border: '1px solid var(--border-subtle)',
                   backdropFilter: 'blur(10px)',
+                  boxShadow: 'var(--card-shadow)',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
@@ -65,7 +65,6 @@ export default function StatsBar() {
                   overflow: 'hidden',
                 }}
               >
-                {/* card top edge light */}
                 <div style={{
                   position: 'absolute', top: 0, left: 0, right: 0, height: 1,
                   background: `linear-gradient(90deg, transparent, ${accentBdr}, transparent)`,
@@ -84,11 +83,11 @@ export default function StatsBar() {
                   </div>
                 )}
 
-                <div style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', fontWeight: 800, color: '#F8FAFC', lineHeight: 1 }}>
+                <div style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', fontWeight: 800, color: 'var(--text-heading)', lineHeight: 1 }}>
                   <AnimatedCounter end={value} suffix={suffix} prefix={prefix} />
                 </div>
 
-                <div style={{ fontSize: 11, color: 'rgba(147,197,253,0.50)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em' }}>
+                <div style={{ fontSize: 11, color: 'var(--text-dim)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em' }}>
                   {label}
                 </div>
               </motion.div>

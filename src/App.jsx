@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
+import { ThemeProvider } from './contexts/ThemeContext'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import ScrollProgressBar from './components/ui/ScrollProgressBar'
@@ -29,14 +30,16 @@ function AnimatedRoutes() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <div style={{ minHeight: '100vh', background: '#111113', color: '#F8FAFC' }}>
-        <ScrollProgressBar />
-        <Navbar />
-        <AnimatedRoutes />
-        <Footer />
-        <WhatsAppButton />
-      </div>
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <div style={{ minHeight: '100vh', background: 'var(--bg-base)', color: 'var(--text-heading)' }}>
+          <ScrollProgressBar />
+          <Navbar />
+          <AnimatedRoutes />
+          <Footer />
+          <WhatsAppButton />
+        </div>
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }

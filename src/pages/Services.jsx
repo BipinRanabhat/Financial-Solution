@@ -1,5 +1,4 @@
-import { useRef } from 'react'
-import { useEffect } from 'react'
+import { useRef, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { motion, useInView } from 'framer-motion'
 import * as Icons from 'lucide-react'
@@ -7,12 +6,11 @@ import PageWrapper from '../components/layout/PageWrapper'
 import SectionHeading from '../components/ui/SectionHeading'
 import CTABanner from '../components/sections/home/CTABanner'
 import { services } from '../constants/services'
-import { fadeUp, slideLeft, slideRight, staggerContainer, cardReveal } from '../constants/animations'
+import { slideLeft, slideRight, staggerContainer, cardReveal } from '../constants/animations'
 
 function PageHero() {
   return (
-    <section className="relative pt-28 pb-16 overflow-hidden"
-             style={{ background: 'linear-gradient(180deg, #080809 0%, #111113 100%)' }}>
+    <section className="relative pt-28 pb-16 overflow-hidden" style={{ background: 'var(--bg-page-hero)' }}>
       <div className="absolute inset-0 bg-grid-pattern opacity-50 pointer-events-none" />
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
@@ -44,7 +42,7 @@ function ServiceDetailBlock({ service, idx }) {
       id={service.id}
       ref={ref}
       className="section-padding"
-      style={{ background: idx % 2 === 0 ? '#111113' : '#161618' }}
+      style={{ background: idx % 2 === 0 ? 'var(--bg-base)' : 'var(--bg-alt)' }}
     >
       <div className="container-wide">
         <div className={`grid grid-cols-1 lg:grid-cols-2 gap-14 items-center ${isReversed ? 'lg:flex-row-reverse' : ''}`}>
@@ -56,7 +54,6 @@ function ServiceDetailBlock({ service, idx }) {
             animate={inView ? 'visible' : 'hidden'}
             className={`flex flex-col gap-6 ${isReversed ? 'lg:order-2' : ''}`}
           >
-            {/* Number + icon */}
             <div className="flex items-center gap-4">
               <span style={{ fontSize: 52, fontWeight: 900, color: 'rgba(29,78,216,0.18)', lineHeight: 1 }}>{service.number}</span>
               <div className="w-10 h-10 rounded-xl flex items-center justify-center"
@@ -66,27 +63,25 @@ function ServiceDetailBlock({ service, idx }) {
             </div>
 
             <div>
-              <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.25rem)', fontWeight: 800, color: '#F8FAFC', marginBottom: 8, letterSpacing: '-0.02em' }}>{service.title}</h2>
+              <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.25rem)', fontWeight: 800, color: 'var(--text-heading)', marginBottom: 8, letterSpacing: '-0.02em' }}>{service.title}</h2>
               <p style={{ fontSize: 13, fontWeight: 600, color: '#1D4ED8' }}>{service.tagline}</p>
             </div>
 
-            <p style={{ fontSize: 13.5, color: 'rgba(147,197,253,0.65)', lineHeight: 1.75 }}>{service.description}</p>
+            <p style={{ fontSize: 13.5, color: 'var(--text-muted)', lineHeight: 1.75 }}>{service.description}</p>
 
-            {/* Bullets */}
             <ul style={{ display: 'flex', flexDirection: 'column', gap: 10, listStyle: 'none', padding: 0 }}>
               {service.bullets.map((b, i) => (
-                <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 13.5, color: 'rgba(191,219,254,0.68)' }}>
+                <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 13.5, color: 'var(--text-ice)' }}>
                   <Icons.CheckCircle2 size={16} style={{ color: '#059669', marginTop: 2, flexShrink: 0 }} />
                   {b}
                 </li>
               ))}
             </ul>
 
-            {/* Tools */}
             {service.tools && (
               <div className="flex flex-wrap gap-2 mt-1">
                 {service.tools.map((tool, i) => (
-                  <span key={i} style={{ padding: '4px 12px', borderRadius: 20, fontSize: 12, fontWeight: 600, color: 'rgba(191,219,254,0.68)', background: 'rgba(29,78,216,0.08)', border: '1px solid rgba(29,78,216,0.22)' }}>
+                  <span key={i} style={{ padding: '4px 12px', borderRadius: 20, fontSize: 12, fontWeight: 600, color: 'var(--text-body)', background: 'rgba(29,78,216,0.08)', border: '1px solid rgba(29,78,216,0.22)' }}>
                     {tool}
                   </span>
                 ))}
@@ -102,7 +97,7 @@ function ServiceDetailBlock({ service, idx }) {
             className={isReversed ? 'lg:order-1' : ''}
           >
             <div className="relative rounded-2xl p-10 aspect-square flex flex-col items-center justify-center overflow-hidden"
-                 style={{ background: 'linear-gradient(145deg, rgba(28,28,32,0.80) 0%, rgba(17,17,19,0.95) 100%)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                 style={{ background: 'linear-gradient(145deg, var(--bg-card-from) 0%, var(--bg-card-to) 100%)', border: '1px solid var(--border-medium)', boxShadow: 'var(--card-shadow)' }}>
               <div className="absolute inset-0 pointer-events-none"
                    style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 30%, rgba(29,78,216,0.08) 0%, transparent 70%)' }} />
               <motion.div
@@ -117,7 +112,7 @@ function ServiceDetailBlock({ service, idx }) {
                   <Icon size={40} color="#1D4ED8" strokeWidth={1.5} />
                 </div>
                 <span style={{ fontSize: 72, fontWeight: 900, color: 'rgba(29,78,216,0.08)', lineHeight: 1 }}>{service.number}</span>
-                <p style={{ fontSize: 13, color: 'rgba(147,197,253,0.48)', textAlign: 'center', maxWidth: 240 }}>{service.tagline}</p>
+                <p style={{ fontSize: 13, color: 'var(--text-dim)', textAlign: 'center', maxWidth: 240 }}>{service.tagline}</p>
               </div>
             </div>
           </motion.div>
@@ -132,13 +127,13 @@ function ProcessSection() {
   const inView = useInView(ref, { once: true, amount: 0.15 })
 
   const steps = [
-    { step: '01', title: 'Discovery Call',    desc: 'We learn your business, current setup, and goals in a free 30-minute call.' },
-    { step: '02', title: 'Custom Onboarding', desc: 'We set up your accounts, migrate data, and create your financial workflows.' },
-    { step: '03', title: 'Ongoing Management',desc: 'Monthly deliverables, proactive alerts, and real-time access to your numbers.' },
+    { step: '01', title: 'Discovery Call',     desc: 'We learn your business, current setup, and goals in a free 30-minute call.' },
+    { step: '02', title: 'Custom Onboarding',  desc: 'We set up your accounts, migrate data, and create your financial workflows.' },
+    { step: '03', title: 'Ongoing Management', desc: 'Monthly deliverables, proactive alerts, and real-time access to your numbers.' },
   ]
 
   return (
-    <section className="section-padding" style={{ background: '#111113' }}>
+    <section className="section-padding" style={{ background: 'var(--bg-base)' }}>
       <div className="container-wide">
         <div className="mb-14 flex flex-col items-center">
           <SectionHeading eyebrow="How It Works" title="Simple Process, Powerful Results" />
@@ -151,13 +146,13 @@ function ProcessSection() {
           {steps.map(({ step, title, desc }, i) => (
             <motion.div key={i} variants={cardReveal}
               className="relative flex flex-col items-center text-center gap-4 p-7 rounded-xl"
-              style={{ background: 'linear-gradient(145deg, rgba(28,28,32,0.80) 0%, rgba(17,17,19,0.92) 100%)', border: '1px solid rgba(255,255,255,0.07)' }}>
+              style={{ background: 'linear-gradient(145deg, var(--bg-card-from) 0%, var(--bg-card-to) 100%)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--card-shadow)' }}>
               <div className="w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold z-10"
                    style={{ background: 'rgba(29,78,216,0.12)', border: '2px solid rgba(29,78,216,0.35)', color: '#1D4ED8' }}>
                 {step}
               </div>
-              <h3 style={{ fontSize: 15, fontWeight: 700, color: '#F8FAFC' }}>{title}</h3>
-              <p style={{ fontSize: 13.5, color: 'rgba(147,197,253,0.60)', lineHeight: 1.70 }}>{desc}</p>
+              <h3 style={{ fontSize: 15, fontWeight: 700, color: 'var(--text-heading)' }}>{title}</h3>
+              <p style={{ fontSize: 13.5, color: 'var(--text-muted)', lineHeight: 1.70 }}>{desc}</p>
             </motion.div>
           ))}
         </motion.div>

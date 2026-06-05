@@ -12,7 +12,7 @@ export default function ServicesPreview() {
   const inView = useInView(ref, { once: true, amount: 0.15 })
 
   return (
-    <section className="section-padding" style={{ background: '#111113' }}>
+    <section className="section-padding" style={{ background: 'var(--bg-base)' }}>
       <div className="container-wide">
         <div className="mb-14 flex flex-col items-center">
           <SectionHeading
@@ -44,7 +44,7 @@ export default function ServicesPreview() {
             <Link
               to="/services"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold transition-all"
-              style={{ border: '1px solid rgba(29,78,216,0.32)', background: 'rgba(29,78,216,0.07)', color: '#93C5FD' }}
+              style={{ border: '1px solid rgba(29,78,216,0.32)', background: 'rgba(29,78,216,0.07)', color: 'var(--accent-pale)' }}
             >
               View All Services <ArrowRight size={16} />
             </Link>

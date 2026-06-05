@@ -4,46 +4,16 @@ import { Plus, Minus } from 'lucide-react'
 import SectionHeading from '../../ui/SectionHeading'
 
 const faqs = [
-  {
-    q: 'Is my financial data safe with an overseas firm?',
-    a: 'Absolutely. We use 256-bit encrypted file transfers, sign NDAs with every client before onboarding, and only work within tools you already trust — QuickBooks Online, Xero, and Google Workspace. Your data never sits on our local servers.',
-  },
-  {
-    q: 'Do you file US, UK, and Australian taxes?',
-    a: 'Yes. Our team is trained in US federal and state tax requirements, UK VAT and HMRC submissions, and Australian BAS/GST obligations. We prepare all filings and coordinate with local CPAs or registered agents where required for final submission.',
-  },
-  {
-    q: 'What time zone do you work in? Will there be communication delays?',
-    a: 'Our Nepal team (UTC+5:45) overlaps with US East Coast mornings, UK afternoons, and Australian early mornings. In practice, you send questions at the end of your day and wake up to completed work. Most clients find this more efficient than a local firm.',
-  },
-  {
-    q: 'How do I share documents and files with you?',
-    a: 'We work through your preferred tool — QuickBooks Online or Xero for live accounting access, Google Drive or Dropbox for documents, and a dedicated client portal for reports. No USB drives, no email attachments with sensitive data.',
-  },
-  {
-    q: 'What accounting software do you support?',
-    a: 'QuickBooks Online, QuickBooks Desktop, Xero, FreshBooks, Wave, and Zoho Books. We also work with payroll platforms including Gusto, ADP, and Paychex. If you use something else, contact us — we likely support it.',
-  },
-  {
-    q: 'How quickly do you respond to questions?',
-    a: 'Every client has a dedicated account manager. Our guaranteed response time is within 8 business hours. For urgent matters, we offer WhatsApp direct access to your account manager — most queries are answered within 2 hours during our working day.',
-  },
-  {
-    q: 'Do I need to sign a long-term contract?',
-    a: 'No. All our plans are month-to-month. We earn your business every month by delivering results, not by locking you in. You can pause, scale up, or cancel with 30 days\' notice — no penalties.',
-  },
-  {
-    q: 'What if I\'m not happy with the service?',
-    a: 'We offer a 30-day satisfaction guarantee on all new accounts. If you\'re not completely satisfied in the first month, we\'ll refund your first payment — no questions asked. Beyond that, you can cancel any time with 30 days\' notice.',
-  },
-  {
-    q: 'How does onboarding work? How long does it take?',
-    a: 'Our onboarding is structured to be live within 7 business days. Day 1: intro call + NDA. Days 2–3: access setup (QuickBooks/Xero, bank feeds). Days 4–5: chart of accounts review. Day 6–7: first reconciliation and handoff report. You\'ll have full visibility throughout.',
-  },
-  {
-    q: 'How is Vanguard different from hiring a local bookkeeper?',
-    a: 'A local bookkeeper typically costs $3,500–$6,000/month as an employee (salary + benefits + tools). Vanguard gives you a full team — bookkeeper, payroll specialist, and reporting analyst — for a fraction of that. Plus certifications, guaranteed response times, and no sick days or turnover.',
-  },
+  { q: 'Is my financial data safe with an overseas firm?', a: 'Absolutely. We use 256-bit encrypted file transfers, sign NDAs with every client before onboarding, and only work within tools you already trust — QuickBooks Online, Xero, and Google Workspace. Your data never sits on our local servers.' },
+  { q: 'Do you file US, UK, and Australian taxes?', a: 'Yes. Our team is trained in US federal and state tax requirements, UK VAT and HMRC submissions, and Australian BAS/GST obligations. We prepare all filings and coordinate with local CPAs or registered agents where required for final submission.' },
+  { q: 'What time zone do you work in? Will there be communication delays?', a: 'Our Nepal team (UTC+5:45) overlaps with US East Coast mornings, UK afternoons, and Australian early mornings. In practice, you send questions at the end of your day and wake up to completed work. Most clients find this more efficient than a local firm.' },
+  { q: 'How do I share documents and files with you?', a: 'We work through your preferred tool — QuickBooks Online or Xero for live accounting access, Google Drive or Dropbox for documents, and a dedicated client portal for reports. No USB drives, no email attachments with sensitive data.' },
+  { q: 'What accounting software do you support?', a: 'QuickBooks Online, QuickBooks Desktop, Xero, FreshBooks, Wave, and Zoho Books. We also work with payroll platforms including Gusto, ADP, and Paychex. If you use something else, contact us — we likely support it.' },
+  { q: 'How quickly do you respond to questions?', a: 'Every client has a dedicated account manager. Our guaranteed response time is within 8 business hours. For urgent matters, we offer WhatsApp direct access to your account manager — most queries are answered within 2 hours during our working day.' },
+  { q: 'Do I need to sign a long-term contract?', a: 'No. All our plans are month-to-month. We earn your business every month by delivering results, not by locking you in. You can pause, scale up, or cancel with 30 days\' notice — no penalties.' },
+  { q: 'What if I\'m not happy with the service?', a: 'We offer a 30-day satisfaction guarantee on all new accounts. If you\'re not completely satisfied in the first month, we\'ll refund your first payment — no questions asked. Beyond that, you can cancel any time with 30 days\' notice.' },
+  { q: 'How does onboarding work? How long does it take?', a: 'Our onboarding is structured to be live within 7 business days. Day 1: intro call + NDA. Days 2–3: access setup (QuickBooks/Xero, bank feeds). Days 4–5: chart of accounts review. Day 6–7: first reconciliation and handoff report. You\'ll have full visibility throughout.' },
+  { q: 'How is Vanguard different from hiring a local bookkeeper?', a: 'A local bookkeeper typically costs $3,500–$6,000/month as an employee (salary + benefits + tools). Vanguard gives you a full team — bookkeeper, payroll specialist, and reporting analyst — for a fraction of that. Plus certifications, guaranteed response times, and no sick days or turnover.' },
 ]
 
 function FAQItem({ q, a, isOpen, onClick, index, inView }) {
@@ -52,20 +22,20 @@ function FAQItem({ q, a, isOpen, onClick, index, inView }) {
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.45, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
-      style={{ borderRadius: 12, overflow: 'hidden', border: `1px solid ${isOpen ? 'rgba(29,78,216,0.32)' : 'rgba(255,255,255,0.07)'}`, transition: 'border-color 0.25s' }}
+      style={{ borderRadius: 12, overflow: 'hidden', border: `1px solid ${isOpen ? 'rgba(29,78,216,0.32)' : 'var(--border-subtle)'}`, transition: 'border-color 0.25s', boxShadow: 'var(--card-shadow)' }}
     >
       <button
         onClick={onClick}
         style={{
           width: '100%', textAlign: 'left', padding: '20px 24px',
           display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16,
-          background: isOpen ? 'rgba(29,78,216,0.06)' : 'rgba(28,28,32,0.75)',
+          background: isOpen ? 'var(--bg-faq-open)' : 'var(--bg-faq-closed)',
           cursor: 'pointer', border: 'none', transition: 'background 0.25s',
         }}
       >
-        <span style={{ fontSize: 15, fontWeight: 600, color: isOpen ? '#F8FAFC' : '#BFDBFE', lineHeight: 1.4 }}>{q}</span>
-        <div style={{ flexShrink: 0, width: 28, height: 28, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', background: isOpen ? 'rgba(29,78,216,0.18)' : 'rgba(255,255,255,0.06)', transition: 'background 0.25s' }}>
-          {isOpen ? <Minus size={14} color="#1D4ED8" /> : <Plus size={14} color="#93C5FD" />}
+        <span style={{ fontSize: 15, fontWeight: 600, color: isOpen ? 'var(--text-heading)' : 'var(--text-body)', lineHeight: 1.4 }}>{q}</span>
+        <div style={{ flexShrink: 0, width: 28, height: 28, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center', background: isOpen ? 'var(--bg-icon-minus)' : 'var(--bg-icon-plus)', transition: 'background 0.25s' }}>
+          {isOpen ? <Minus size={14} color="#1D4ED8" /> : <Plus size={14} color="#1D4ED8" />}
         </div>
       </button>
 
@@ -78,7 +48,7 @@ function FAQItem({ q, a, isOpen, onClick, index, inView }) {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             style={{ overflow: 'hidden' }}
           >
-            <div style={{ padding: '0 24px 20px', fontSize: 14, color: 'rgba(147,197,253,0.68)', lineHeight: 1.78, background: 'rgba(29,78,216,0.04)' }}>
+            <div style={{ padding: '0 24px 20px', fontSize: 14, color: 'var(--text-muted)', lineHeight: 1.78, background: 'var(--bg-faq-answer)' }}>
               {a}
             </div>
           </motion.div>
@@ -94,7 +64,7 @@ export default function FAQSection() {
   const inView = useInView(ref, { once: true, amount: 0.1 })
 
   return (
-    <section className="section-padding" style={{ background: '#161618' }}>
+    <section className="section-padding" style={{ background: 'var(--bg-alt)' }}>
       <div className="container-wide" ref={ref}>
         <div className="mb-14 flex flex-col items-center">
           <SectionHeading

@@ -4,11 +4,55 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Vanguard Accounting — Professional bookkeeping, payroll, financial reporting, and digital presence services for small to medium businesses." />
+    <meta name="description" content="Vanguard Accounting — CPA-certified bookkeeping, payroll, and financial reporting from Kathmandu, Nepal. Serving businesses in the US, UK &amp; Australia." />
     <title>Vanguard Accounting | Financial Clarity, Built on Precision</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vanguardfinancialsolution.com/" />
+    <meta property="og:title" content="Vanguard Accounting | Financial Clarity, Built on Precision" />
+    <meta property="og:description" content="CPA-certified bookkeeping, payroll, and financial reporting from Kathmandu, Nepal. Serving businesses worldwide." />
+    <meta property="og:image" content="https://vanguardfinancialsolution.com/logo.png" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Vanguard Accounting | Financial Clarity, Built on Precision" />
+    <meta name="twitter:description" content="CPA-certified bookkeeping, payroll, and financial reporting from Kathmandu, Nepal." />
+    <meta name="twitter:image" content="https://vanguardfinancialsolution.com/logo.png" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "AccountingService",
+        "name": "Vanguard Accounting",
+        "url": "https://vanguardfinancialsolution.com/",
+        "email": "ManishWagle@vanguardfinancialsolution.com",
+        "telephone": "+9779861387023",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Kathmandu",
+          "addressCountry": "NP"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/vanguard-financial-solutions-a11781407/",
+          "https://wa.me/9779861387023"
+        ]
+      }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <!-- Anti-FOUC: apply saved theme before React renders -->
+    <script>
+      (function () {
+        var t = localStorage.getItem('vanguard-theme');
+        if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

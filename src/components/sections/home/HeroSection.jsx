@@ -48,15 +48,15 @@ function DashboardCard() {
       transition={{ duration: 0.9, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
       style={{
         marginTop: 52,
-        background: 'linear-gradient(145deg, rgba(28,28,32,0.88) 0%, rgba(17,17,19,0.94) 100%)',
+        background: 'linear-gradient(145deg, var(--bg-card-from) 0%, var(--bg-card-to) 100%)',
         backdropFilter: 'blur(24px)',
         WebkitBackdropFilter: 'blur(24px)',
-        border: '1px solid rgba(255,255,255,0.08)',
+        border: '1px solid var(--border-medium)',
         borderRadius: 20,
         padding: '24px 28px',
         maxWidth: 560,
         margin: '52px auto 0',
-        boxShadow: '0 24px 80px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.04)',
+        boxShadow: 'var(--shadow-dash-card)',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -71,11 +71,11 @@ function DashboardCard() {
       {/* Header row */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 20 }}>
         <div>
-          <div style={{ fontSize: 11, color: 'rgba(147,197,253,0.55)', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 6 }}>
+          <div style={{ fontSize: 11, color: 'var(--text-dim)', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 6 }}>
             Monthly Revenue
           </div>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
-            <span style={{ fontSize: 30, fontWeight: 800, color: '#F8FAFC', letterSpacing: '-0.03em' }}>$128,400</span>
+            <span style={{ fontSize: 30, fontWeight: 800, color: 'var(--text-heading)', letterSpacing: '-0.03em' }}>$128,400</span>
             <motion.span
               initial={{ opacity: 0, x: -6 }}
               animate={{ opacity: 1, x: 0 }}
@@ -97,11 +97,11 @@ function DashboardCard() {
 
       <MiniBarChart />
 
-      <div style={{ height: 1, background: 'rgba(255,255,255,0.06)', margin: '16px 0' }} />
+      <div style={{ height: 1, background: 'var(--border-subtle)', margin: '16px 0' }} />
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8 }}>
         {[
-          { label: 'Profit Margin', val: '23.4%',  color: '#93C5FD' },
+          { label: 'Profit Margin', val: '23.4%',  color: '#1D4ED8' },
           { label: 'Expenses',      val: '$42,100', color: '#F59E0B' },
           { label: 'Cash Flow',     val: '+$18.9K', color: '#10B981' },
         ].map(({ label, val, color }, i) => (
@@ -110,9 +110,9 @@ function DashboardCard() {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2 + i * 0.07, duration: 0.35 }}
-            style={{ padding: '8px 10px', borderRadius: 8, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}
+            style={{ padding: '8px 10px', borderRadius: 8, background: 'var(--bg-mini-stat)', border: '1px solid var(--border-subtle)' }}
           >
-            <div style={{ fontSize: 9, color: 'rgba(147,197,253,0.45)', marginBottom: 3, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{label}</div>
+            <div style={{ fontSize: 9, color: 'var(--text-dim2)', marginBottom: 3, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{label}</div>
             <div style={{ fontSize: 14, fontWeight: 700, color }}>{val}</div>
           </motion.div>
         ))}
@@ -138,16 +138,16 @@ export default function HeroSection() {
         justifyContent: 'center',
         position: 'relative',
         overflow: 'hidden',
-        background: 'radial-gradient(ellipse 80% 55% at 50% 0%, rgba(29,78,216,0.10) 0%, transparent 70%), linear-gradient(180deg, #080809 0%, #111113 100%)',
+        background: 'var(--bg-hero)',
       }}
     >
       {/* Subtle grid */}
       <div style={{
-        position: 'absolute', inset: 0, opacity: 0.5, pointerEvents: 'none',
+        position: 'absolute', inset: 0, opacity: 'var(--grid-opacity)', pointerEvents: 'none',
         backgroundImage: "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgba(29,78,216,0.045)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e\")",
       }} />
 
-      {/* Orb 1 — Royal Blue, restrained */}
+      {/* Orb 1 — Royal Blue */}
       <motion.div
         animate={{ y: [0, -28, 0], x: [0, 12, 0] }}
         transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
@@ -159,7 +159,7 @@ export default function HeroSection() {
         transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
         style={{ position: 'absolute', bottom: '26%', right: '8%', width: 400, height: 400, borderRadius: '50%', pointerEvents: 'none', background: 'radial-gradient(circle, rgba(30,58,138,0.28) 0%, transparent 70%)', filter: 'blur(70px)', opacity: 0.45 }}
       />
-      {/* Orb 3 — Emerald hint (growth) */}
+      {/* Orb 3 — Emerald hint */}
       <motion.div
         animate={{ y: [0, -18, 0] }}
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
@@ -189,7 +189,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.15, ease }}
-          style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 28, padding: '8px 18px', borderRadius: 9999, fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#BFDBFE', background: 'rgba(29,78,216,0.08)', border: '1px solid rgba(29,78,216,0.24)' }}
+          style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 28, padding: '8px 18px', borderRadius: 9999, fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-body)', background: 'rgba(29,78,216,0.08)', border: '1px solid rgba(29,78,216,0.24)' }}
         >
           <motion.span
             animate={{ opacity: [0.5, 1, 0.5], scale: [0.85, 1.15, 0.85] }}
@@ -204,7 +204,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1, ease }}
-          style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.5rem)', fontWeight: 900, lineHeight: 1.06, letterSpacing: '-0.03em', color: '#F8FAFC', margin: '0 0 20px' }}
+          style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.5rem)', fontWeight: 900, lineHeight: 1.06, letterSpacing: '-0.03em', color: 'var(--text-heading)', margin: '0 0 20px' }}
         >
           Financial Clarity,{' '}
           <br />
@@ -236,7 +236,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease }}
-          style={{ fontSize: '1.125rem', color: 'rgba(147,197,253,0.70)', maxWidth: 560, margin: '0 auto 44px', lineHeight: 1.75 }}
+          style={{ fontSize: '1.125rem', color: 'var(--text-muted)', maxWidth: 560, margin: '0 auto 44px', lineHeight: 1.75 }}
         >
           Expert bookkeeping, payroll, financial reporting, and digital presence management — everything your business needs to operate with confidence.
         </motion.p>
@@ -268,7 +268,7 @@ export default function HeroSection() {
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 padding: '14px 30px', borderRadius: 10, fontSize: '1rem', fontWeight: 600,
-                color: '#93C5FD', textDecoration: 'none',
+                color: 'var(--accent-pale)', textDecoration: 'none',
                 border: '1.5px solid rgba(29,78,216,0.35)',
                 background: 'rgba(29,78,216,0.07)',
                 backdropFilter: 'blur(8px)',
@@ -291,7 +291,7 @@ export default function HeroSection() {
               key={i}
               whileHover={{ scale: 1.06, borderColor: 'rgba(29,78,216,0.45)' }}
               transition={{ duration: 0.2 }}
-              style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '7px 14px', borderRadius: 8, fontSize: 12, color: 'rgba(191,219,254,0.70)', background: 'rgba(28,28,32,0.7)', border: '1px solid rgba(255,255,255,0.08)', cursor: 'default' }}
+              style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '7px 14px', borderRadius: 8, fontSize: 12, color: 'var(--text-ice)', background: 'var(--bg-card-solid)', border: '1px solid var(--border-medium)', cursor: 'default' }}
             >
               <Icon size={13} color="#1D4ED8" />
               {label}
@@ -309,7 +309,7 @@ export default function HeroSection() {
         transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
         style={{ position: 'absolute', bottom: 32, left: '50%', transform: 'translateX(-50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, zIndex: 10 }}
       >
-        <span style={{ fontSize: 10, color: 'rgba(147,197,253,0.30)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Scroll</span>
+        <span style={{ fontSize: 10, color: 'var(--text-dim2)', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Scroll</span>
         <div style={{ width: 1, height: 32, background: 'linear-gradient(to bottom, rgba(29,78,216,0.5), transparent)' }} />
       </motion.div>
     </section>

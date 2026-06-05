@@ -16,14 +16,14 @@ export default function TrustBadgesRow() {
   const inView = useInView(ref, { once: true, amount: 0.15 })
 
   return (
-    <section style={{ background: '#0A0A0C', borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)', padding: '36px 16px', overflow: 'hidden' }}>
+    <section style={{ background: 'var(--bg-deep)', borderTop: '1px solid var(--border-section)', borderBottom: '1px solid var(--border-section)', padding: '36px 16px', overflow: 'hidden' }}>
       <div className="max-w-6xl mx-auto">
         <motion.p
           ref={ref}
           initial={{ opacity: 0, y: 10 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          style={{ textAlign: 'center', fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(147,197,253,0.38)', marginBottom: 24 }}
+          style={{ textAlign: 'center', fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--text-dim2)', marginBottom: 24 }}
         >
           Certifications &amp; Trust
         </motion.p>
@@ -43,9 +43,10 @@ export default function TrustBadgesRow() {
               style={{
                 display: 'flex', alignItems: 'center', gap: 10,
                 padding: '10px 18px', borderRadius: 10,
-                background: 'rgba(28,28,32,0.9)',
-                border: '1px solid rgba(255,255,255,0.07)',
+                background: 'var(--bg-card-solid)',
+                border: '1px solid var(--border-subtle)',
                 backdropFilter: 'blur(12px)',
+                boxShadow: 'var(--card-shadow)',
                 cursor: 'default',
               }}
             >
@@ -53,8 +54,8 @@ export default function TrustBadgesRow() {
                 <Icon size={16} style={{ color }} strokeWidth={2} />
               </div>
               <div>
-                <div style={{ fontSize: 13, fontWeight: 700, color: '#F8FAFC', lineHeight: 1.2 }}>{label}</div>
-                <div style={{ fontSize: 10, color: 'rgba(147,197,253,0.48)', fontWeight: 500, marginTop: 2 }}>{sub}</div>
+                <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-heading)', lineHeight: 1.2 }}>{label}</div>
+                <div style={{ fontSize: 10, color: 'var(--text-dim)', fontWeight: 500, marginTop: 2 }}>{sub}</div>
               </div>
             </motion.div>
           ))}

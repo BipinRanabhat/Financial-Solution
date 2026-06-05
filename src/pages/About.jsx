@@ -21,8 +21,7 @@ const team = [
 
 function PageHero() {
   return (
-    <section className="relative pt-28 pb-16 overflow-hidden"
-             style={{ background: 'linear-gradient(180deg, #080809 0%, #111113 100%)' }}>
+    <section className="relative pt-28 pb-16 overflow-hidden" style={{ background: 'var(--bg-page-hero)' }}>
       <div className="absolute inset-0 bg-grid-pattern opacity-50 pointer-events-none" />
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.span
@@ -52,20 +51,20 @@ function StorySection() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, amount: 0.15 })
   return (
-    <section className="section-padding" style={{ background: '#111113' }}>
+    <section className="section-padding" style={{ background: 'var(--bg-base)' }}>
       <div className="container-wide" ref={ref}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div variants={slideLeft} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="flex flex-col gap-5">
             <SectionHeading eyebrow="Who We Are" title="Built for Business Owners, Not Big Corporations" align="left" />
-            <p style={{ fontSize: 13.5, color: 'rgba(147,197,253,0.62)', lineHeight: 1.72 }}>
+            <p style={{ fontSize: 13.5, color: 'var(--text-muted)', lineHeight: 1.72 }}>
               Vanguard started with a simple observation: small business owners worldwide were spending hours every week wrestling with spreadsheets, missing deadlines, and making decisions based on outdated numbers. We saw an opportunity to change that — from Kathmandu, Nepal.
             </p>
-            <p style={{ fontSize: 13.5, color: 'rgba(147,197,253,0.62)', lineHeight: 1.72 }}>
+            <p style={{ fontSize: 13.5, color: 'var(--text-muted)', lineHeight: 1.72 }}>
               We set out to level the playing field. Today, we serve 200+ businesses — from solo consultants to 50-person teams across the US, UK, and Australia — delivering the same quality of financial management that Fortune 500 companies enjoy.
             </p>
             <div className="flex flex-col gap-3 mt-2">
               {['Founded in 2016, headquartered in Kathmandu', 'Serving clients across the US, UK & Australia', 'Certified in QuickBooks, Xero, and CPP'].map((item, i) => (
-                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13.5, color: 'rgba(191,219,254,0.68)' }}>
+                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13.5, color: 'var(--text-ice)' }}>
                   <CheckCircle2 size={15} style={{ color: '#059669', flexShrink: 0 }} />
                   {item}
                 </div>
@@ -76,15 +75,15 @@ function StorySection() {
           <motion.div variants={slideRight} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
             <div className="grid grid-cols-2 gap-4">
               {[
-                { val: '2016', label: 'Year Founded',   accent: '#1D4ED8' },
-                { val: '200+', label: 'Happy Clients',  accent: '#1D4ED8' },
+                { val: '2016', label: 'Year Founded',    accent: '#1D4ED8' },
+                { val: '200+', label: 'Happy Clients',   accent: '#1D4ED8' },
                 { val: '3',    label: 'Countries Served', accent: '#059669' },
-                { val: '4.9★', label: 'Avg. Rating',    accent: '#D97706' },
+                { val: '4.9★', label: 'Avg. Rating',     accent: '#D97706' },
               ].map(({ val, label, accent }, i) => (
                 <div key={i} className="p-6 rounded-xl flex flex-col gap-2"
-                     style={{ background: 'rgba(28,28,32,0.80)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                     style={{ background: 'linear-gradient(145deg, var(--bg-card-from) 0%, var(--bg-card-to) 100%)', border: '1px solid var(--border-medium)', boxShadow: 'var(--card-shadow)' }}>
                   <span className="text-3xl font-black" style={{ color: accent }}>{val}</span>
-                  <span style={{ fontSize: 12, color: 'rgba(147,197,253,0.55)', fontWeight: 500 }}>{label}</span>
+                  <span style={{ fontSize: 12, color: 'var(--text-dim)', fontWeight: 500 }}>{label}</span>
                 </div>
               ))}
             </div>
@@ -99,7 +98,7 @@ function ValuesSection() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, amount: 0.15 })
   return (
-    <section className="section-padding" style={{ background: '#161618' }}>
+    <section className="section-padding" style={{ background: 'var(--bg-alt)' }}>
       <div className="container-wide">
         <div className="mb-14 flex flex-col items-center">
           <SectionHeading eyebrow="Our Values" title="The Principles That Guide Everything We Do" />
@@ -109,13 +108,13 @@ function ValuesSection() {
           {values.map(({ Icon, title, desc }, i) => (
             <motion.div key={i} variants={cardReveal}
               className="flex flex-col gap-4 p-6 rounded-xl"
-              style={{ background: 'linear-gradient(145deg, rgba(28,28,32,0.80) 0%, rgba(17,17,19,0.92) 100%)', border: '1px solid rgba(255,255,255,0.07)' }}>
+              style={{ background: 'linear-gradient(145deg, var(--bg-card-from) 0%, var(--bg-card-to) 100%)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--card-shadow)' }}>
               <div className="w-11 h-11 rounded-xl flex items-center justify-center"
                    style={{ background: 'rgba(29,78,216,0.10)', border: '1px solid rgba(29,78,216,0.22)' }}>
                 <Icon size={20} color="#1D4ED8" strokeWidth={1.8} />
               </div>
-              <h3 style={{ fontSize: 15, fontWeight: 700, color: '#F8FAFC' }}>{title}</h3>
-              <p style={{ fontSize: 13.5, color: 'rgba(147,197,253,0.60)', lineHeight: 1.70 }}>{desc}</p>
+              <h3 style={{ fontSize: 15, fontWeight: 700, color: 'var(--text-heading)' }}>{title}</h3>
+              <p style={{ fontSize: 13.5, color: 'var(--text-muted)', lineHeight: 1.70 }}>{desc}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -128,7 +127,7 @@ function TeamSection() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, amount: 0.15 })
   return (
-    <section className="section-padding" style={{ background: '#111113' }}>
+    <section className="section-padding" style={{ background: 'var(--bg-base)' }}>
       <div className="container-wide">
         <div className="mb-14 flex flex-col items-center">
           <SectionHeading eyebrow="The Team" title="Experts You Can Count On" subtitle="A dedicated team of Nepali accounting professionals serving clients globally with precision and care." />
@@ -138,16 +137,16 @@ function TeamSection() {
           {team.map(({ name, role, initials, bio }, i) => (
             <motion.div key={i} variants={cardReveal}
               className="flex flex-col items-center text-center gap-4 p-7 rounded-xl"
-              style={{ background: 'linear-gradient(145deg, rgba(28,28,32,0.80) 0%, rgba(17,17,19,0.92) 100%)', border: '1px solid rgba(255,255,255,0.07)' }}>
+              style={{ background: 'linear-gradient(145deg, var(--bg-card-from) 0%, var(--bg-card-to) 100%)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--card-shadow)' }}>
               <div className="w-16 h-16 rounded-full flex items-center justify-center text-lg font-bold"
                    style={{ background: 'rgba(29,78,216,0.12)', border: '2px solid rgba(29,78,216,0.35)', color: '#1D4ED8' }}>
                 {initials}
               </div>
               <div>
-                <h3 style={{ fontSize: 15, fontWeight: 700, color: '#F8FAFC' }}>{name}</h3>
+                <h3 style={{ fontSize: 15, fontWeight: 700, color: 'var(--text-heading)' }}>{name}</h3>
                 <p style={{ fontSize: 12, color: '#1D4ED8', fontWeight: 600, marginTop: 2 }}>{role}</p>
               </div>
-              <p style={{ fontSize: 13.5, color: 'rgba(147,197,253,0.60)', lineHeight: 1.70 }}>{bio}</p>
+              <p style={{ fontSize: 13.5, color: 'var(--text-muted)', lineHeight: 1.70 }}>{bio}</p>
             </motion.div>
           ))}
         </motion.div>

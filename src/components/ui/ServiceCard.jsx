@@ -47,8 +47,8 @@ export default function ServiceCard({ iconName, number, title, description, bull
           gap: 16,
           padding: 24,
           borderRadius: 16,
-          background: 'linear-gradient(145deg, rgba(28,28,32,0.80) 0%, rgba(17,17,19,0.92) 100%)',
-          border: '1px solid rgba(255,255,255,0.07)',
+          background: 'linear-gradient(145deg, var(--bg-card-from) 0%, var(--bg-card-to) 100%)',
+          border: '1px solid var(--border-subtle)',
           backdropFilter: 'blur(10px)',
           overflow: 'hidden',
           cursor: 'default',
@@ -96,8 +96,8 @@ export default function ServiceCard({ iconName, number, title, description, bull
 
         {/* Content */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8, position: 'relative', zIndex: 1 }}>
-          <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#F8FAFC', margin: 0 }}>{title}</h3>
-          <p style={{ fontSize: '0.8125rem', color: 'rgba(147,197,253,0.65)', lineHeight: 1.68, margin: 0, display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+          <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-heading)', margin: 0 }}>{title}</h3>
+          <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', lineHeight: 1.68, margin: 0, display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
             {description}
           </p>
         </div>
@@ -105,7 +105,7 @@ export default function ServiceCard({ iconName, number, title, description, bull
         {/* Bullets */}
         <ul style={{ display: 'flex', flexDirection: 'column', gap: 6, marginTop: 'auto', position: 'relative', zIndex: 1 }}>
           {bullets.slice(0, 3).map((b, i) => (
-            <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 12, color: 'rgba(191,219,254,0.62)' }}>
+            <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 12, color: 'var(--text-dim)' }}>
               <span style={{
                 marginTop: 2, width: 14, height: 14, borderRadius: '50%',
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
@@ -124,7 +124,7 @@ export default function ServiceCard({ iconName, number, title, description, bull
             to={href}
             style={{
               marginTop: 4, display: 'inline-flex', alignItems: 'center', gap: 6,
-              fontSize: 12, fontWeight: 600, color: '#93C5FD', textDecoration: 'none',
+              fontSize: 12, fontWeight: 600, color: 'var(--accent-pale)', textDecoration: 'none',
               position: 'relative', zIndex: 1,
             }}
           >

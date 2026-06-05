@@ -3,13 +3,14 @@ import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { Mail, Phone, MapPin, Clock, CheckCircle2, Send } from 'lucide-react'
 import PageWrapper from '../components/layout/PageWrapper'
 import { services } from '../constants/services'
-import { fadeUp, slideLeft, slideRight } from '../constants/animations'
+import { CONTACT } from '../constants/contact'
+import { slideLeft, slideRight } from '../constants/animations'
 
 const contactInfo = [
-  { Icon: Mail,    label: 'Email Us',       value: 'hello@vanguardaccounting.com', sub: 'We reply within 24 hours' },
-  { Icon: Phone,   label: 'Call Us',        value: '+1 (555) 234-5678',            sub: 'Mon–Fri, 9am–6pm EST' },
-  { Icon: MapPin,  label: 'Office',         value: 'New York, NY 10001',           sub: 'By appointment only' },
-  { Icon: Clock,   label: 'Business Hours', value: 'Mon–Fri: 9am – 6pm EST',      sub: 'Closed weekends & holidays' },
+  { Icon: Mail,    label: 'Email Us',       value: CONTACT.email,          sub: 'We reply within 24 hours' },
+  { Icon: Phone,   label: 'Call Us',        value: CONTACT.phone,          sub: CONTACT.availability },
+  { Icon: MapPin,  label: 'Office',         value: CONTACT.location,       sub: 'By appointment only' },
+  { Icon: Clock,   label: 'Business Hours', value: CONTACT.businessHours,  sub: CONTACT.businessHoursNote },
 ]
 
 const initialForm = { name: '', email: '', phone: '', service: '', message: '' }
@@ -48,7 +49,7 @@ function ContactForm() {
 
   return (
     <div className="relative p-8 rounded-2xl"
-         style={{ background: 'linear-gradient(145deg, rgba(28,28,32,0.85) 0%, rgba(17,17,19,0.95) 100%)', border: '1px solid rgba(255,255,255,0.08)' }}>
+         style={{ background: 'linear-gradient(145deg, var(--bg-card-from) 0%, var(--bg-card-to) 100%)', border: '1px solid var(--border-medium)', boxShadow: 'var(--card-shadow)' }}>
       <AnimatePresence mode="wait">
         {status === 'sent' ? (
           <motion.div
@@ -62,8 +63,8 @@ function ContactForm() {
               <CheckCircle2 size={32} style={{ color: '#059669' }} />
             </div>
             <div>
-              <h3 style={{ fontSize: 20, fontWeight: 700, color: '#F8FAFC', marginBottom: 8 }}>Message Sent!</h3>
-              <p style={{ fontSize: 13.5, color: 'rgba(147,197,253,0.60)' }}>We'll get back to you within 24 hours.</p>
+              <h3 style={{ fontSize: 20, fontWeight: 700, color: 'var(--text-heading)', marginBottom: 8 }}>Message Sent!</h3>
+              <p style={{ fontSize: 13.5, color: 'var(--text-muted)' }}>We'll get back to you within 24 hours.</p>
             </div>
             <button onClick={() => { setForm(initialForm); setStatus('idle') }}
                     style={{ fontSize: 13.5, color: '#1D4ED8', background: 'none', border: 'none', cursor: 'pointer' }}>
@@ -90,14 +91,14 @@ function ContactForm() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
                 <label className={labelBase}>Phone Number</label>
-                <input name="phone" value={form.phone} onChange={handleChange} placeholder="+1 (555) 000-0000"
+                <input name="phone" value={form.phone} onChange={handleChange} placeholder="+977 98XXXXXXXX"
                        className={`${inputStyle('phone')} border border-royal/30 focus:border-electric/60`} />
               </div>
               <div>
                 <label className={labelBase}>Service Interested In</label>
                 <select name="service" value={form.service} onChange={handleChange}
                         className={`${inputBase} border border-royal/30 focus:border-electric/60 cursor-pointer`}
-                        style={{ background: 'rgba(17,17,19,0.85)' }}>
+                        style={{ background: 'var(--bg-select)' }}>
                   <option value="">Select a service...</option>
                   {services.map(s => <option key={s.id} value={s.id}>{s.title}</option>)}
                   <option value="general">General Inquiry</option>
@@ -136,8 +137,7 @@ function ContactForm() {
 
 function PageHero() {
   return (
-    <section className="relative pt-28 pb-16 overflow-hidden"
-             style={{ background: 'linear-gradient(180deg, #080809 0%, #111113 100%)' }}>
+    <section className="relative pt-28 pb-16 overflow-hidden" style={{ background: 'var(--bg-page-hero)' }}>
       <div className="absolute inset-0 bg-grid-pattern opacity-50 pointer-events-none" />
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
@@ -166,15 +166,15 @@ export default function Contact() {
     <PageWrapper>
       <PageHero />
 
-      <section className="section-padding" style={{ background: '#111113' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-base)' }}>
         <div className="container-wide" ref={ref}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14">
 
             {/* Left: info */}
             <motion.div variants={slideLeft} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="flex flex-col gap-8">
               <div>
-                <h2 style={{ fontSize: 22, fontWeight: 700, color: '#F8FAFC', marginBottom: 8 }}>We'd love to hear from you</h2>
-                <p style={{ fontSize: 13.5, color: 'rgba(147,197,253,0.60)', lineHeight: 1.70 }}>
+                <h2 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-heading)', marginBottom: 8 }}>We'd love to hear from you</h2>
+                <p style={{ fontSize: 13.5, color: 'var(--text-muted)', lineHeight: 1.70 }}>
                   Reach out through any channel below or fill out the form and we'll respond within one business day.
                 </p>
               </div>
@@ -182,15 +182,15 @@ export default function Contact() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {contactInfo.map(({ Icon, label, value, sub }, i) => (
                   <div key={i} className="flex items-start gap-3.5 p-4 rounded-xl"
-                       style={{ background: 'linear-gradient(145deg, rgba(28,28,32,0.80) 0%, rgba(17,17,19,0.92) 100%)', border: '1px solid rgba(255,255,255,0.07)' }}>
+                       style={{ background: 'linear-gradient(145deg, var(--bg-card-from) 0%, var(--bg-card-to) 100%)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--card-shadow)' }}>
                     <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
                          style={{ background: 'rgba(29,78,216,0.10)', border: '1px solid rgba(29,78,216,0.22)' }}>
                       <Icon size={16} color="#1D4ED8" />
                     </div>
                     <div>
-                      <p style={{ fontSize: 11, color: 'rgba(147,197,253,0.48)', fontWeight: 500, marginBottom: 2 }}>{label}</p>
-                      <p style={{ fontSize: 13.5, color: '#F8FAFC', fontWeight: 600 }}>{value}</p>
-                      <p style={{ fontSize: 11, color: 'rgba(147,197,253,0.38)', marginTop: 2 }}>{sub}</p>
+                      <p style={{ fontSize: 11, color: 'var(--text-dim)', fontWeight: 500, marginBottom: 2 }}>{label}</p>
+                      <p style={{ fontSize: 13.5, color: 'var(--text-heading)', fontWeight: 600 }}>{value}</p>
+                      <p style={{ fontSize: 11, color: 'var(--text-dim2)', marginTop: 2 }}>{sub}</p>
                     </div>
                   </div>
                 ))}
@@ -201,9 +201,9 @@ export default function Contact() {
                    style={{ background: 'rgba(5,150,105,0.07)', border: '1px solid rgba(5,150,105,0.20)' }}>
                 <div className="flex items-center gap-3 mb-3">
                   <CheckCircle2 size={18} style={{ color: '#059669' }} />
-                  <h3 style={{ fontSize: 15, fontWeight: 700, color: '#F8FAFC' }}>Free 30-Min Discovery Call</h3>
+                  <h3 style={{ fontSize: 15, fontWeight: 700, color: 'var(--text-heading)' }}>Free 30-Min Discovery Call</h3>
                 </div>
-                <p style={{ fontSize: 13.5, color: 'rgba(147,197,253,0.60)', lineHeight: 1.70 }}>
+                <p style={{ fontSize: 13.5, color: 'var(--text-muted)', lineHeight: 1.70 }}>
                   Not sure if we're the right fit? Let's find out together. No hard sell, no obligation — just a conversation about your business.
                 </p>
               </div>

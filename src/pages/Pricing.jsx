@@ -82,15 +82,15 @@ function PlanCard({ plan, annual, index, inView }) {
       initial={{ opacity: 0, y: 36 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.55, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      whileHover={{ y: -6, boxShadow: popular ? `0 24px 60px ${color}22` : '0 16px 40px rgba(0,0,0,0.35)' }}
+      whileHover={{ y: -6, boxShadow: popular ? `0 24px 60px ${color}22` : 'var(--shadow-card-lg)' }}
       style={{
         position: 'relative', borderRadius: 20, padding: '32px 28px',
         background: popular
-          ? `linear-gradient(160deg, rgba(29,78,216,0.12) 0%, rgba(17,17,19,0.96) 100%)`
-          : 'linear-gradient(145deg, rgba(28,28,32,0.85) 0%, rgba(17,17,19,0.95) 100%)',
-        border: `1px solid ${popular ? 'rgba(29,78,216,0.42)' : 'rgba(255,255,255,0.07)'}`,
+          ? `linear-gradient(160deg, rgba(29,78,216,0.12) 0%, var(--bg-card-to) 100%)`
+          : 'linear-gradient(145deg, var(--bg-card-from) 0%, var(--bg-card-to) 100%)',
+        border: `1px solid ${popular ? 'rgba(29,78,216,0.42)' : 'var(--border-subtle)'}`,
+        boxShadow: popular ? '0 0 0 1px rgba(29,78,216,0.18), 0 20px 50px rgba(29,78,216,0.10)' : 'var(--card-shadow)',
         display: 'flex', flexDirection: 'column', gap: 0,
-        boxShadow: popular ? '0 0 0 1px rgba(29,78,216,0.18), 0 20px 50px rgba(29,78,216,0.10)' : 'none',
         transition: 'box-shadow 0.25s',
       }}
     >
@@ -111,16 +111,16 @@ function PlanCard({ plan, annual, index, inView }) {
           <Icon size={22} style={{ color }} strokeWidth={1.8} />
         </div>
         <div>
-          <h3 style={{ fontSize: 20, fontWeight: 800, color: '#F8FAFC', lineHeight: 1 }}>{name}</h3>
-          <p style={{ fontSize: 12.5, color: 'rgba(147,197,253,0.58)', marginTop: 5 }}>{tagline}</p>
+          <h3 style={{ fontSize: 20, fontWeight: 800, color: 'var(--text-heading)', lineHeight: 1 }}>{name}</h3>
+          <p style={{ fontSize: 12.5, color: 'var(--text-dim)', marginTop: 5 }}>{tagline}</p>
         </div>
       </div>
 
       <div style={{ marginBottom: 24 }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
-          <span style={{ fontSize: 13, color: 'rgba(147,197,253,0.52)', fontWeight: 500 }}>USD</span>
-          <span style={{ fontSize: 46, fontWeight: 900, color: '#F8FAFC', lineHeight: 1 }}>${price}</span>
-          <span style={{ fontSize: 13, color: 'rgba(147,197,253,0.52)' }}>/month</span>
+          <span style={{ fontSize: 13, color: 'var(--text-dim)', fontWeight: 500 }}>USD</span>
+          <span style={{ fontSize: 46, fontWeight: 900, color: 'var(--text-heading)', lineHeight: 1 }}>${price}</span>
+          <span style={{ fontSize: 13, color: 'var(--text-dim)' }}>/month</span>
         </div>
         {annual && (
           <p style={{ fontSize: 12, color: '#10B981', fontWeight: 600, marginTop: 6 }}>
@@ -129,19 +129,19 @@ function PlanCard({ plan, annual, index, inView }) {
         )}
       </div>
 
-      <div style={{ height: 1, background: 'rgba(255,255,255,0.07)', marginBottom: 24 }} />
+      <div style={{ height: 1, background: 'var(--border-subtle)', marginBottom: 24 }} />
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 28, flex: 1 }}>
         {features.map((f, i) => (
           <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
             <CheckCircle2 size={15} style={{ color: '#059669', flexShrink: 0, marginTop: 1 }} />
-            <span style={{ fontSize: 13.5, color: '#BFDBFE', lineHeight: 1.4 }}>{f}</span>
+            <span style={{ fontSize: 13.5, color: 'var(--text-body)', lineHeight: 1.4 }}>{f}</span>
           </div>
         ))}
         {notIncluded.map((f, i) => (
-          <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, opacity: 0.32 }}>
-            <span style={{ width: 15, height: 15, flexShrink: 0, marginTop: 1, textAlign: 'center', fontSize: 14, color: 'rgba(147,197,253,0.4)' }}>–</span>
-            <span style={{ fontSize: 13.5, color: 'rgba(147,197,253,0.5)', lineHeight: 1.4, textDecoration: 'line-through' }}>{f}</span>
+          <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, opacity: 0.35 }}>
+            <span style={{ width: 15, height: 15, flexShrink: 0, marginTop: 1, textAlign: 'center', fontSize: 14, color: 'var(--text-dim)' }}>–</span>
+            <span style={{ fontSize: 13.5, color: 'var(--text-dim)', lineHeight: 1.4, textDecoration: 'line-through' }}>{f}</span>
           </div>
         ))}
       </div>
@@ -174,7 +174,7 @@ export default function Pricing() {
   return (
     <PageWrapper>
       {/* Hero */}
-      <section className="relative pt-28 pb-16 overflow-hidden" style={{ background: 'linear-gradient(180deg, #080809 0%, #111113 100%)' }}>
+      <section className="relative pt-28 pb-16 overflow-hidden" style={{ background: 'var(--bg-page-hero)' }}>
         <div className="absolute inset-0 bg-grid-pattern opacity-50 pointer-events-none" />
         <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
           <motion.span initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
@@ -192,13 +192,13 @@ export default function Pricing() {
 
           {/* Monthly / Annual toggle */}
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35 }}
-            style={{ display: 'inline-flex', alignItems: 'center', gap: 12, background: 'rgba(28,28,32,0.90)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 50, padding: '6px 8px' }}>
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 12, background: 'var(--bg-card-solid)', border: '1px solid var(--border-medium)', borderRadius: 50, padding: '6px 8px' }}>
             <button onClick={() => setAnnual(false)}
-              style={{ padding: '8px 20px', borderRadius: 50, border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 700, background: !annual ? '#1D4ED8' : 'transparent', color: !annual ? '#fff' : 'rgba(147,197,253,0.58)', transition: 'all 0.2s' }}>
+              style={{ padding: '8px 20px', borderRadius: 50, border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 700, background: !annual ? '#1D4ED8' : 'transparent', color: !annual ? '#fff' : 'var(--text-dim)', transition: 'all 0.2s' }}>
               Monthly
             </button>
             <button onClick={() => setAnnual(true)}
-              style={{ padding: '8px 20px', borderRadius: 50, border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 700, background: annual ? '#1D4ED8' : 'transparent', color: annual ? '#fff' : 'rgba(147,197,253,0.58)', transition: 'all 0.2s', display: 'flex', alignItems: 'center', gap: 8 }}>
+              style={{ padding: '8px 20px', borderRadius: 50, border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 700, background: annual ? '#1D4ED8' : 'transparent', color: annual ? '#fff' : 'var(--text-dim)', transition: 'all 0.2s', display: 'flex', alignItems: 'center', gap: 8 }}>
               Annual
               <span style={{ background: '#059669', color: '#fff', fontSize: 10, fontWeight: 800, padding: '2px 8px', borderRadius: 20 }}>Save 17%</span>
             </button>
@@ -207,7 +207,7 @@ export default function Pricing() {
       </section>
 
       {/* Plans */}
-      <section className="section-padding" style={{ background: '#111113' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-base)' }}>
         <div className="container-wide" ref={ref}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
             {plans.map((plan, i) => (
@@ -226,7 +226,7 @@ export default function Pricing() {
               {['30-Day Money-Back Guarantee', 'No Setup Fees', 'Cancel Anytime', 'NDA Signed on Day 1'].map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                   <CheckCircle2 size={15} style={{ color: '#059669' }} />
-                  <span style={{ fontSize: 13, color: '#BFDBFE', fontWeight: 600 }}>{item}</span>
+                  <span style={{ fontSize: 13, color: 'var(--text-body)', fontWeight: 600 }}>{item}</span>
                 </div>
               ))}
             </div>
@@ -235,7 +235,7 @@ export default function Pricing() {
       </section>
 
       {/* FAQ teaser */}
-      <section className="section-padding" style={{ background: '#161618' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-alt)' }}>
         <div className="container-wide">
           <SectionHeading eyebrow="Questions?" title="Not sure which plan fits?" subtitle="Book a free 15-minute call and we'll recommend the right plan for your business — no pressure, no sales pitch." />
           <div style={{ textAlign: 'center', marginTop: 32 }}>
