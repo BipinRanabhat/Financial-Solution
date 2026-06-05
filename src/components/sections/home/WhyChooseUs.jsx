@@ -157,7 +157,7 @@ export default function WhyChooseUs() {
                   { val: '200+', label: 'Active Clients',    accent: '#1D4ED8' },
                   { val: '8+',   label: 'Years Experience',  accent: '#1D4ED8' },
                   { val: '$50M+', label: 'Annually Managed', accent: '#059669' },
-                  { val: '24hr', label: 'Response Time',     accent: '#059669' },
+                  { val: '24/7', label: 'Always Available',   accent: '#059669' },
                 ].map(({ val, label, accent }, i) => (
                   <motion.div
                     key={i}

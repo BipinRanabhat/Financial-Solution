@@ -15,7 +15,7 @@ function LinkedInIcon({ size = 16, color = '#1D4ED8' }) {
 }
 
 const contactInfo = [
-  { Icon: Mail,         label: 'Email Us',       value: CONTACT.email,                    sub: 'We reply within 24 hours',              href: `mailto:${CONTACT.email}`, fullWidth: true, compact: true },
+  { Icon: Mail,         label: 'Email Us',       value: CONTACT.email,                    sub: 'Available 24/7 · We reply within 1 hour', href: `mailto:${CONTACT.email}`, fullWidth: true, compact: true },
   { Icon: Phone,        label: 'Call Us',        value: CONTACT.phone,                    sub: CONTACT.availability,                    href: `tel:+${CONTACT.phoneE164}` },
   { Icon: MapPin,       label: 'Office',         value: CONTACT.location,                 sub: 'By appointment only' },
   { Icon: Clock,        label: 'Business Hours', value: CONTACT.businessHours,            sub: CONTACT.businessHoursNote },
@@ -123,7 +123,7 @@ function ContactForm() {
             </div>
             <div>
               <h3 style={{ fontSize: 20, fontWeight: 700, color: 'var(--text-heading)', marginBottom: 8 }}>Message Sent!</h3>
-              <p style={{ fontSize: 13.5, color: 'var(--text-muted)' }}>We'll get back to you within 24 hours.</p>
+              <p style={{ fontSize: 13.5, color: 'var(--text-muted)' }}>We're available 24/7 and will be in touch shortly.</p>
             </div>
             <button onClick={() => { setForm(initialForm); setStatus('idle') }}
                     style={{ fontSize: 13.5, color: '#1D4ED8', background: 'none', border: 'none', cursor: 'pointer' }}>
@@ -234,7 +234,7 @@ export default function Contact() {
               <div>
                 <h2 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-heading)', marginBottom: 8 }}>We'd love to hear from you</h2>
                 <p style={{ fontSize: 13.5, color: 'var(--text-muted)', lineHeight: 1.70 }}>
-                  Reach out through any channel below or fill out the form — we're available 24/7 and respond within 24 hours.
+                  Reach out through any channel below or fill out the form — we're available 24/7 and typically respond within the hour.
                 </p>
               </div>
 
