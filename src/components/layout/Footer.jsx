@@ -1,12 +1,20 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Linkedin, MessageCircle, Globe } from 'lucide-react'
+import { Mail, Phone, MapPin, MessageCircle, Globe } from 'lucide-react'
+
+function LinkedInIcon({ size = 14 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.114 20.452H3.56V9h3.554v11.452z" />
+    </svg>
+  )
+}
 import { navLinks } from '../../constants/navigation'
 import { services } from '../../constants/services'
 import { CONTACT } from '../../constants/contact'
 
 const socials = [
-  { Icon: Linkedin,       href: CONTACT.linkedin, label: 'LinkedIn' },
+  { Icon: LinkedInIcon,   href: CONTACT.linkedin, label: 'LinkedIn' },
   { Icon: MessageCircle,  href: CONTACT.whatsapp, label: 'WhatsApp' },
   { Icon: Globe,          href: CONTACT.website,  label: 'Website' },
 ]
