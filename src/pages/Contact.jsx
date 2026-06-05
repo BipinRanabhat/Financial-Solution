@@ -6,12 +6,71 @@ import { services } from '../constants/services'
 import { CONTACT } from '../constants/contact'
 import { slideLeft, slideRight } from '../constants/animations'
 
+function LinkedInIcon({ size = 16, color = '#1D4ED8' }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill={color} aria-hidden="true">
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.114 20.452H3.56V9h3.554v11.452z" />
+    </svg>
+  )
+}
+
 const contactInfo = [
-  { Icon: Mail,    label: 'Email Us',       value: CONTACT.email,          sub: 'We reply within 24 hours' },
-  { Icon: Phone,   label: 'Call Us',        value: CONTACT.phone,          sub: CONTACT.availability },
-  { Icon: MapPin,  label: 'Office',         value: CONTACT.location,       sub: 'By appointment only' },
-  { Icon: Clock,   label: 'Business Hours', value: CONTACT.businessHours,  sub: CONTACT.businessHoursNote },
+  { Icon: Mail,         label: 'Email Us',       value: CONTACT.email,                    sub: 'We reply within 24 hours',              href: `mailto:${CONTACT.email}`, fullWidth: true, compact: true },
+  { Icon: Phone,        label: 'Call Us',        value: CONTACT.phone,                    sub: CONTACT.availability,                    href: `tel:+${CONTACT.phoneE164}` },
+  { Icon: MapPin,       label: 'Office',         value: CONTACT.location,                 sub: 'By appointment only' },
+  { Icon: Clock,        label: 'Business Hours', value: CONTACT.businessHours,            sub: CONTACT.businessHoursNote },
+  { Icon: LinkedInIcon, label: 'LinkedIn',       value: 'Vanguard Financial Solutions',     sub: 'Connect with us professionally',        href: CONTACT.linkedin, external: true },
 ]
+
+function ContactInfoCard({ Icon, label, value, sub, href, external, fullWidth, compact }) {
+  const cardStyle = {
+    background: 'linear-gradient(145deg, var(--bg-card-from) 0%, var(--bg-card-to) 100%)',
+    border: '1px solid var(--border-subtle)',
+    boxShadow: 'var(--card-shadow)',
+  }
+
+  const valueStyle = {
+    fontSize: compact ? 12 : 13.5,
+    color: 'var(--text-heading)',
+    fontWeight: 600,
+    lineHeight: 1.45,
+    margin: 0,
+    wordBreak: 'break-word',
+    overflowWrap: 'anywhere',
+    ...(href ? { textDecoration: 'none', transition: 'color 0.2s' } : {}),
+  }
+
+  return (
+    <div
+      className={`flex items-start gap-3 p-4 rounded-xl h-full ${fullWidth ? 'sm:col-span-2' : ''}`}
+      style={cardStyle}
+    >
+      <div
+        className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+        style={{ background: 'rgba(29,78,216,0.10)', border: '1px solid rgba(29,78,216,0.22)' }}
+      >
+        <Icon size={16} color="#1D4ED8" />
+      </div>
+      <div className="min-w-0 flex-1">
+        <p style={{ fontSize: 11, color: 'var(--text-dim)', fontWeight: 500, marginBottom: 4, letterSpacing: '0.02em' }}>{label}</p>
+        {href ? (
+          <a
+            href={href}
+            {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            style={valueStyle}
+            onMouseEnter={e => { e.currentTarget.style.color = '#1D4ED8' }}
+            onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-heading)' }}
+          >
+            {value}
+          </a>
+        ) : (
+          <p style={valueStyle}>{value}</p>
+        )}
+        <p style={{ fontSize: 11, color: 'var(--text-dim2)', marginTop: 4, lineHeight: 1.5 }}>{sub}</p>
+      </div>
+    </div>
+  )
+}
 
 const initialForm = { name: '', email: '', phone: '', service: '', message: '' }
 
@@ -175,24 +234,13 @@ export default function Contact() {
               <div>
                 <h2 style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-heading)', marginBottom: 8 }}>We'd love to hear from you</h2>
                 <p style={{ fontSize: 13.5, color: 'var(--text-muted)', lineHeight: 1.70 }}>
-                  Reach out through any channel below or fill out the form and we'll respond within one business day.
+                  Reach out through any channel below or fill out the form — we're available 24/7 and respond within 24 hours.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {contactInfo.map(({ Icon, label, value, sub }, i) => (
-                  <div key={i} className="flex items-start gap-3.5 p-4 rounded-xl"
-                       style={{ background: 'linear-gradient(145deg, var(--bg-card-from) 0%, var(--bg-card-to) 100%)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--card-shadow)' }}>
-                    <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
-                         style={{ background: 'rgba(29,78,216,0.10)', border: '1px solid rgba(29,78,216,0.22)' }}>
-                      <Icon size={16} color="#1D4ED8" />
-                    </div>
-                    <div>
-                      <p style={{ fontSize: 11, color: 'var(--text-dim)', fontWeight: 500, marginBottom: 2 }}>{label}</p>
-                      <p style={{ fontSize: 13.5, color: 'var(--text-heading)', fontWeight: 600 }}>{value}</p>
-                      <p style={{ fontSize: 11, color: 'var(--text-dim2)', marginTop: 2 }}>{sub}</p>
-                    </div>
-                  </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {contactInfo.map((item, i) => (
+                  <ContactInfoCard key={i} {...item} />
                 ))}
               </div>
 
