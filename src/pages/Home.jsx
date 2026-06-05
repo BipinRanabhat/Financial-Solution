@@ -9,6 +9,7 @@ import WhyNepalSection from '../components/sections/home/WhyNepalSection'
 import TestimonialsSection from '../components/sections/home/TestimonialsSection'
 import FAQSection from '../components/sections/home/FAQSection'
 import CTABanner from '../components/sections/home/CTABanner'
+import VideoSection from '../components/sections/home/VideoSection'
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <HeroSection />
       <TrustBadgesRow />
       <StatsBar />
+      <VideoSection />
       <ProcessSection />
       <ServicesPreview />
       <WhyChooseUs />
