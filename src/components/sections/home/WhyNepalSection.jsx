@@ -14,7 +14,7 @@ const advantages = [
 
 const comparisons = [
   { label: 'Monthly Cost',           vanguard: 'From $299/mo', inhouse: '$5,000+/mo',  bigfirm: '$3,000+/mo' },
-  { label: 'Response Time',          vanguard: '< 8 hours',    inhouse: '9–5 only',     bigfirm: '48+ hours' },
+  { label: 'Response Time',          vanguard: '24/7',         inhouse: '9–5 only',     bigfirm: '48+ hours' },
   { label: 'CPA Certified',          vanguard: true,           inhouse: 'Varies',        bigfirm: true },
   { label: 'Dedicated Manager',      vanguard: true,           inhouse: true,            bigfirm: false },
   { label: 'Tax Filing Included',    vanguard: true,           inhouse: false,           bigfirm: 'Extra cost' },
