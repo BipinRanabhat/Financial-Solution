@@ -4,7 +4,6 @@ import TrustBadgesRow from '../components/sections/home/TrustBadgesRow'
 import StatsBar from '../components/sections/home/StatsBar'
 import ProcessSection from '../components/sections/home/ProcessSection'
 import ServicesPreview from '../components/sections/home/ServicesPreview'
-import WhyChooseUs from '../components/sections/home/WhyChooseUs'
 import WhyNepalSection from '../components/sections/home/WhyNepalSection'
 import TestimonialsSection from '../components/sections/home/TestimonialsSection'
 import FAQSection from '../components/sections/home/FAQSection'
@@ -20,7 +19,6 @@ export default function Home() {
       <VideoSection />
       <ProcessSection />
       <ServicesPreview />
-      <WhyChooseUs />
       <WhyNepalSection />
       <TestimonialsSection />
       <FAQSection />
