@@ -18,16 +18,19 @@ const testimonials = [
     quote: "They cleaned up 3 years of messy books in two weeks. I finally know exactly where my money is going.",
     author: "James T.",
     location: "Sydney, Australia 🇦🇺",
+    avatar: "https://i.pravatar.cc/80?img=11",
   },
   {
     quote: "Felt like having a CFO on our team from day one. Incredibly responsive, thorough, and proactive.",
     author: "Sarah M.",
     location: "London, UK 🇬🇧",
+    avatar: "https://i.pravatar.cc/80?img=47",
   },
   {
     quote: "Saved us over $12,000 in our first tax year. Best financial decision we've ever made.",
     author: "Michael R.",
     location: "Dallas, USA 🇺🇸",
+    avatar: "https://i.pravatar.cc/80?img=68",
   },
 ]
 
@@ -107,14 +110,16 @@ function TestimonialCard() {
           transition={{ duration: 0.3 }}
           style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 18 }}
         >
-          <div style={{
-            width: 36, height: 36, borderRadius: '50%', flexShrink: 0,
-            background: 'linear-gradient(135deg, #1D4ED8, #1E3A8A)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: 13, fontWeight: 800, color: '#fff',
-          }}>
-            {t.author[0]}
-          </div>
+          <img
+            src={t.avatar}
+            alt={t.author}
+            style={{
+              width: 42, height: 42, borderRadius: '50%', flexShrink: 0,
+              objectFit: 'cover',
+              border: '2px solid rgba(29,78,216,0.30)',
+              boxShadow: '0 2px 10px rgba(0,0,0,0.25)',
+            }}
+          />
           <div>
             <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-heading)' }}>{t.author}</div>
             <div style={{ fontSize: 11, color: 'var(--text-dim)', marginTop: 1 }}>{t.location}</div>
