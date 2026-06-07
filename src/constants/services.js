@@ -100,13 +100,15 @@ export const testimonials = [
     role: "Owner",
     company: "Mitchell Interior Design",
     rating: 5,
+    avatar: "https://i.pravatar.cc/80?img=47",
   },
   {
-    quote: "Switching our bookkeeping to Vanguard was the best decision we made in 2023. They caught $12,000 in billing errors in the first month alone.",
+    quote: "Switching our bookkeeping to Vanguard was the best decision we made. They caught $12,000 in billing errors in the first month alone.",
     author: "James Okonkwo",
     role: "CEO",
     company: "PrimeBuild Construction",
     rating: 5,
+    avatar: "https://i.pravatar.cc/80?img=11",
   },
   {
     quote: "Their payroll management is flawless. We've never missed a payment or had a compliance issue since we handed it over to them.",
@@ -114,5 +116,6 @@ export const testimonials = [
     role: "Director of Operations",
     company: "TechForward Solutions",
     rating: 5,
+    avatar: "https://i.pravatar.cc/80?img=25",
   },
 ]

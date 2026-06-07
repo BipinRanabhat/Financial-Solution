@@ -5,7 +5,7 @@ import { staggerContainer, cardReveal } from '../../../constants/animations'
 import SectionHeading from '../../ui/SectionHeading'
 import { testimonials } from '../../../constants/services'
 
-function TestimonialCard({ quote, author, role, company, rating = 5, isFeatured, onClick }) {
+function TestimonialCard({ quote, author, role, company, rating = 5, avatar, isFeatured, onClick }) {
   return (
     <motion.div
       variants={cardReveal}
@@ -73,15 +73,29 @@ function TestimonialCard({ quote, author, role, company, rating = 5, isFeatured,
         display: 'flex', alignItems: 'center', gap: 12,
         paddingTop: 16, borderTop: '1px solid var(--border-subtle)',
       }}>
-        <div style={{
-          width: 38, height: 38, borderRadius: '50%',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          fontSize: 12, fontWeight: 700, color: '#1D4ED8', flexShrink: 0,
-          background: 'rgba(29,78,216,0.12)',
-          border: '1px solid rgba(29,78,216,0.25)',
-        }}>
-          {author.split(' ').map(n => n[0]).join('')}
-        </div>
+        {avatar ? (
+          <img
+            src={avatar}
+            alt={author}
+            style={{
+              width: 42, height: 42, borderRadius: '50%', flexShrink: 0,
+              objectFit: 'cover',
+              border: '2px solid rgba(29,78,216,0.28)',
+              boxShadow: isFeatured ? '0 0 12px rgba(29,78,216,0.40)' : 'none',
+              transition: 'box-shadow 0.4s',
+            }}
+          />
+        ) : (
+          <div style={{
+            width: 42, height: 42, borderRadius: '50%',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: 12, fontWeight: 700, color: '#1D4ED8', flexShrink: 0,
+            background: 'rgba(29,78,216,0.12)',
+            border: '1px solid rgba(29,78,216,0.25)',
+          }}>
+            {author.split(' ').map(n => n[0]).join('')}
+          </div>
+        )}
         <div>
           <p style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-heading)', margin: 0 }}>{author}</p>
           <p style={{ fontSize: '0.75rem', color: 'var(--text-dim)', margin: 0 }}>{role}, {company}</p>
