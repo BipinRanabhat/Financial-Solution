@@ -75,7 +75,7 @@ function StorySection() {
           <motion.div variants={slideRight} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
             <div className="grid grid-cols-2 gap-4">
               {[
-                { val: '2016', label: 'Year Founded',    accent: '#1D4ED8' },
+                { val: '2025', label: 'Year Founded',    accent: '#1D4ED8' },
                 { val: '200+', label: 'Happy Clients',   accent: '#1D4ED8' },
                 { val: '3',    label: 'Countries Served', accent: '#059669' },
                 { val: '4.9★', label: 'Avg. Rating',     accent: '#D97706' },
@@ -143,7 +143,6 @@ function TeamSection() {
                 {initials}
               </div>
               <div>
-                <h3 style={{ fontSize: 15, fontWeight: 700, color: 'var(--text-heading)' }}>{name}</h3>
                 <p style={{ fontSize: 12, color: '#1D4ED8', fontWeight: 600, marginTop: 2 }}>{role}</p>
               </div>
               <p style={{ fontSize: 13.5, color: 'var(--text-muted)', lineHeight: 1.70 }}>{bio}</p>
