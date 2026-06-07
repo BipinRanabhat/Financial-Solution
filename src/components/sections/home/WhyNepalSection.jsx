@@ -109,7 +109,7 @@ export default function WhyNepalSection() {
 
       {/* Comparison Table */}
       <section className="section-padding" style={{ background: 'var(--bg-alt)', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', top: '30%', right: '-5%', width: 350, height: 350, borderRadius: '50%', background: 'radial-gradient(circle, rgba(29,78,216,0.06) 0%, transparent 70%)', filter: 'blur(60px)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: '30%', right: '-5%', width: 350, height: 350, borderRadius: '50%', background: 'radial-gradient(circle, var(--orb-blue) 0%, transparent 70%)', filter: 'blur(60px)', pointerEvents: 'none' }} />
         <div className="container-wide" ref={tableRef}>
           <div className="mb-14 flex flex-col items-center">
             <SectionHeading

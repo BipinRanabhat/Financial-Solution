@@ -23,9 +23,9 @@ export default function CTABanner() {
             borderRadius: 28,
             padding: 'clamp(40px, 7vw, 72px) clamp(20px, 5vw, 40px)',
             overflow: 'hidden',
-            background: 'linear-gradient(145deg, rgba(29,78,216,0.20) 0%, var(--bg-card-to) 50%, rgba(5,150,105,0.12) 100%)',
-            border: '1px solid rgba(29,78,216,0.28)',
-            boxShadow: '0 40px 100px rgba(0,0,0,0.30)',
+            background: 'var(--cta-card-bg)',
+            border: '1px solid var(--cta-card-border)',
+            boxShadow: 'var(--cta-card-shadow)',
           }}
         >
           {/* Animated ambient glow */}

@@ -60,6 +60,19 @@
   --scrollbar-track: #111113;
   --logo-filter:    drop-shadow(0 0 6px rgba(29,78,216,0.30));
 
+  /* --- Orb colors (theme-aware) --- */
+  --orb-blue:    rgba(29,78,216,0.07);
+  --orb-purple:  rgba(124,58,237,0.05);
+  --orb-emerald: rgba(5,150,105,0.05);
+
+  /* --- Navbar --- */
+  --nav-border: transparent;
+
+  /* --- CTA card --- */
+  --cta-card-bg:     linear-gradient(145deg, rgba(29,78,216,0.20) 0%, var(--bg-card-to) 50%, rgba(5,150,105,0.12) 100%);
+  --cta-card-border: rgba(29,78,216,0.28);
+  --cta-card-shadow: 0 40px 100px rgba(0,0,0,0.30);
+
   /* --- Tailwind RGB channels (used as rgb(var(--c-*) / alpha)) --- */
   --c-deep:    10 10 12;
   --c-dark:    17 17 19;
@@ -78,7 +91,7 @@
 [data-theme="light"] {
   /* --- Backgrounds --- */
   --bg-base:        #F8FAFC;
-  --bg-alt:         #F1F5F9;
+  --bg-alt:         radial-gradient(circle, rgba(29,78,216,0.05) 1px, transparent 1px) 0 0 / 28px 28px, #F1F5F9;
   --bg-deep:        #E8EDF3;
   --bg-nav:         rgba(248,250,252,0.97);
   --bg-overlay:     rgba(255,255,255,0.98);
@@ -86,8 +99,8 @@
   --bg-card-to:     rgba(248,250,252,0.95);
   --bg-card-solid:  rgba(255,255,255,0.98);
   --bg-stats:       rgba(248,250,252,0.95);
-  --bg-hero:        radial-gradient(ellipse 80% 55% at 50% 0%, rgba(29,78,216,0.06) 0%, transparent 70%), linear-gradient(180deg, #EEF2F7 0%, #F8FAFC 100%);
-  --bg-page-hero:   linear-gradient(180deg, #EEF2F7 0%, #F8FAFC 100%);
+  --bg-hero:        radial-gradient(ellipse 90% 60% at 50% -5%, rgba(29,78,216,0.14) 0%, rgba(147,197,253,0.07) 45%, transparent 70%), linear-gradient(180deg, #E8F0FB 0%, #F8FAFC 55%);
+  --bg-page-hero:   linear-gradient(180deg, #E8F0FB 0%, #F8FAFC 55%);
   --bg-select:      rgba(255,255,255,0.98);
   --bg-mini-stat:   rgba(29,78,216,0.04);
   --bg-table-even:  rgba(248,250,252,0.90);
@@ -116,14 +129,27 @@
   --accent-pale:    #1D4ED8;
 
   /* --- Shadows --- */
-  --card-shadow:        0 2px 20px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04);
-  --shadow-card-lg:     0 8px 32px rgba(0,0,0,0.10);
-  --shadow-dash-card:   0 8px 32px rgba(0,0,0,0.10), inset 0 1px 0 rgba(29,78,216,0.06);
+  --card-shadow:        0 4px 24px rgba(15,23,42,0.10), 0 1px 6px rgba(15,23,42,0.06), inset 0 1px 0 rgba(255,255,255,0.95);
+  --shadow-card-lg:     0 12px 48px rgba(15,23,42,0.13), 0 2px 10px rgba(15,23,42,0.07);
+  --shadow-dash-card:   0 12px 48px rgba(15,23,42,0.12), inset 0 1px 0 rgba(29,78,216,0.12);
 
   /* --- Misc --- */
   --grid-opacity:   0.25;
   --scrollbar-track: #F1F5F9;
   --logo-filter:    brightness(0.55) drop-shadow(0 1px 6px rgba(29,78,216,0.18));
+
+  /* --- Orb colors --- */
+  --orb-blue:    rgba(29,78,216,0.13);
+  --orb-purple:  rgba(124,58,237,0.10);
+  --orb-emerald: rgba(5,150,105,0.09);
+
+  /* --- Navbar --- */
+  --nav-border: rgba(29,78,216,0.10);
+
+  /* --- CTA card --- */
+  --cta-card-bg:     linear-gradient(145deg, rgba(29,78,216,0.08) 0%, rgba(255,255,255,0.98) 50%, rgba(5,150,105,0.06) 100%);
+  --cta-card-border: rgba(29,78,216,0.22);
+  --cta-card-shadow: 0 20px 60px rgba(29,78,216,0.14), 0 8px 24px rgba(0,0,0,0.07);
 
   /* --- Tailwind RGB channels --- */
   --c-deep:    226 232 240;
@@ -225,6 +251,16 @@ html.theme-transitioning *::after {
   ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
   ::-webkit-scrollbar-thumb { background: rgba(29,78,216,0.38); border-radius: 3px; }
   ::-webkit-scrollbar-thumb:hover { background: rgba(29,78,216,0.65); }
+
+  /* Section dividers — light mode only */
+  [data-theme="light"] .section-padding {
+    border-bottom: 1px solid rgba(29,78,216,0.06);
+  }
+
+  /* Navbar always-visible border — light mode */
+  [data-theme="light"] header {
+    border-bottom-color: rgba(29,78,216,0.09) !important;
+  }
 }
 
 /* Keyframe animations */

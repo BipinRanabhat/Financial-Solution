@@ -66,8 +66,8 @@ export default function FAQSection() {
   return (
     <section className="section-padding" style={{ background: 'var(--bg-alt)', position: 'relative', overflow: 'hidden' }}>
       {/* Ambient orbs */}
-      <div style={{ position: 'absolute', top: '10%', right: '-5%', width: 380, height: 380, borderRadius: '50%', background: 'radial-gradient(circle, rgba(29,78,216,0.07) 0%, transparent 70%)', filter: 'blur(60px)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', bottom: '5%', left: '-5%', width: 320, height: 320, borderRadius: '50%', background: 'radial-gradient(circle, rgba(5,150,105,0.05) 0%, transparent 70%)', filter: 'blur(50px)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: '10%', right: '-5%', width: 380, height: 380, borderRadius: '50%', background: 'radial-gradient(circle, var(--orb-blue) 0%, transparent 70%)', filter: 'blur(60px)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', bottom: '5%', left: '-5%', width: 320, height: 320, borderRadius: '50%', background: 'radial-gradient(circle, var(--orb-emerald) 0%, transparent 70%)', filter: 'blur(50px)', pointerEvents: 'none' }} />
       <div className="container-wide" ref={ref}>
         <div className="mb-14 flex flex-col items-center">
           <SectionHeading
