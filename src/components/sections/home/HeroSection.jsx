@@ -57,7 +57,7 @@ function TestimonialCard() {
         WebkitBackdropFilter: 'blur(24px)',
         border: '1px solid var(--border-medium)',
         borderRadius: 20,
-        padding: '28px 32px',
+        padding: 'clamp(18px, 4vw, 28px) clamp(16px, 5vw, 32px)',
         maxWidth: 560,
         margin: '52px auto 0',
         boxShadow: 'var(--shadow-dash-card)',

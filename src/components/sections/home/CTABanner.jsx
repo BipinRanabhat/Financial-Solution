@@ -21,7 +21,7 @@ export default function CTABanner() {
             position: 'relative',
             textAlign: 'center',
             borderRadius: 28,
-            padding: '72px 40px',
+            padding: 'clamp(40px, 7vw, 72px) clamp(20px, 5vw, 40px)',
             overflow: 'hidden',
             background: 'linear-gradient(145deg, rgba(29,78,216,0.20) 0%, var(--bg-card-to) 50%, rgba(5,150,105,0.12) 100%)',
             border: '1px solid rgba(29,78,216,0.28)',

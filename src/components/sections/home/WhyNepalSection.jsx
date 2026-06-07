@@ -92,9 +92,10 @@ export default function WhyNepalSection() {
           >
             <div style={{
               display: 'inline-flex', alignItems: 'center', gap: 12,
-              padding: '14px 28px', borderRadius: 14,
+              padding: '14px clamp(16px, 4vw, 28px)', borderRadius: 14,
               background: 'rgba(29,78,216,0.07)',
               border: '1px solid rgba(29,78,216,0.20)',
+              maxWidth: '100%', boxSizing: 'border-box',
             }}>
               <span style={{ fontSize: 22 }}>🇳🇵</span>
               <div style={{ textAlign: 'left' }}>
@@ -107,7 +108,8 @@ export default function WhyNepalSection() {
       </section>
 
       {/* Comparison Table */}
-      <section className="section-padding" style={{ background: 'var(--bg-alt)' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-alt)', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', top: '30%', right: '-5%', width: 350, height: 350, borderRadius: '50%', background: 'radial-gradient(circle, rgba(29,78,216,0.06) 0%, transparent 70%)', filter: 'blur(60px)', pointerEvents: 'none' }} />
         <div className="container-wide" ref={tableRef}>
           <div className="mb-14 flex flex-col items-center">
             <SectionHeading
@@ -121,32 +123,75 @@ export default function WhyNepalSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={tableInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            style={{ overflowX: 'auto', borderRadius: 16, border: '1px solid var(--border-medium)', boxShadow: 'var(--card-shadow)' }}
           >
-            <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 560 }}>
-              <thead>
-                <tr style={{ background: 'var(--bg-table-head)' }}>
-                  <th style={{ padding: '16px 24px', textAlign: 'left', fontSize: 12, fontWeight: 700, color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Feature</th>
-                  <th style={{ padding: '16px 20px', textAlign: 'center', fontSize: 13, fontWeight: 800, color: '#1D4ED8' }}>
-                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                      <span style={{ fontSize: 16 }}>🇳🇵</span> Vanguard
-                    </div>
-                  </th>
-                  <th style={{ padding: '16px 20px', textAlign: 'center', fontSize: 12, fontWeight: 700, color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>In-House Staff</th>
-                  <th style={{ padding: '16px 20px', textAlign: 'center', fontSize: 12, fontWeight: 700, color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Big US / UK Firm</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparisons.map(({ label, vanguard, inhouse, bigfirm }, i) => (
-                  <tr key={i} style={{ borderTop: '1px solid var(--border-section)', background: i % 2 === 0 ? 'var(--bg-table-even)' : 'var(--bg-table-odd)' }}>
-                    <td style={{ padding: '15px 24px', fontSize: 13.5, color: 'var(--text-body)', fontWeight: 500 }}>{label}</td>
-                    <td style={{ padding: '15px 20px', textAlign: 'center', background: 'rgba(29,78,216,0.05)' }}><CellHighlight val={vanguard} /></td>
-                    <td style={{ padding: '15px 20px', textAlign: 'center' }}><Cell val={inhouse} /></td>
-                    <td style={{ padding: '15px 20px', textAlign: 'center' }}><Cell val={bigfirm} /></td>
+            {/* ── Desktop table (md+) ── */}
+            <div className="hidden md:block" style={{ overflowX: 'auto', borderRadius: 16, border: '1px solid var(--border-medium)', boxShadow: 'var(--card-shadow)' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 560 }}>
+                <thead>
+                  <tr style={{ background: 'var(--bg-table-head)' }}>
+                    <th style={{ padding: '16px 24px', textAlign: 'left', fontSize: 12, fontWeight: 700, color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Feature</th>
+                    <th style={{ padding: '16px 20px', textAlign: 'center', fontSize: 13, fontWeight: 800, color: '#1D4ED8' }}>
+                      <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                        <span style={{ fontSize: 16 }}>🇳🇵</span> Vanguard
+                      </div>
+                    </th>
+                    <th style={{ padding: '16px 20px', textAlign: 'center', fontSize: 12, fontWeight: 700, color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>In-House Staff</th>
+                    <th style={{ padding: '16px 20px', textAlign: 'center', fontSize: 12, fontWeight: 700, color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Big US / UK Firm</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {comparisons.map(({ label, vanguard, inhouse, bigfirm }, i) => (
+                    <tr key={i} style={{ borderTop: '1px solid var(--border-section)', background: i % 2 === 0 ? 'var(--bg-table-even)' : 'var(--bg-table-odd)' }}>
+                      <td style={{ padding: '15px 24px', fontSize: 13.5, color: 'var(--text-body)', fontWeight: 500 }}>{label}</td>
+                      <td style={{ padding: '15px 20px', textAlign: 'center', background: 'rgba(29,78,216,0.05)' }}><CellHighlight val={vanguard} /></td>
+                      <td style={{ padding: '15px 20px', textAlign: 'center' }}><Cell val={inhouse} /></td>
+                      <td style={{ padding: '15px 20px', textAlign: 'center' }}><Cell val={bigfirm} /></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* ── Mobile stacked cards (<md) ── */}
+            <div className="md:hidden flex flex-col gap-3">
+              {/* Column headers */}
+              <div style={{
+                display: 'grid', gridTemplateColumns: '1fr 1fr 1fr',
+                padding: '10px 16px', borderRadius: 10,
+                background: 'var(--bg-table-head)',
+                border: '1px solid var(--border-medium)',
+              }}>
+                <div style={{ textAlign: 'center', fontSize: 11, fontWeight: 800, color: '#1D4ED8', letterSpacing: '0.06em' }}>🇳🇵 VANGUARD</div>
+                <div style={{ textAlign: 'center', fontSize: 11, fontWeight: 700, color: 'var(--text-dim2)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>In-House</div>
+                <div style={{ textAlign: 'center', fontSize: 11, fontWeight: 700, color: 'var(--text-dim2)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Big Firm</div>
+              </div>
+
+              {comparisons.map(({ label, vanguard, inhouse, bigfirm }, i) => (
+                <div key={i} style={{
+                  borderRadius: 12,
+                  background: 'linear-gradient(145deg, var(--bg-card-from) 0%, var(--bg-card-to) 100%)',
+                  border: '1px solid var(--border-subtle)',
+                  overflow: 'hidden',
+                }}>
+                  {/* Feature label */}
+                  <div style={{ padding: '10px 16px', fontSize: 13, fontWeight: 600, color: 'var(--text-body)', borderBottom: '1px solid var(--border-section)' }}>
+                    {label}
+                  </div>
+                  {/* Values row */}
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
+                    <div style={{ padding: '12px 8px', textAlign: 'center', background: 'rgba(29,78,216,0.05)', borderRight: '1px solid var(--border-section)' }}>
+                      <CellHighlight val={vanguard} />
+                    </div>
+                    <div style={{ padding: '12px 8px', textAlign: 'center', borderRight: '1px solid var(--border-section)' }}>
+                      <Cell val={inhouse} />
+                    </div>
+                    <div style={{ padding: '12px 8px', textAlign: 'center' }}>
+                      <Cell val={bigfirm} />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
