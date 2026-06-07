@@ -14,7 +14,7 @@ const values = [
 ]
 
 const team = [
-  { name: 'Aryan Shrestha',  role: 'Founder & Lead CPA',   initials: 'AS', bio: '12+ years in international accounting. CPA-certified specialist in SMB financial strategy and remote client management.' },
+  { name: 'Aryan Shrestha',  role: 'Founder & Lead CA',    initials: 'AS', bio: 'CA-certified specialist in international SMB accounting, financial strategy, and remote client management.' },
   { name: 'Sanjib Karki',    role: 'Senior Bookkeeper',    initials: 'SK', bio: 'QuickBooks ProAdvisor and Xero Certified. Specializes in e-commerce, retail, and multi-currency bookkeeping.' },
   { name: 'Anita Thapa',     role: 'Payroll Specialist',   initials: 'AT', bio: 'Certified Payroll Professional with 7+ years managing global payroll for distributed teams across the US and UK.' },
 ]
@@ -40,7 +40,7 @@ function PageHero() {
           initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
           className="text-base sm:text-lg text-sky/65 leading-relaxed max-w-2xl mx-auto"
         >
-          Vanguard was built by a team of Nepali accounting professionals who believe geography shouldn't limit the quality of financial expertise you can access. We deliver CPA-level service to businesses worldwide, remotely.
+          Vanguard was built by a team of Nepali accounting professionals who believe geography shouldn't limit the quality of financial expertise you can access. We deliver CA-level service to businesses worldwide, remotely.
         </motion.p>
       </div>
     </section>

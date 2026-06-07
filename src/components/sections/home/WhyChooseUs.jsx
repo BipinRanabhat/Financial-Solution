@@ -7,7 +7,7 @@ import SectionHeading from '../../ui/SectionHeading'
 const features = [
   {
     Icon: ShieldCheck,
-    title: 'CPA-Level Expertise',
+    title: 'CA-Level Expertise',
     desc: 'Access senior-level accounting talent at a fraction of in-house costs — without sacrificing quality or responsiveness.',
   },
   {
@@ -155,7 +155,7 @@ export default function WhyChooseUs() {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
                 {[
                   { val: '200+', label: 'Active Clients',    accent: '#1D4ED8' },
-                  { val: '8+',   label: 'Years Experience',  accent: '#1D4ED8' },
+                  { val: '3',    label: 'Countries Served',   accent: '#1D4ED8' },
                   { val: '$50M+', label: 'Annually Managed', accent: '#059669' },
                   { val: '24/7', label: 'Always Available',   accent: '#059669' },
                 ].map(({ val, label, accent }, i) => (

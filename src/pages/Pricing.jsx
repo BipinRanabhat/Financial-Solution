@@ -64,7 +64,7 @@ const plans = [
       'Scenario modeling & growth planning',
       'Entity structure optimization',
       'Investor-ready financial packages',
-      'Dedicated senior CPA on account',
+      'Dedicated senior CA on account',
       '2hr priority response guarantee',
     ],
     notIncluded: [],

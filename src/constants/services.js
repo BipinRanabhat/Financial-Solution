@@ -88,7 +88,7 @@ export const services = [
 
 export const stats = [
   { value: 200,  suffix: '+',  label: 'Clients Served',        icon: 'Users' },
-  { value: 8,    suffix: '+',  label: 'Years Experience',       icon: 'Award' },
+  { value: 3,    suffix: '',   label: 'Countries Served',        icon: 'Globe' },
   { value: 50,   suffix: 'M+', label: 'Managed Annually ($)',   icon: 'TrendingUp', prefix: '$' },
   { value: 99,   suffix: '%',  label: 'Client Retention Rate',  icon: 'Star' },
 ]

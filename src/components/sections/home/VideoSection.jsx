@@ -7,7 +7,7 @@ const THUMB = `https://img.youtube.com/vi/${YOUTUBE_ID}/maxresdefault.jpg`
 
 const highlights = [
   { Icon: Users,      val: '200+',   label: 'Active Clients',    color: '#1D4ED8' },
-  { Icon: Award,      val: 'CPA',    label: 'Certified Team',    color: '#059669' },
+  { Icon: Award,      val: 'CA',     label: 'Certified Team',    color: '#059669' },
   { Icon: TrendingUp, val: '$50M+',  label: 'Annually Managed',  color: '#7C3AED' },
 ]
 

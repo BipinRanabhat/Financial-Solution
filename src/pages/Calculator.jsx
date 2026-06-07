@@ -111,7 +111,7 @@ export default function Calculator() {
                   <span style={{ fontSize: 12, fontWeight: 700, color: '#1D4ED8', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Vanguard Growth Plan</span>
                 </div>
                 <div style={{ fontSize: 22, fontWeight: 900, color: 'var(--text-heading)' }}>$599<span style={{ fontSize: 13, fontWeight: 500, color: 'var(--text-dim)' }}>/month</span></div>
-                <div style={{ fontSize: 12, color: 'var(--text-dim2)', marginTop: 4 }}>Bookkeeping + Tax + Payroll + Dedicated CPA</div>
+                <div style={{ fontSize: 12, color: 'var(--text-dim2)', marginTop: 4 }}>Bookkeeping + Tax + Payroll + Dedicated CA</div>
               </div>
             </motion.div>
 

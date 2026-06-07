@@ -6,41 +6,41 @@ import { Link } from 'react-router-dom'
 const WORDS = ['Precision.', 'Confidence.', 'Growth.', 'Excellence.']
 
 const badges = [
-  { Icon: Shield,     label: 'CPA Certified' },
-  { Icon: Award,      label: '8+ Years Trusted' },
+  { Icon: Shield,     label: 'CA Certified' },
+  { Icon: Award,      label: 'Multi-Country Experts' },
   { Icon: TrendingUp, label: '$50M+ Managed' },
 ]
 
 const ease = [0.22, 1, 0.36, 1]
 
-function MiniBarChart() {
-  const bars = [48, 62, 42, 76, 55, 88, 63, 95, 71, 84]
-  return (
-    <div style={{ display: 'flex', alignItems: 'flex-end', gap: 4, height: 60, padding: '0 2px' }}>
-      {bars.map((h, i) => (
-        <motion.div
-          key={i}
-          initial={{ scaleY: 0 }}
-          animate={{ scaleY: 1 }}
-          transition={{ duration: 0.5, delay: 0.85 + i * 0.055, ease: [0.22, 1, 0.36, 1] }}
-          style={{
-            flex: 1,
-            height: `${h}%`,
-            background: i === 7
-              ? 'linear-gradient(to top, #1D4ED8, #93C5FD)'
-              : i === 9
-                ? 'rgba(29,78,216,0.45)'
-                : 'rgba(29,78,216,0.22)',
-            borderRadius: '3px 3px 0 0',
-            transformOrigin: 'bottom',
-          }}
-        />
-      ))}
-    </div>
-  )
-}
+const testimonials = [
+  {
+    quote: "They cleaned up 3 years of messy books in two weeks. I finally know exactly where my money is going.",
+    author: "James T.",
+    location: "Sydney, Australia 🇦🇺",
+  },
+  {
+    quote: "Felt like having a CFO on our team from day one. Incredibly responsive, thorough, and proactive.",
+    author: "Sarah M.",
+    location: "London, UK 🇬🇧",
+  },
+  {
+    quote: "Saved us over $12,000 in our first tax year. Best financial decision we've ever made.",
+    author: "Michael R.",
+    location: "Dallas, USA 🇺🇸",
+  },
+]
 
-function DashboardCard() {
+function TestimonialCard() {
+  const [idx, setIdx] = useState(0)
+
+  useEffect(() => {
+    const id = setInterval(() => setIdx(i => (i + 1) % testimonials.length), 4000)
+    return () => clearInterval(id)
+  }, [])
+
+  const t = testimonials[idx]
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 36 }}
@@ -53,7 +53,7 @@ function DashboardCard() {
         WebkitBackdropFilter: 'blur(24px)',
         border: '1px solid var(--border-medium)',
         borderRadius: 20,
-        padding: '24px 28px',
+        padding: '28px 32px',
         maxWidth: 560,
         margin: '52px auto 0',
         boxShadow: 'var(--shadow-dash-card)',
@@ -68,53 +68,79 @@ function DashboardCard() {
         pointerEvents: 'none',
       }} />
 
-      {/* Header row */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 20 }}>
-        <div>
-          <div style={{ fontSize: 11, color: 'var(--text-dim)', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 6 }}>
-            Monthly Revenue
-          </div>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
-            <span style={{ fontSize: 30, fontWeight: 800, color: 'var(--text-heading)', letterSpacing: '-0.03em' }}>$128,400</span>
-            <motion.span
-              initial={{ opacity: 0, x: -6 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1.1, duration: 0.4 }}
-              style={{ fontSize: 13, fontWeight: 700, color: '#10B981' }}
-            >
-              ↑ 12.4%
-            </motion.span>
-          </div>
-        </div>
-        <motion.div
-          animate={{ opacity: [0.6, 1, 0.6] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          style={{ padding: '5px 10px', borderRadius: 6, fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', color: '#10B981', background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.22)', textTransform: 'uppercase' }}
-        >
-          ● Live
-        </motion.div>
+      {/* Stars */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 3, marginBottom: 18 }}>
+        {[...Array(5)].map((_, i) => (
+          <span key={i} style={{ fontSize: 15, color: '#F59E0B' }}>★</span>
+        ))}
+        <span style={{ fontSize: 11, color: 'var(--text-dim)', marginLeft: 7, fontWeight: 600 }}>
+          5.0 · Verified Client
+        </span>
       </div>
 
-      <MiniBarChart />
+      {/* Cycling quote */}
+      <div style={{ minHeight: 88 }}>
+        <AnimatePresence mode="wait">
+          <motion.p
+            key={idx}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.38 }}
+            style={{
+              fontSize: '0.9375rem', fontWeight: 500, lineHeight: 1.68,
+              color: 'var(--text-heading)', margin: 0, fontStyle: 'italic',
+            }}
+          >
+            "{t.quote}"
+          </motion.p>
+        </AnimatePresence>
+      </div>
 
-      <div style={{ height: 1, background: 'var(--border-subtle)', margin: '16px 0' }} />
+      {/* Author */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={`a-${idx}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 18 }}
+        >
+          <div style={{
+            width: 36, height: 36, borderRadius: '50%', flexShrink: 0,
+            background: 'linear-gradient(135deg, #1D4ED8, #1E3A8A)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: 13, fontWeight: 800, color: '#fff',
+          }}>
+            {t.author[0]}
+          </div>
+          <div>
+            <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text-heading)' }}>{t.author}</div>
+            <div style={{ fontSize: 11, color: 'var(--text-dim)', marginTop: 1 }}>{t.location}</div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8 }}>
-        {[
-          { label: 'Profit Margin', val: '23.4%',  color: '#1D4ED8' },
-          { label: 'Expenses',      val: '$42,100', color: '#F59E0B' },
-          { label: 'Cash Flow',     val: '+$18.9K', color: '#10B981' },
-        ].map(({ label, val, color }, i) => (
+      {/* Divider */}
+      <div style={{ height: 1, background: 'var(--border-subtle)', margin: '18px 0 14px' }} />
+
+      {/* Footer */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <span style={{ fontSize: 11, color: 'var(--text-dim2)', fontWeight: 600 }}>Trusted by 200+ businesses</span>
+        <span style={{ fontSize: 11, color: 'var(--text-dim2)', fontWeight: 600 }}>🇺🇸 US · 🇬🇧 UK · 🇦🇺 AU</span>
+      </div>
+
+      {/* Dot indicators */}
+      <div style={{ display: 'flex', gap: 5, justifyContent: 'center', marginTop: 14 }}>
+        {testimonials.map((_, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2 + i * 0.07, duration: 0.35 }}
-            style={{ padding: '8px 10px', borderRadius: 8, background: 'var(--bg-mini-stat)', border: '1px solid var(--border-subtle)' }}
-          >
-            <div style={{ fontSize: 9, color: 'var(--text-dim2)', marginBottom: 3, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{label}</div>
-            <div style={{ fontSize: 14, fontWeight: 700, color }}>{val}</div>
-          </motion.div>
+            animate={{ width: i === idx ? 18 : 6, background: i === idx ? '#1D4ED8' : 'rgba(29,78,216,0.20)' }}
+            transition={{ duration: 0.3 }}
+            style={{ height: 6, borderRadius: 3, cursor: 'pointer' }}
+            onClick={() => setIdx(i)}
+          />
         ))}
       </div>
     </motion.div>
@@ -299,8 +325,8 @@ export default function HeroSection() {
           ))}
         </motion.div>
 
-        {/* Dashboard preview */}
-        <DashboardCard />
+        {/* Testimonial card */}
+        <TestimonialCard />
       </div>
 
       {/* Scroll indicator */}

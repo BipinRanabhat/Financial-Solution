@@ -4,10 +4,10 @@ import { Globe, Clock, ShieldCheck, TrendingDown, Award, Users } from 'lucide-re
 import SectionHeading from '../../ui/SectionHeading'
 
 const advantages = [
-  { icon: TrendingDown, color: '#059669', title: '40–60% Cost Savings', desc: 'Get CPA-level expertise at a fraction of what a US or UK firm charges. Same certifications, same software, dramatically better value.' },
-  { icon: Award,        color: '#1D4ED8', title: 'Fully Certified Team', desc: 'Our accountants hold CPA, CPP, QuickBooks ProAdvisor, and Xero Certified credentials — the same qualifications your local firm advertises.' },
+  { icon: TrendingDown, color: '#059669', title: '40–60% Cost Savings', desc: 'Get CA-level expertise at a fraction of what a US or UK firm charges. Same certifications, same software, dramatically better value.' },
+  { icon: Award,        color: '#1D4ED8', title: 'Fully Certified Team', desc: 'Our accountants hold CA, CPP, QuickBooks ProAdvisor, and Xero Certified credentials — the same qualifications your local firm advertises.' },
   { icon: Clock,        color: '#7C3AED', title: 'Overnight Turnaround', desc: 'Nepal\'s timezone (UTC+5:45) means we work while you sleep. Send requests end-of-day, receive completed work by morning.' },
-  { icon: Globe,        color: '#D97706', title: 'Fluent in Your Markets', desc: 'We\'ve specialized in US, UK, and Australian tax and compliance for 9+ years. We speak your jurisdiction\'s language — not just English.' },
+  { icon: Globe,        color: '#D97706', title: 'Fluent in Your Markets', desc: 'Deep-specialized in US, UK, and Australian tax and compliance. We speak your jurisdiction\'s language — not just English.' },
   { icon: ShieldCheck,  color: '#1D4ED8', title: 'Transparent by Default', desc: 'We tell you exactly who we are, where we are, and how we work. No shell addresses, no hidden teams — just honest professionals you can verify.' },
   { icon: Users,        color: '#059669', title: 'Dedicated Account Team', desc: 'You get a named account manager, bookkeeper, and payroll specialist — not a rotating support queue. Same faces, every month.' },
 ]
@@ -15,7 +15,7 @@ const advantages = [
 const comparisons = [
   { label: 'Monthly Cost',           vanguard: 'From $299/mo', inhouse: '$5,000+/mo',  bigfirm: '$3,000+/mo' },
   { label: 'Response Time',          vanguard: '24/7',         inhouse: '9–5 only',     bigfirm: '48+ hours' },
-  { label: 'CPA Certified',          vanguard: true,           inhouse: 'Varies',        bigfirm: true },
+  { label: 'CA Certified',            vanguard: true,           inhouse: 'Varies',        bigfirm: true },
   { label: 'Dedicated Manager',      vanguard: true,           inhouse: true,            bigfirm: false },
   { label: 'Tax Filing Included',    vanguard: true,           inhouse: false,           bigfirm: 'Extra cost' },
   { label: 'Month-to-Month',         vanguard: true,           inhouse: 'N/A',           bigfirm: false },
@@ -99,7 +99,7 @@ export default function WhyNepalSection() {
               <span style={{ fontSize: 22 }}>🇳🇵</span>
               <div style={{ textAlign: 'left' }}>
                 <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--text-heading)' }}>Headquartered in Kathmandu, Nepal</div>
-                <div style={{ fontSize: 12, color: 'var(--text-dim)', marginTop: 2 }}>Proudly Nepali. Serving US, UK &amp; Australia since 2016.</div>
+                <div style={{ fontSize: 12, color: 'var(--text-dim)', marginTop: 2 }}>Proudly Nepali. Purpose-built for US, UK &amp; Australian businesses.</div>
               </div>
             </div>
           </motion.div>
