@@ -160,7 +160,6 @@ export default function About() {
       <PageHero />
       <StorySection />
       <ValuesSection />
-      <TeamSection />
       <CTABanner />
     </PageWrapper>
   )
