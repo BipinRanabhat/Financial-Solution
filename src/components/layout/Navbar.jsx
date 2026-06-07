@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { navLinks } from '../../constants/navigation'
 import ThemeToggle from '../ui/ThemeToggle'
+import MagneticButton from '../ui/MagneticButton'
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled]   = useState(false)
@@ -56,19 +57,21 @@ export default function Navbar() {
           {/* Theme toggle + CTA + hamburger */}
           <div className="flex items-center gap-3">
             <ThemeToggle />
-            <Link
-              to="/contact"
-              className="hidden sm:inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-200"
-              style={{
-                background: 'linear-gradient(135deg, #1D4ED8, #1E3A8A)',
-                color: 'white',
-                boxShadow: '0 4px 14px rgba(29,78,216,0.35)',
-              }}
-              onMouseEnter={e => e.currentTarget.style.boxShadow = '0 4px 20px rgba(29,78,216,0.55)'}
-              onMouseLeave={e => e.currentTarget.style.boxShadow = '0 4px 14px rgba(29,78,216,0.35)'}
-            >
-              Get Started
-            </Link>
+            <MagneticButton strength={0.28}>
+              <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
+                <Link
+                  to="/contact"
+                  className="hidden sm:inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold"
+                  style={{
+                    background: 'linear-gradient(135deg, #1D4ED8, #1E3A8A)',
+                    color: 'white',
+                    boxShadow: '0 4px 14px rgba(29,78,216,0.35)',
+                  }}
+                >
+                  Get Started
+                </Link>
+              </motion.div>
+            </MagneticButton>
             <button
               onClick={() => setMobileOpen(v => !v)}
               className="md:hidden p-2 rounded-lg transition-colors"

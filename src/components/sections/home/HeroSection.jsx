@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, Shield, Award, TrendingUp } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import MagneticButton from '../../ui/MagneticButton'
 
 const WORDS = ['Precision.', 'Confidence.', 'Growth.', 'Excellence.']
 
@@ -279,35 +280,39 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.3, ease }}
           style={{ display: 'flex', flexWrap: 'wrap', gap: 14, justifyContent: 'center', marginBottom: 48 }}
         >
-          <motion.div whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }}>
-            <Link
-              to="/services"
-              style={{
-                display: 'inline-flex', alignItems: 'center', gap: 8,
-                padding: '14px 30px', borderRadius: 10, fontSize: '1rem', fontWeight: 700,
-                color: 'white', textDecoration: 'none',
-                background: 'linear-gradient(135deg, #1D4ED8, #1E3A8A)',
-                boxShadow: '0 8px 32px rgba(29,78,216,0.40), inset 0 1px 0 rgba(255,255,255,0.12)',
-              }}
-            >
-              Explore Services <ArrowRight size={18} />
-            </Link>
-          </motion.div>
-          <motion.div whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }}>
-            <Link
-              to="/contact"
-              style={{
-                display: 'inline-flex', alignItems: 'center', gap: 8,
-                padding: '14px 30px', borderRadius: 10, fontSize: '1rem', fontWeight: 600,
-                color: 'var(--accent-pale)', textDecoration: 'none',
-                border: '1.5px solid rgba(29,78,216,0.35)',
-                background: 'rgba(29,78,216,0.07)',
-                backdropFilter: 'blur(8px)',
-              }}
-            >
-              Book a Free Call
-            </Link>
-          </motion.div>
+          <MagneticButton>
+            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
+              <Link
+                to="/services"
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 8,
+                  padding: '14px 30px', borderRadius: 10, fontSize: '1rem', fontWeight: 700,
+                  color: 'white', textDecoration: 'none',
+                  background: 'linear-gradient(135deg, #1D4ED8, #1E3A8A)',
+                  boxShadow: '0 8px 32px rgba(29,78,216,0.40), inset 0 1px 0 rgba(255,255,255,0.12)',
+                }}
+              >
+                Explore Services <ArrowRight size={18} />
+              </Link>
+            </motion.div>
+          </MagneticButton>
+          <MagneticButton>
+            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
+              <Link
+                to="/contact"
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 8,
+                  padding: '14px 30px', borderRadius: 10, fontSize: '1rem', fontWeight: 600,
+                  color: 'var(--accent-pale)', textDecoration: 'none',
+                  border: '1.5px solid rgba(29,78,216,0.35)',
+                  background: 'rgba(29,78,216,0.07)',
+                  backdropFilter: 'blur(8px)',
+                }}
+              >
+                Book a Free Call
+              </Link>
+            </motion.div>
+          </MagneticButton>
         </motion.div>
 
         {/* Trust badges */}

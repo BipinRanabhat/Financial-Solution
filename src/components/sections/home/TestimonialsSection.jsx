@@ -119,7 +119,10 @@ export default function TestimonialsSection() {
   const next = () => setFeatured(f => (f + 1) % testimonials.length)
 
   return (
-    <section className="section-padding" style={{ background: 'var(--bg-alt)' }}>
+    <section className="section-padding" style={{ background: 'var(--bg-alt)', position: 'relative', overflow: 'hidden' }}>
+      {/* Ambient orbs */}
+      <div style={{ position: 'absolute', top: '20%', left: '-8%', width: 420, height: 420, borderRadius: '50%', background: 'radial-gradient(circle, rgba(29,78,216,0.08) 0%, transparent 70%)', filter: 'blur(70px)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', bottom: '10%', right: '-5%', width: 340, height: 340, borderRadius: '50%', background: 'radial-gradient(circle, rgba(124,58,237,0.06) 0%, transparent 70%)', filter: 'blur(55px)', pointerEvents: 'none' }} />
       <div className="container-wide">
         <div className="mb-14 flex flex-col items-center">
           <SectionHeading

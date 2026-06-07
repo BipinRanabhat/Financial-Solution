@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ArrowRight, Calendar, CheckCircle2 } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import MagneticButton from '../../ui/MagneticButton'
 
 const perks = ['No setup fees', 'Cancel anytime', '30-day guarantee', 'NDA on Day 1']
 
@@ -102,35 +103,39 @@ export default function CTABanner() {
               transition={{ duration: 0.5, delay: 0.36 }}
               style={{ display: 'flex', flexWrap: 'wrap', gap: 14, justifyContent: 'center', marginBottom: 32 }}
             >
-              <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.97 }}>
-                <Link
-                  to="/contact"
-                  style={{
-                    display: 'inline-flex', alignItems: 'center', gap: 8,
-                    padding: '15px 34px', borderRadius: 12, fontSize: '1rem', fontWeight: 700,
-                    color: 'white', textDecoration: 'none',
-                    background: 'linear-gradient(135deg, #1D4ED8, #1E3A8A)',
-                    boxShadow: '0 8px 32px rgba(29,78,216,0.45), inset 0 1px 0 rgba(255,255,255,0.14)',
-                  }}
-                >
-                  Book Free Call <ArrowRight size={18} />
-                </Link>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.97 }}>
-                <Link
-                  to="/services"
-                  style={{
-                    display: 'inline-flex', alignItems: 'center', gap: 8,
-                    padding: '15px 34px', borderRadius: 12, fontSize: '1rem', fontWeight: 600,
-                    color: '#34D399', textDecoration: 'none',
-                    border: '1.5px solid rgba(5,150,105,0.40)',
-                    background: 'rgba(5,150,105,0.08)',
-                    backdropFilter: 'blur(10px)',
-                  }}
-                >
-                  View Services
-                </Link>
-              </motion.div>
+              <MagneticButton>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                  <Link
+                    to="/contact"
+                    style={{
+                      display: 'inline-flex', alignItems: 'center', gap: 8,
+                      padding: '15px 34px', borderRadius: 12, fontSize: '1rem', fontWeight: 700,
+                      color: 'white', textDecoration: 'none',
+                      background: 'linear-gradient(135deg, #1D4ED8, #1E3A8A)',
+                      boxShadow: '0 8px 32px rgba(29,78,216,0.45), inset 0 1px 0 rgba(255,255,255,0.14)',
+                    }}
+                  >
+                    Book Free Call <ArrowRight size={18} />
+                  </Link>
+                </motion.div>
+              </MagneticButton>
+              <MagneticButton>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+                  <Link
+                    to="/services"
+                    style={{
+                      display: 'inline-flex', alignItems: 'center', gap: 8,
+                      padding: '15px 34px', borderRadius: 12, fontSize: '1rem', fontWeight: 600,
+                      color: '#34D399', textDecoration: 'none',
+                      border: '1.5px solid rgba(5,150,105,0.40)',
+                      background: 'rgba(5,150,105,0.08)',
+                      backdropFilter: 'blur(10px)',
+                    }}
+                  >
+                    View Services
+                  </Link>
+                </motion.div>
+              </MagneticButton>
             </motion.div>
 
             {/* Perk pills */}
