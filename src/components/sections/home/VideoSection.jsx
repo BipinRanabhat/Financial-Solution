@@ -1,14 +1,15 @@
 import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Play, Users, Award, TrendingUp } from 'lucide-react'
+import AnimatedCounter from '../../ui/AnimatedCounter'
 
 const YOUTUBE_ID = 'yLFtZPu-irQ'
 const THUMB = `https://img.youtube.com/vi/${YOUTUBE_ID}/maxresdefault.jpg`
 
 const highlights = [
-  { Icon: Users,      val: '200+',   label: 'Active Clients',    color: '#1D4ED8' },
-  { Icon: Award,      val: 'CA',     label: 'Certified Team',    color: '#059669' },
-  { Icon: TrendingUp, val: '$50M+',  label: 'Annually Managed',  color: '#7C3AED' },
+  { Icon: Users,      end: 200,  suffix: '+',  prefix: '',  label: 'Active Clients',   color: '#1D4ED8' },
+  { Icon: Award,      end: null, suffix: '',   prefix: 'CA', label: 'Certified Team',   color: '#059669' },
+  { Icon: TrendingUp, end: 50,   suffix: 'M+', prefix: '$', label: 'Annually Managed', color: '#7C3AED' },
 ]
 
 export default function VideoSection() {
@@ -192,7 +193,7 @@ export default function VideoSection() {
           transition={{ duration: 0.6, delay: 0.45 }}
           className="max-w-2xl mx-auto mt-8 grid grid-cols-3 gap-4"
         >
-          {highlights.map(({ Icon, val, label, color }, i) => (
+          {highlights.map(({ Icon, end, suffix, prefix, label, color }, i) => (
             <div key={i} style={{
               display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
               padding: '18px 12px', borderRadius: 14, textAlign: 'center',
@@ -207,7 +208,11 @@ export default function VideoSection() {
               }}>
                 <Icon size={17} style={{ color }} strokeWidth={1.8} />
               </div>
-              <span style={{ fontSize: 22, fontWeight: 800, color, lineHeight: 1 }}>{val}</span>
+              <span style={{ fontSize: 22, fontWeight: 800, color, lineHeight: 1 }}>
+                {end !== null
+                  ? <AnimatedCounter end={end} suffix={suffix} prefix={prefix} duration={1.8} />
+                  : prefix}
+              </span>
               <span style={{ fontSize: 11, color: 'var(--text-dim)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.09em' }}>{label}</span>
             </div>
           ))}

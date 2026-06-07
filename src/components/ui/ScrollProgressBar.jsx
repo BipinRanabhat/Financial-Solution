@@ -11,12 +11,13 @@ export default function ScrollProgressBar() {
         top: 0,
         left: 0,
         right: 0,
-        height: 2,
-        background: 'linear-gradient(90deg, #1D4ED8 0%, #1D4ED8 45%, #059669 100%)',
+        height: 3,
+        background: 'linear-gradient(90deg, #1D4ED8 0%, #3B82F6 45%, #059669 100%)',
         transformOrigin: '0%',
         scaleX,
         zIndex: 9999,
         pointerEvents: 'none',
+        boxShadow: '0 0 10px rgba(29,78,216,0.70), 0 0 20px rgba(29,78,216,0.35)',
       }}
     />
   )
