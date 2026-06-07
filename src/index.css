@@ -136,7 +136,7 @@
   /* --- Misc --- */
   --grid-opacity:   0.25;
   --scrollbar-track: #F1F5F9;
-  --logo-filter:    brightness(0.55) drop-shadow(0 1px 6px rgba(29,78,216,0.18));
+  --logo-filter:    drop-shadow(0 1px 6px rgba(29,78,216,0.20));
 
   /* --- Orb colors --- */
   --orb-blue:    rgba(29,78,216,0.13);
