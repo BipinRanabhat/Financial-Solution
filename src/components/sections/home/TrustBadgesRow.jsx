@@ -5,9 +5,7 @@ const badges = [
   { Icon: ShieldCheck, label: 'QuickBooks ProAdvisor', color: '#059669' },
   { Icon: CheckCircle, label: 'Xero Certified Partner', color: '#1D4ED8' },
   { Icon: Award,       label: 'CA Certified',            color: '#1D4ED8' },
-  { Icon: Award,       label: 'CPP Certified',           color: '#7C3AED' },
   { Icon: Star,        label: '4.9 / 5 Rating',          color: '#D97706' },
-  { Icon: ShieldCheck, label: 'AICPA Member',             color: '#059669' },
   { Icon: CheckCircle, label: '200+ Happy Clients',       color: '#1D4ED8' },
   { Icon: Award,       label: 'Multi-Country Experts',    color: '#7C3AED' },
 ]

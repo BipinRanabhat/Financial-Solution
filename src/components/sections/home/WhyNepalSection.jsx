@@ -5,7 +5,7 @@ import SectionHeading from '../../ui/SectionHeading'
 
 const advantages = [
   { icon: TrendingDown, color: '#059669', title: '40–60% Cost Savings', desc: 'Get CA-level expertise at a fraction of what a US or UK firm charges. Same certifications, same software, dramatically better value.' },
-  { icon: Award,        color: '#1D4ED8', title: 'Fully Certified Team', desc: 'Our accountants hold CA, CPP, QuickBooks ProAdvisor, and Xero Certified credentials — the same qualifications your local firm advertises.' },
+  { icon: Award,        color: '#1D4ED8', title: 'Fully Certified Team', desc: 'Our accountants hold CA, QuickBooks ProAdvisor, and Xero Certified credentials — the same qualifications your local firm advertises.' },
   { icon: Clock,        color: '#7C3AED', title: 'Overnight Turnaround', desc: 'Nepal\'s timezone (UTC+5:45) means we work while you sleep. Send requests end-of-day, receive completed work by morning.' },
   { icon: Globe,        color: '#D97706', title: 'Fluent in Your Markets', desc: 'Deep-specialized in US, UK, and Australian tax and compliance. We speak your jurisdiction\'s language — not just English.' },
   { icon: ShieldCheck,  color: '#1D4ED8', title: 'Transparent by Default', desc: 'We tell you exactly who we are, where we are, and how we work. No shell addresses, no hidden teams — just honest professionals you can verify.' },

@@ -63,7 +63,7 @@ function StorySection() {
               We set out to level the playing field. Today, we serve 200+ businesses — from solo consultants to 50-person teams across the US, UK, and Australia — delivering the same quality of financial management that Fortune 500 companies enjoy.
             </p>
             <div className="flex flex-col gap-3 mt-2">
-              {['Founded in 2016, headquartered in Kathmandu', 'Serving clients across the US, UK & Australia', 'Certified in QuickBooks, Xero, and CPP'].map((item, i) => (
+              {['Headquartered in Kathmandu, Nepal', 'Serving clients across the US, UK & Australia', 'Certified in QuickBooks, Xero & CA'].map((item, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13.5, color: 'var(--text-ice)' }}>
                   <CheckCircle2 size={15} style={{ color: '#059669', flexShrink: 0 }} />
                   {item}
