@@ -46,8 +46,8 @@ export default function Navbar() {
                 to={path}
                 className="relative px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
                 style={{ color: pathname === path ? '#1D4ED8' : 'rgba(147,197,253,0.65)' }}
-                onMouseEnter={e => { if (pathname !== path) e.currentTarget.style.color = '#F8FAFC' }}
-                onMouseLeave={e => { if (pathname !== path) e.currentTarget.style.color = 'rgba(147,197,253,0.65)' }}
+                onMouseEnter={e => { if (pathname !== path) e.currentTarget.style.color = 'var(--text-heading)' }}
+                onMouseLeave={e => { if (pathname !== path) e.currentTarget.style.color = 'var(--text-dim)' }}
               >
                 {pathname === path && (
                   <motion.div

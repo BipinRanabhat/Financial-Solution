@@ -79,7 +79,7 @@ export default function CTABanner() {
               Ready to Take Control of{' '}
               <br className="hidden sm:block" />
               <span style={{
-                background: 'linear-gradient(135deg, #93C5FD, #1D4ED8)',
+                background: 'var(--gradient-text-blue)',
                 WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
               }}>
                 Your Finances?

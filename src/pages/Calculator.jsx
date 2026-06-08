@@ -165,7 +165,7 @@ export default function Calculator() {
                 style={{ padding: '24px', borderRadius: 16, background: 'linear-gradient(135deg, rgba(29,78,216,0.12) 0%, rgba(5,150,105,0.06) 100%)', border: '1px solid rgba(29,78,216,0.25)', textAlign: 'center' }}
               >
                 <p style={{ fontSize: 13, color: 'var(--text-muted)', marginBottom: 8 }}>Your estimated first-year ROI with Vanguard</p>
-                <div style={{ fontSize: 42, fontWeight: 900, background: 'linear-gradient(135deg, #93C5FD, #1D4ED8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                <div style={{ fontSize: 42, fontWeight: 900, background: 'var(--gradient-text-blue)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                   {annualSavings > 0 ? `$${annualSavings.toLocaleString()}` : 'Book a call'}
                 </div>
                 <p style={{ fontSize: 12, color: 'var(--text-dim2)', marginTop: 6 }}>in time and cost savings</p>

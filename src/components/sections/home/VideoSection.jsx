@@ -55,7 +55,7 @@ export default function VideoSection() {
           }}>
             Meet the Team Behind{' '}
             <span style={{
-              background: 'linear-gradient(135deg, #93C5FD, #1D4ED8)',
+              background: 'var(--gradient-text-blue)',
               WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
             }}>
               Your Finances

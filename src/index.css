@@ -73,6 +73,9 @@
   --cta-card-border: rgba(29,78,216,0.28);
   --cta-card-shadow: 0 40px 100px rgba(0,0,0,0.30);
 
+  /* --- Inline gradient text (used by components directly) --- */
+  --gradient-text-blue: linear-gradient(135deg, #93C5FD, #1D4ED8);
+
   /* --- Tailwind RGB channels (used as rgb(var(--c-*) / alpha)) --- */
   --c-deep:    10 10 12;
   --c-dark:    17 17 19;
@@ -151,6 +154,9 @@
   --cta-card-border: rgba(29,78,216,0.22);
   --cta-card-shadow: 0 20px 60px rgba(29,78,216,0.14), 0 8px 24px rgba(0,0,0,0.07);
 
+  /* --- Inline gradient text --- */
+  --gradient-text-blue: linear-gradient(135deg, #1D4ED8, #1E3A8A);
+
   /* --- Tailwind RGB channels --- */
   --c-deep:    226 232 240;
   --c-dark:    248 250 252;
@@ -209,9 +215,21 @@ html.theme-transitioning *::after {
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+  [data-theme="light"] .text-gradient-blue {
+    background: linear-gradient(135deg, #1D4ED8, #1E3A8A);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
   /* Alpine Clarity gradient text — frost */
   .text-gradient-frost {
     background: linear-gradient(135deg, #F8FAFC, #BFDBFE);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  [data-theme="light"] .text-gradient-frost {
+    background: linear-gradient(135deg, #1E3A8A, #1D4ED8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

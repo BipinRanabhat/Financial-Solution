@@ -152,7 +152,7 @@ function ContactForm() {
                 onChange={handleChange} placeholder="+977 98XXXXXXXX"
               />
               <div style={{ position: 'relative' }}>
-                <label style={{ display: 'block', fontSize: 11, fontWeight: 600, color: 'rgba(147,197,253,0.60)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>
+                <label style={{ display: 'block', fontSize: 11, fontWeight: 600, color: 'var(--text-dim)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>
                   Service Interested In
                 </label>
                 <select name="service" value={form.service} onChange={handleChange}

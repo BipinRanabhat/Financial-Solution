@@ -293,7 +293,7 @@ export default function HeroSection() {
                 exit={{ opacity: 0, y: -20, filter: 'blur(10px)' }}
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 style={{
-                  background: 'linear-gradient(135deg, #93C5FD, #1D4ED8)',
+                  background: 'var(--gradient-text-blue)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
