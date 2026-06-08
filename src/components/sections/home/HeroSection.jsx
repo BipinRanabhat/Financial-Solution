@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useMotionValue, useSpring, useMotionTemplate, useScroll, useTransform } from 'framer-motion'
 import { ArrowRight, Shield, Award, TrendingUp } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import MagneticButton from '../../ui/MagneticButton'
@@ -158,6 +158,19 @@ function TestimonialCard() {
 export default function HeroSection() {
   const [wordIdx, setWordIdx] = useState(0)
 
+  // Cursor spotlight
+  const mouseX = useMotionValue(-9999)
+  const mouseY = useMotionValue(-9999)
+  const springX = useSpring(mouseX, { stiffness: 50, damping: 22 })
+  const springY = useSpring(mouseY, { stiffness: 50, damping: 22 })
+  const spotlight = useMotionTemplate`radial-gradient(600px circle at ${springX}px ${springY}px, rgba(29,78,216,0.09) 0%, transparent 70%)`
+
+  // Scroll-parallax for orbs
+  const { scrollY } = useScroll()
+  const orb1Y = useTransform(scrollY, [0, 800], [0, -130])
+  const orb2Y = useTransform(scrollY, [0, 800], [0, -90])
+  const orb3Y = useTransform(scrollY, [0, 800], [0, -60])
+
   useEffect(() => {
     const id = setInterval(() => setWordIdx(i => (i + 1) % WORDS.length), 2800)
     return () => clearInterval(id)
@@ -165,6 +178,12 @@ export default function HeroSection() {
 
   return (
     <section
+      onMouseMove={(e) => {
+        const rect = e.currentTarget.getBoundingClientRect()
+        mouseX.set(e.clientX - rect.left)
+        mouseY.set(e.clientY - rect.top)
+      }}
+      onMouseLeave={() => { mouseX.set(-9999); mouseY.set(-9999) }}
       style={{
         minHeight: '100vh',
         display: 'flex',
@@ -181,24 +200,35 @@ export default function HeroSection() {
         backgroundImage: "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgba(29,78,216,0.045)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e\")",
       }} />
 
-      {/* Orb 1 — Royal Blue */}
-      <motion.div
-        animate={{ y: [0, -28, 0], x: [0, 12, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-        style={{ position: 'absolute', top: '18%', left: '8%', width: 480, height: 480, borderRadius: '50%', pointerEvents: 'none', background: 'radial-gradient(circle, rgba(29,78,216,0.18) 0%, transparent 70%)', filter: 'blur(80px)', opacity: 0.5 }}
-      />
-      {/* Orb 2 — Deeper royal */}
-      <motion.div
-        animate={{ y: [0, 24, 0], x: [0, -14, 0] }}
-        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-        style={{ position: 'absolute', bottom: '26%', right: '8%', width: 400, height: 400, borderRadius: '50%', pointerEvents: 'none', background: 'radial-gradient(circle, rgba(30,58,138,0.28) 0%, transparent 70%)', filter: 'blur(70px)', opacity: 0.45 }}
-      />
-      {/* Orb 3 — Emerald hint */}
-      <motion.div
-        animate={{ y: [0, -18, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
-        style={{ position: 'absolute', top: '65%', left: '50%', width: 300, height: 300, borderRadius: '50%', pointerEvents: 'none', background: 'radial-gradient(circle, rgba(5,150,105,0.08) 0%, transparent 70%)', filter: 'blur(60px)', opacity: 0.55, transform: 'translateX(-50%)' }}
-      />
+      {/* Cursor spotlight overlay */}
+      <motion.div style={{ position: 'absolute', inset: 0, background: spotlight, pointerEvents: 'none', zIndex: 1 }} />
+
+      {/* Orb 1 — Royal Blue (parallax wrapper) */}
+      <motion.div style={{ position: 'absolute', top: '18%', left: '8%', y: orb1Y, pointerEvents: 'none' }}>
+        <motion.div
+          animate={{ y: [0, -28, 0], x: [0, 12, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+          style={{ width: 480, height: 480, borderRadius: '50%', background: 'radial-gradient(circle, rgba(29,78,216,0.18) 0%, transparent 70%)', filter: 'blur(80px)', opacity: 0.5 }}
+        />
+      </motion.div>
+
+      {/* Orb 2 — Deeper royal (parallax wrapper) */}
+      <motion.div style={{ position: 'absolute', bottom: '26%', right: '8%', y: orb2Y, pointerEvents: 'none' }}>
+        <motion.div
+          animate={{ y: [0, 24, 0], x: [0, -14, 0] }}
+          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+          style={{ width: 400, height: 400, borderRadius: '50%', background: 'radial-gradient(circle, rgba(30,58,138,0.28) 0%, transparent 70%)', filter: 'blur(70px)', opacity: 0.45 }}
+        />
+      </motion.div>
+
+      {/* Orb 3 — Emerald hint (parallax wrapper) */}
+      <motion.div style={{ position: 'absolute', top: '65%', left: '50%', y: orb3Y, transform: 'translateX(-50%)', pointerEvents: 'none' }}>
+        <motion.div
+          animate={{ y: [0, -18, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
+          style={{ width: 300, height: 300, borderRadius: '50%', background: 'radial-gradient(circle, rgba(5,150,105,0.08) 0%, transparent 70%)', filter: 'blur(60px)', opacity: 0.55 }}
+        />
+      </motion.div>
 
       <div style={{ position: 'relative', zIndex: 10, maxWidth: 800, margin: '0 auto', padding: '120px 24px 80px', textAlign: 'center', width: '100%' }}>
 
@@ -297,6 +327,7 @@ export default function HeroSection() {
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
               <Link
                 to="/services"
+                className="btn-shimmer"
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: 8,
                   padding: '14px 30px', borderRadius: 10, fontSize: '1rem', fontWeight: 700,

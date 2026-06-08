@@ -31,14 +31,20 @@ export default function SectionHeading({ eyebrow, title, subtitle, align = 'cent
           <span style={{ display: 'inline-block', width: 20, height: 1.5, background: '#1D4ED8', borderRadius: 2, flexShrink: 0 }} />
         </motion.span>
       )}
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ duration: 0.6, delay: 0.08 }}
-        style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 800, lineHeight: 1.15, letterSpacing: '-0.025em', color: 'var(--text-heading)', margin: 0 }}
-      >
-        {title}
-      </motion.h2>
+      <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 800, lineHeight: 1.3, letterSpacing: '-0.025em', color: 'var(--text-heading)', margin: 0 }}>
+        {title.split(' ').map((word, i) => (
+          <span key={i} style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'bottom', marginRight: '0.28em' }}>
+            <motion.span
+              initial={{ y: '110%' }}
+              animate={inView ? { y: 0 } : { y: '110%' }}
+              transition={{ duration: 0.55, delay: 0.08 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
+              style={{ display: 'inline-block' }}
+            >
+              {word}
+            </motion.span>
+          </span>
+        ))}
+      </h2>
       {subtitle && (
         <motion.p
           initial={{ opacity: 0, y: 12 }}

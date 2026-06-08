@@ -107,6 +107,7 @@ export default function CTABanner() {
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
                   <Link
                     to="/contact"
+                    className="btn-shimmer"
                     style={{
                       display: 'inline-flex', alignItems: 'center', gap: 8,
                       padding: '15px 34px', borderRadius: 12, fontSize: '1rem', fontWeight: 700,

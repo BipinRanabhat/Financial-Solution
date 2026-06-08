@@ -3,6 +3,7 @@ import { motion, useInView } from 'framer-motion'
 import { Target, Eye, Heart, TrendingUp, CheckCircle2 } from 'lucide-react'
 import PageWrapper from '../components/layout/PageWrapper'
 import SectionHeading from '../components/ui/SectionHeading'
+import AnimatedCounter from '../components/ui/AnimatedCounter'
 import CTABanner from '../components/sections/home/CTABanner'
 import { slideLeft, slideRight, staggerContainer, cardReveal } from '../constants/animations'
 
@@ -70,14 +71,16 @@ function StorySection() {
           <motion.div variants={slideRight} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
             <div className="grid grid-cols-2 gap-4">
               {[
-                { val: '2025', label: 'Year Founded',    accent: '#1D4ED8' },
-                { val: '200+', label: 'Happy Clients',   accent: '#1D4ED8' },
-                { val: '3',    label: 'Countries Served', accent: '#059669' },
-                { val: '4.9★', label: 'Avg. Rating',     accent: '#D97706' },
-              ].map(({ val, label, accent }, i) => (
+                { end: 2025, suffix: '',   prefix: '',  decimals: 0, label: 'Year Founded',     accent: '#1D4ED8', duration: 2.0 },
+                { end: 200,  suffix: '+',  prefix: '',  decimals: 0, label: 'Happy Clients',    accent: '#1D4ED8', duration: 1.8 },
+                { end: 3,    suffix: '',   prefix: '',  decimals: 0, label: 'Countries Served', accent: '#059669', duration: 1.2 },
+                { end: 4.9,  suffix: '★',  prefix: '',  decimals: 1, label: 'Avg. Rating',      accent: '#D97706', duration: 1.5 },
+              ].map(({ end, suffix, prefix, decimals, label, accent, duration }, i) => (
                 <div key={i} className="p-6 rounded-xl flex flex-col gap-2"
                      style={{ background: 'linear-gradient(145deg, var(--bg-card-from) 0%, var(--bg-card-to) 100%)', border: '1px solid var(--border-medium)', boxShadow: 'var(--card-shadow)' }}>
-                  <span className="text-3xl font-black" style={{ color: accent }}>{val}</span>
+                  <span className="text-3xl font-black" style={{ color: accent }}>
+                    <AnimatedCounter end={end} suffix={suffix} prefix={prefix} decimals={decimals} duration={duration} />
+                  </span>
                   <span style={{ fontSize: 12, color: 'var(--text-dim)', fontWeight: 500 }}>{label}</span>
                 </div>
               ))}

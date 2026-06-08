@@ -1,5 +1,6 @@
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { Mail, Phone, MapPin, MessageCircle, Globe } from 'lucide-react'
 
 function LinkedInIcon({ size = 14 }) {
@@ -21,6 +22,8 @@ const socials = [
 
 export default function Footer() {
   const year = new Date().getFullYear()
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, amount: 0.15 })
 
   return (
     <footer style={{ background: 'var(--bg-deep)', borderTop: '1px solid var(--border-subtle)', position: 'relative', overflow: 'hidden' }}>
@@ -31,11 +34,14 @@ export default function Footer() {
         pointerEvents: 'none',
       }} />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16" ref={ref}>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
           {/* Brand */}
-          <div className="flex flex-col gap-5 lg:col-span-1">
+          <motion.div
+            initial={{ opacity: 0, y: 28 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col gap-5 lg:col-span-1">
             <Link to="/" className="flex items-center group">
               <img
                 src="/logo.png"
@@ -62,10 +68,13 @@ export default function Footer() {
                 </motion.a>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Services */}
-          <div className="flex flex-col gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 28 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col gap-4">
             <h4 style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#1D4ED8', margin: 0 }}>Services</h4>
             <ul className="flex flex-col gap-2.5" style={{ listStyle: 'none', padding: 0, margin: 0 }}>
               {services.map(s => (
@@ -81,10 +90,13 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Company */}
-          <div className="flex flex-col gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 28 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col gap-4">
             <h4 style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#1D4ED8', margin: 0 }}>Company</h4>
             <ul className="flex flex-col gap-2.5" style={{ listStyle: 'none', padding: 0, margin: 0 }}>
               {navLinks.map(({ label, path }) => (
@@ -100,10 +112,13 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Contact */}
-          <div className="flex flex-col gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 28 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col gap-4">
             <h4 style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#1D4ED8', margin: 0 }}>Contact</h4>
             <ul className="flex flex-col gap-3" style={{ listStyle: 'none', padding: 0, margin: 0 }}>
               {[
@@ -125,16 +140,18 @@ export default function Footer() {
               <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#059669', flexShrink: 0, display: 'inline-block', boxShadow: '0 0 6px rgba(5,150,105,0.6)' }} />
               Serving clients globally · Remote
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Bottom bar */}
-        <div
+        <motion.div
+          initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.45 }}
           style={{ marginTop: 56, paddingTop: 24, borderTop: '1px solid var(--border-subtle)', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}
         >
           <p style={{ fontSize: 12, color: 'var(--text-dim2)', margin: 0 }}>© {year} Vanguard Accounting. All rights reserved.</p>
           <p style={{ fontSize: 12, color: 'var(--text-dim2)', margin: 0 }}>Precision-driven. Nepal-based. Globally trusted.</p>
-        </div>
+        </motion.div>
       </div>
     </footer>
   )

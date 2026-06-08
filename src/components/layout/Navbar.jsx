@@ -44,12 +44,20 @@ export default function Navbar() {
               <Link
                 key={path}
                 to={path}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200
-                  ${pathname === path
-                    ? 'text-electric bg-electric/10'
-                    : 'text-sky/65 hover:text-frost hover:bg-white/5'}`}
+                className="relative px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
+                style={{ color: pathname === path ? '#1D4ED8' : 'rgba(147,197,253,0.65)' }}
+                onMouseEnter={e => { if (pathname !== path) e.currentTarget.style.color = '#F8FAFC' }}
+                onMouseLeave={e => { if (pathname !== path) e.currentTarget.style.color = 'rgba(147,197,253,0.65)' }}
               >
-                {label}
+                {pathname === path && (
+                  <motion.div
+                    layoutId="nav-pill"
+                    className="absolute inset-0 rounded-lg"
+                    style={{ background: 'rgba(29,78,216,0.12)' }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 35 }}
+                  />
+                )}
+                <span style={{ position: 'relative', zIndex: 1 }}>{label}</span>
               </Link>
             ))}
           </nav>
@@ -61,7 +69,7 @@ export default function Navbar() {
               <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
                 <Link
                   to="/contact"
-                  className="hidden sm:inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold"
+                  className="btn-shimmer hidden sm:inline-flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold"
                   style={{
                     background: 'linear-gradient(135deg, #1D4ED8, #1E3A8A)',
                     color: 'white',
@@ -108,7 +116,7 @@ export default function Navbar() {
               ))}
               <Link
                 to="/contact"
-                className="mt-2 px-4 py-3 rounded-lg text-sm font-semibold text-center text-white"
+                className="btn-shimmer mt-2 px-4 py-3 rounded-lg text-sm font-semibold text-center text-white"
                 style={{ background: 'linear-gradient(135deg, #1D4ED8, #1E3A8A)' }}
               >
                 Get Started

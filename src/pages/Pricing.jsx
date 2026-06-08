@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { CheckCircle2, ArrowRight, Zap, TrendingUp, Building2 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import PageWrapper from '../components/layout/PageWrapper'
@@ -119,14 +119,35 @@ function PlanCard({ plan, annual, index, inView }) {
       <div style={{ marginBottom: 24 }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
           <span style={{ fontSize: 13, color: 'var(--text-dim)', fontWeight: 500 }}>USD</span>
-          <span style={{ fontSize: 46, fontWeight: 900, color: 'var(--text-heading)', lineHeight: 1 }}>${price}</span>
+          <span style={{ display: 'inline-block', overflow: 'hidden', height: '1.1em', verticalAlign: 'bottom' }}>
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={price}
+                initial={{ y: '-100%', opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: '100%', opacity: 0 }}
+                transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                style={{ display: 'block', fontSize: 46, fontWeight: 900, color: 'var(--text-heading)', lineHeight: 1.1 }}
+              >
+                ${price}
+              </motion.span>
+            </AnimatePresence>
+          </span>
           <span style={{ fontSize: 13, color: 'var(--text-dim)' }}>/month</span>
         </div>
-        {annual && (
-          <p style={{ fontSize: 12, color: '#10B981', fontWeight: 600, marginTop: 6 }}>
-            Save ${(monthlyPrice - annualPrice) * 12}/year with annual billing
-          </p>
-        )}
+        <AnimatePresence>
+          {annual && (
+            <motion.p
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.2 }}
+              style={{ fontSize: 12, color: '#10B981', fontWeight: 600, marginTop: 6 }}
+            >
+              Save ${(monthlyPrice - annualPrice) * 12}/year with annual billing
+            </motion.p>
+          )}
+        </AnimatePresence>
       </div>
 
       <div style={{ height: 1, background: 'var(--border-subtle)', marginBottom: 24 }} />
@@ -242,6 +263,7 @@ export default function Pricing() {
           <div style={{ textAlign: 'center', marginTop: 32 }}>
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
               <Link to="/contact"
+                className="btn-shimmer"
                 style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '14px 32px', borderRadius: 10, background: 'linear-gradient(135deg, #1D4ED8, #1E3A8A)', color: '#fff', fontSize: 15, fontWeight: 700, textDecoration: 'none', boxShadow: '0 8px 24px rgba(29,78,216,0.32)' }}>
                 Book a Free Call <ArrowRight size={16} />
               </Link>

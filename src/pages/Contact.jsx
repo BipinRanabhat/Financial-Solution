@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { Mail, Phone, MapPin, Clock, CheckCircle2, Send } from 'lucide-react'
 import PageWrapper from '../components/layout/PageWrapper'
+import FloatingInput from '../components/ui/FloatingInput'
 import { services } from '../constants/services'
 import { CONTACT } from '../constants/contact'
 import { slideLeft, slideRight } from '../constants/animations'
@@ -131,33 +132,31 @@ function ContactForm() {
             </button>
           </motion.div>
         ) : (
-          <motion.form key="form" onSubmit={handleSubmit} className="flex flex-col gap-5">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div>
-                <label className={labelBase}>Full Name *</label>
-                <input name="name" value={form.name} onChange={handleChange} placeholder="Jane Smith"
-                       className={`${inputStyle('name')} border`} />
-                {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
-              </div>
-              <div>
-                <label className={labelBase}>Email Address *</label>
-                <input name="email" type="email" value={form.email} onChange={handleChange} placeholder="jane@company.com"
-                       className={`${inputStyle('email')} border`} />
-                {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
-              </div>
+          <motion.form key="form" onSubmit={handleSubmit} className="flex flex-col gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <FloatingInput
+                label="Full Name" name="name" value={form.name}
+                onChange={handleChange} placeholder="Jane Smith"
+                error={errors.name} required
+              />
+              <FloatingInput
+                label="Email Address" name="email" type="email" value={form.email}
+                onChange={handleChange} placeholder="jane@company.com"
+                error={errors.email} required
+              />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div>
-                <label className={labelBase}>Phone Number</label>
-                <input name="phone" value={form.phone} onChange={handleChange} placeholder="+977 98XXXXXXXX"
-                       className={`${inputStyle('phone')} border border-royal/30 focus:border-electric/60`} />
-              </div>
-              <div>
-                <label className={labelBase}>Service Interested In</label>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <FloatingInput
+                label="Phone Number" name="phone" value={form.phone}
+                onChange={handleChange} placeholder="+977 98XXXXXXXX"
+              />
+              <div style={{ position: 'relative' }}>
+                <label style={{ display: 'block', fontSize: 11, fontWeight: 600, color: 'rgba(147,197,253,0.60)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>
+                  Service Interested In
+                </label>
                 <select name="service" value={form.service} onChange={handleChange}
-                        className={`${inputBase} border border-royal/30 focus:border-electric/60 cursor-pointer`}
-                        style={{ background: 'var(--bg-select)' }}>
+                        style={{ width: '100%', padding: '11px 16px', borderRadius: 12, fontSize: 13.5, color: 'var(--text-heading)', background: 'var(--bg-select)', border: '1.5px solid rgba(29,78,216,0.18)', outline: 'none', cursor: 'pointer', fontFamily: 'inherit' }}>
                   <option value="">Select a service...</option>
                   {services.map(s => <option key={s.id} value={s.id}>{s.title}</option>)}
                   <option value="general">General Inquiry</option>
@@ -165,13 +164,11 @@ function ContactForm() {
               </div>
             </div>
 
-            <div>
-              <label className={labelBase}>Message *</label>
-              <textarea name="message" value={form.message} onChange={handleChange} rows={5}
-                        placeholder="Tell us about your business and what you need help with..."
-                        className={`${inputStyle('message')} border resize-none`} />
-              {errors.message && <p className="text-red-400 text-xs mt-1">{errors.message}</p>}
-            </div>
+            <FloatingInput
+              label="Message" name="message" as="textarea" rows={5} value={form.message}
+              onChange={handleChange} placeholder="Tell us about your business and what you need help with..."
+              error={errors.message} required
+            />
 
             <motion.button
               type="submit"
