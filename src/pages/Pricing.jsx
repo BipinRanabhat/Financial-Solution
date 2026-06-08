@@ -119,15 +119,15 @@ function PlanCard({ plan, annual, index, inView }) {
       <div style={{ marginBottom: 24 }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
           <span style={{ fontSize: 13, color: 'var(--text-dim)', fontWeight: 500 }}>USD</span>
-          <span style={{ display: 'inline-block', overflow: 'hidden', height: '1.1em', verticalAlign: 'bottom' }}>
+          <span style={{ display: 'inline-block', overflow: 'hidden', height: 50, verticalAlign: 'bottom', position: 'relative' }}>
             <AnimatePresence mode="wait">
               <motion.span
                 key={price}
-                initial={{ y: '-100%', opacity: 0 }}
+                initial={{ y: -50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                exit={{ y: '100%', opacity: 0 }}
+                exit={{ y: 50, opacity: 0 }}
                 transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-                style={{ display: 'block', fontSize: 46, fontWeight: 900, color: 'var(--text-heading)', lineHeight: 1.1 }}
+                style={{ display: 'block', fontSize: 46, fontWeight: 900, color: 'var(--text-heading)', lineHeight: '50px' }}
               >
                 ${price}
               </motion.span>
