@@ -34,7 +34,7 @@ export default function Navbar() {
             <img
               src="/logo.png"
               alt="Vanguard"
-              style={{ height: 80, width: 'auto', objectFit: 'contain', filter: 'var(--logo-filter)' }}
+              style={{ height: 110, width: 'auto', objectFit: 'contain', filter: 'var(--logo-filter)' }}
             />
           </Link>
 
