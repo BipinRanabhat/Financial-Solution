@@ -95,12 +95,22 @@ function ContactForm() {
     if (errors[name]) setErrors(err => ({ ...err, [name]: undefined }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const errs = validate()
     if (Object.keys(errs).length) { setErrors(errs); return }
     setStatus('sending')
-    setTimeout(() => setStatus('sent'), 1500)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      if (!res.ok) throw new Error('Send failed')
+      setStatus('sent')
+    } catch {
+      setStatus('error')
+    }
   }
 
   const inputBase = `w-full px-4 py-3 rounded-xl text-sm text-frost placeholder-sky/30 outline-none transition-all duration-200 bg-transparent`
@@ -111,7 +121,27 @@ function ContactForm() {
     <div className="relative p-8 rounded-2xl"
          style={{ background: 'linear-gradient(145deg, var(--bg-card-from) 0%, var(--bg-card-to) 100%)', border: '1px solid var(--border-medium)', boxShadow: 'var(--card-shadow)' }}>
       <AnimatePresence mode="wait">
-        {status === 'sent' ? (
+        {status === 'error' ? (
+          <motion.div
+            key="error"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="flex flex-col items-center text-center gap-5 py-12"
+          >
+            <div className="w-16 h-16 rounded-full flex items-center justify-center"
+                 style={{ background: 'rgba(239,68,68,0.10)', border: '2px solid rgba(239,68,68,0.30)' }}>
+              <Send size={28} style={{ color: '#EF4444' }} />
+            </div>
+            <div>
+              <h3 style={{ fontSize: 20, fontWeight: 700, color: 'var(--text-heading)', marginBottom: 8 }}>Something went wrong</h3>
+              <p style={{ fontSize: 13.5, color: 'var(--text-muted)' }}>Please try again or email us directly at ManishWagle@vanguardfinancialsolution.com</p>
+            </div>
+            <button onClick={() => setStatus('idle')}
+                    style={{ fontSize: 13.5, color: '#1D4ED8', background: 'none', border: 'none', cursor: 'pointer' }}>
+              Try again
+            </button>
+          </motion.div>
+        ) : status === 'sent' ? (
           <motion.div
             key="success"
             initial={{ opacity: 0, scale: 0.95 }}
