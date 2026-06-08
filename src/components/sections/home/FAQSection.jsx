@@ -26,6 +26,7 @@ function FAQItem({ q, a, isOpen, onClick, index, inView }) {
     >
       <button
         onClick={onClick}
+        aria-expanded={isOpen}
         style={{
           width: '100%', textAlign: 'left', padding: '20px 24px',
           display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16,

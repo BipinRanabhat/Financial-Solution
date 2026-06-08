@@ -191,7 +191,7 @@ export default function VideoSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.45 }}
-          className="max-w-2xl mx-auto mt-8 grid grid-cols-3 gap-4"
+          className="max-w-2xl mx-auto mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4"
         >
           {highlights.map(({ Icon, end, suffix, prefix, label, color }, i) => (
             <div key={i} style={{

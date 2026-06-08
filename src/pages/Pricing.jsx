@@ -168,6 +168,7 @@ function PlanCard({ plan, annual, index, inView }) {
 
 export default function Pricing() {
   const [annual, setAnnual] = useState(false)
+  const savingsPct = Math.round((1 - plans[0].annualPrice / plans[0].monthlyPrice) * 100)
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, amount: 0.1 })
 
@@ -193,14 +194,14 @@ export default function Pricing() {
           {/* Monthly / Annual toggle */}
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35 }}
             style={{ display: 'inline-flex', alignItems: 'center', gap: 12, background: 'var(--bg-card-solid)', border: '1px solid var(--border-medium)', borderRadius: 50, padding: '6px 8px' }}>
-            <button onClick={() => setAnnual(false)}
+            <button onClick={() => setAnnual(false)} aria-pressed={!annual}
               style={{ padding: '8px 20px', borderRadius: 50, border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 700, background: !annual ? '#1D4ED8' : 'transparent', color: !annual ? '#fff' : 'var(--text-dim)', transition: 'all 0.2s' }}>
               Monthly
             </button>
-            <button onClick={() => setAnnual(true)}
+            <button onClick={() => setAnnual(true)} aria-pressed={annual}
               style={{ padding: '8px 20px', borderRadius: 50, border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 700, background: annual ? '#1D4ED8' : 'transparent', color: annual ? '#fff' : 'var(--text-dim)', transition: 'all 0.2s', display: 'flex', alignItems: 'center', gap: 8 }}>
               Annual
-              <span style={{ background: '#059669', color: '#fff', fontSize: 10, fontWeight: 800, padding: '2px 8px', borderRadius: 20 }}>Save 17%</span>
+              <span style={{ background: '#059669', color: '#fff', fontSize: 10, fontWeight: 800, padding: '2px 8px', borderRadius: 20 }}>Save {savingsPct}%</span>
             </button>
           </motion.div>
         </div>

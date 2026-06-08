@@ -1,10 +1,10 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Target, Eye, Heart, Users, Award, TrendingUp, CheckCircle2 } from 'lucide-react'
+import { Target, Eye, Heart, TrendingUp, CheckCircle2 } from 'lucide-react'
 import PageWrapper from '../components/layout/PageWrapper'
 import SectionHeading from '../components/ui/SectionHeading'
 import CTABanner from '../components/sections/home/CTABanner'
-import { fadeUp, slideLeft, slideRight, staggerContainer, cardReveal } from '../constants/animations'
+import { slideLeft, slideRight, staggerContainer, cardReveal } from '../constants/animations'
 
 const values = [
   { Icon: Target,     title: 'Precision',     desc: 'Every number matters. We approach every file with the accuracy your business deserves.' },
@@ -13,11 +13,6 @@ const values = [
   { Icon: TrendingUp, title: 'Growth Focus',  desc: 'We don\'t just maintain books. We identify opportunities and help you scale strategically.' },
 ]
 
-const team = [
-  { name: 'Aryan Shrestha',  role: 'Founder & Lead CA',    initials: 'AS', bio: 'CA-certified specialist in international SMB accounting, financial strategy, and remote client management.' },
-  { name: 'Sanjib Karki',    role: 'Senior Bookkeeper',    initials: 'SK', bio: 'QuickBooks ProAdvisor and Xero Certified. Specializes in e-commerce, retail, and multi-currency bookkeeping.' },
-  { name: 'Anita Thapa',     role: 'Payroll Specialist',   initials: 'AT', bio: 'Certified Payroll Professional with 7+ years managing global payroll for distributed teams across the US and UK.' },
-]
 
 function PageHero() {
   return (
@@ -123,36 +118,6 @@ function ValuesSection() {
   )
 }
 
-function TeamSection() {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, amount: 0.15 })
-  return (
-    <section className="section-padding" style={{ background: 'var(--bg-base)' }}>
-      <div className="container-wide">
-        <div className="mb-14 flex flex-col items-center">
-          <SectionHeading eyebrow="The Team" title="Experts You Can Count On" subtitle="A dedicated team of Nepali accounting professionals serving clients globally with precision and care." />
-        </div>
-        <motion.div ref={ref} variants={staggerContainer} initial="hidden" animate={inView ? 'visible' : 'hidden'}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          {team.map(({ name, role, initials, bio }, i) => (
-            <motion.div key={i} variants={cardReveal}
-              className="flex flex-col items-center text-center gap-4 p-7 rounded-xl"
-              style={{ background: 'linear-gradient(145deg, var(--bg-card-from) 0%, var(--bg-card-to) 100%)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--card-shadow)' }}>
-              <div className="w-16 h-16 rounded-full flex items-center justify-center text-lg font-bold"
-                   style={{ background: 'rgba(29,78,216,0.12)', border: '2px solid rgba(29,78,216,0.35)', color: '#1D4ED8' }}>
-                {initials}
-              </div>
-              <div>
-                <p style={{ fontSize: 12, color: '#1D4ED8', fontWeight: 600, marginTop: 2 }}>{role}</p>
-              </div>
-              <p style={{ fontSize: 13.5, color: 'var(--text-muted)', lineHeight: 1.70 }}>{bio}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
-  )
-}
 
 export default function About() {
   return (

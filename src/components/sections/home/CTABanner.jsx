@@ -126,7 +126,7 @@ export default function CTABanner() {
                     style={{
                       display: 'inline-flex', alignItems: 'center', gap: 8,
                       padding: '15px 34px', borderRadius: 12, fontSize: '1rem', fontWeight: 600,
-                      color: '#34D399', textDecoration: 'none',
+                      color: 'rgb(var(--c-em-light))', textDecoration: 'none',
                       border: '1.5px solid rgba(5,150,105,0.40)',
                       background: 'rgba(5,150,105,0.08)',
                       backdropFilter: 'blur(10px)',

@@ -139,13 +139,15 @@ function TestimonialCard() {
 
       {/* Dot indicators */}
       <div style={{ display: 'flex', gap: 5, justifyContent: 'center', marginTop: 14 }}>
-        {testimonials.map((_, i) => (
-          <motion.div
+        {testimonials.map((t, i) => (
+          <motion.button
             key={i}
+            onClick={() => setIdx(i)}
+            aria-label={`View testimonial from ${t.author}`}
+            aria-pressed={i === idx}
             animate={{ width: i === idx ? 18 : 6, background: i === idx ? '#1D4ED8' : 'rgba(29,78,216,0.20)' }}
             transition={{ duration: 0.3 }}
-            style={{ height: 6, borderRadius: 3, cursor: 'pointer' }}
-            onClick={() => setIdx(i)}
+            style={{ height: 6, borderRadius: 3, cursor: 'pointer', border: 'none', padding: 0 }}
           />
         ))}
       </div>
@@ -207,13 +209,24 @@ export default function HeroSection() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           style={{ display: 'flex', justifyContent: 'center', marginBottom: 28 }}
         >
-          <motion.img
-            src="/logo.png"
-            alt="Vanguard"
-            animate={{ filter: ['drop-shadow(0 0 16px rgba(29,78,216,0.35))', 'drop-shadow(0 0 30px rgba(29,78,216,0.60))', 'drop-shadow(0 0 16px rgba(29,78,216,0.35))'] }}
-            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-            style={{ height: 120, width: 'auto', objectFit: 'contain' }}
-          />
+          <div style={{ position: 'relative', display: 'inline-flex' }}>
+            <motion.div
+              animate={{ opacity: [0.35, 0.65, 0.35] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              style={{
+                position: 'absolute', inset: '10px -24px',
+                borderRadius: '50%',
+                background: 'radial-gradient(ellipse, rgba(29,78,216,0.55), transparent 70%)',
+                filter: 'blur(22px)',
+                pointerEvents: 'none',
+              }}
+            />
+            <img
+              src="/logo.png"
+              alt="Vanguard"
+              style={{ height: 120, width: 'auto', objectFit: 'contain', filter: 'var(--logo-filter)', position: 'relative' }}
+            />
+          </div>
         </motion.div>
 
         {/* Badge */}
@@ -241,7 +254,7 @@ export default function HeroSection() {
           Financial Clarity,{' '}
           <br />
           Built on{' '}
-          <span style={{ display: 'inline-block', position: 'relative', minWidth: '5.5ch' }}>
+          <span style={{ display: 'inline-block', position: 'relative', minWidth: '10.5ch' }}>
             <AnimatePresence mode="wait">
               <motion.span
                 key={wordIdx}

@@ -153,6 +153,7 @@ export default function TestimonialsSection() {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginTop: 32 }}>
           <button
             onClick={prev}
+            aria-label="Previous testimonial"
             style={{
               width: 36, height: 36, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
               background: 'rgba(29,78,216,0.08)', border: '1px solid rgba(29,78,216,0.20)',
@@ -163,10 +164,12 @@ export default function TestimonialsSection() {
           </button>
 
           <div style={{ display: 'flex', gap: 6 }}>
-            {testimonials.map((_, i) => (
+            {testimonials.map((t, i) => (
               <motion.button
                 key={i}
                 onClick={() => setFeatured(i)}
+                aria-label={`View testimonial from ${t.author}`}
+                aria-pressed={i === featured}
                 animate={{
                   width: i === featured ? 24 : 8,
                   background: i === featured ? '#1D4ED8' : 'rgba(29,78,216,0.25)',
@@ -179,6 +182,7 @@ export default function TestimonialsSection() {
 
           <button
             onClick={next}
+            aria-label="Next testimonial"
             style={{
               width: 36, height: 36, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
               background: 'rgba(29,78,216,0.08)', border: '1px solid rgba(29,78,216,0.20)',

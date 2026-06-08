@@ -99,16 +99,6 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
-              <li>
-                <a
-                  href="#"
-                  style={{ fontSize: 13.5, color: 'rgba(147,197,253,0.52)', textDecoration: 'none', transition: 'color 0.2s' }}
-                  onMouseEnter={e => e.currentTarget.style.color = '#F8FAFC'}
-                  onMouseLeave={e => e.currentTarget.style.color = 'rgba(147,197,253,0.52)'}
-                >
-                  Privacy Policy
-                </a>
-              </li>
             </ul>
           </div>
 
