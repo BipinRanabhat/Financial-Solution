@@ -118,7 +118,7 @@ export default async function handler(req, res) {
   try {
     await resend.emails.send({
       from: 'Vanguard Website <onboarding@resend.dev>',
-      to:   'ManishWagle@vanguardfinancialsolution.com',
+      to:   'manishwagle@vanguardfinancialsolution.com',
       replyTo: email,
       subject: `New Enquiry from ${name}${service ? ` — ${SERVICE_LABELS[service] || service}` : ''}`,
       html: buildHtml({ name, email, phone, service, message }),
