@@ -5,12 +5,14 @@ import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import ScrollProgressBar from './components/ui/ScrollProgressBar'
 import WhatsAppButton from './components/ui/WhatsAppButton'
+import BackToTop from './components/ui/BackToTop'
 import Home from './pages/Home'
 import About from './pages/About'
 import Services from './pages/Services'
 import Contact from './pages/Contact'
 import Pricing from './pages/Pricing'
 import Calculator from './pages/Calculator'
+import NotFound from './pages/NotFound'
 
 function AnimatedRoutes() {
   const location = useLocation()
@@ -23,6 +25,7 @@ function AnimatedRoutes() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/calculator" element={<Calculator />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>
   )
@@ -38,6 +41,7 @@ export default function App() {
           <AnimatedRoutes />
           <Footer />
           <WhatsAppButton />
+          <BackToTop />
         </div>
       </BrowserRouter>
     </ThemeProvider>
